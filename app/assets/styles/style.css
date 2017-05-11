@@ -1,4 +1,52 @@
-div {
-	color: green;
-	font-size: 20px;
+body {
+	background: url(/images/bg.jpg);
+}
+header {
+	margin: 20px 0;
+}
+.container {
+  max-width: 1000px; 
+}
+.sotial-icons {
+	text-align: right;
+}
+.vk {
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	margin: 0 10px 10px 0;
+	background: url(/images/vk.png);
+}
+.vk:last-child {
+	margin-right: 0;
+}
+.menu {
+	text-align: right;
+}
+.menu li {
+	display: inline-block;
+	margin-left: 20px;
+}
+.menu a {
+	text-transform: uppercase;
+}
+.content {
+	margin: 20px 0;
+}
+.content img {
+	width:100%;
+}
+
+.sidenews {
+	margin: 20px 0;
+}
+.sidenews img {
+	float: left;
+	width: 120px;
+}
+.sidenews p {
+	padding-left: 135px;
+}
+footer {
+	margin: 20px 0;
 }
