@@ -36,9 +36,18 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  '/post': {
+  '/article': {
     view: 'article'
+  },
+
+ '/article-2': {
+    view: 'article2'
+  },
+
+  '/article-3': {
+    view: 'article3'
   }
+
 
   /***************************************************************************
   *                                                                          *
