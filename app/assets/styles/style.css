@@ -37,6 +37,10 @@ header .dropdown li a:hover
 header a:hover{
 	text-decoration: none;
 }
+.min-height{
+	min-height: 20px;
+	display: block;
+}
 .logo-text, .logo-text:hover{
 	display: inline;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

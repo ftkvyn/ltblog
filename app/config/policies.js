@@ -27,7 +27,13 @@ module.exports.policies = {
   ***************************************************************************/
 
   AdminViewsController:{
-    //"*": ['isAdmin']
+    "login": true,
+    "main":'sessionAuth',
+    "*": ['isAdmin']
+  },
+
+  AdminActionsController:{
+    "*": ['isAdmin']
   },
   // '*': true,
 

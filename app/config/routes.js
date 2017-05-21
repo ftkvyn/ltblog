@@ -32,21 +32,15 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  },
+  '/': 'ViewsController.home',
 
-  '/article': {
-    view: 'article'
-  },
+  '/article/:id': 'ViewsController.article',
 
- '/article-2': {
-    view: 'article2'
-  },
+  '/admin/login': 'AdminViewsController.login',
 
-  '/article-3': {
-    view: 'article3'
-  }
+  '/admin': 'AdminViewsController.main',
+
+  '/api/login': 'AuthController.login',
 
 
   /***************************************************************************
