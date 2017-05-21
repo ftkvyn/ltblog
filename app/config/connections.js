@@ -19,6 +19,14 @@
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.connections.html
  */
 
+var cs = process.env.LTBLOG_MYSQL_URI;
+var MYSQL_HOST = cs.substring(32,32+27);
+var MYSQL_USER = cs.substring(8,8+14);
+var MYSQL_PASS = cs.substring(23,23+8);
+var MYSQL_DB   = cs.substring(60,60+22);
+
+var mongoUri = process.env.LTBLOG_MONGO_URI;
+
 module.exports.connections = {
 
   /***************************************************************************
@@ -28,8 +36,21 @@ module.exports.connections = {
   * Installed by default.                                                    *
   *                                                                          *
   ***************************************************************************/
-  localDiskDb: {
-    adapter: 'sails-disk'
+   mysqlServer: {
+    adapter: 'sails-mysql',
+    host: MYSQL_HOST,
+    user: MYSQL_USER,
+    password: MYSQL_PASS,
+    database: MYSQL_DB,
+    reconnect: true,
+    timezone: 'utc',
+    connectionLimit: 5,
+    pool: true
+  },
+
+  mongodbServer: {
+    adapter: 'sails-mongo',
+    url: mongoUri
   },
 
   /***************************************************************************

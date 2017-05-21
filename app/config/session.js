@@ -12,6 +12,9 @@
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.session.html
  */
 
+ var mongoUri = process.env.LTBLOG_MONGO_URI 
++ '/_sessions';
+
 module.exports.session = {
 
   /***************************************************************************
@@ -23,6 +26,12 @@ module.exports.session = {
   ***************************************************************************/
   secret: '74abf948f0bdb05504328ac4a0b4db96',
 
+  cookie: {
+    maxAge: 100 * 24 * 60 * 60 * 1000
+  },
+
+  adapter: 'mongo',
+  url: mongoUri,
 
   /***************************************************************************
   *                                                                          *
