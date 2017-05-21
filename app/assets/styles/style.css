@@ -89,38 +89,54 @@ header a:hover{
 	margin-top: 20px;
 }
 .news-switch div{
-	outline: 1px solid #666666;
+	outline: 1px solid #89b399;
 	width: 49.8%;
 	display: inline-block;
 	padding: 5px 10px;
-	background-color: #F6F6F6;
+	background-color: #f9f9f9;
+	cursor: pointer;
 	
 }
 .news-switch .active{
 	background-color: #fff;
-	color: #9E0B0F;
-	outline: 1px solid #9E0B0F;
+	color: #89b399;
+	outline: 1px solid #89b399;
 	font-weight: 700;
 }
 
 .sidenews {
 	margin: 20px 0;
 }
+.side-description{
+	margin-bottom: 5px;
+}
 .sidenews img {
 	float: left;
-	width: 120px;
+	width: 60px;
+	margin-right: 10px;
 }
 .article-author {
 	color: black;
 	margin: 0;
+	font-size: 80%;
+	border-bottom: 2px solid #f4f4f4;
 }
-.publish-data {
+.publish-date {
 	font-size: 12px;
 	color: #666666;
 	margin-bottom: 5px;
+	float: right;
+}
+.sidenews a,
+.sidenews a:hover{
+	text-decoration: none;
+	color: black;
+}
+.side-title {
+	font-weight: bold;
+	font-size: 110%;
 }
 .sidenews p {
-	padding-left: 135px;
 }
 .view-statistic {
 	font-size: 12px;
