@@ -13,5 +13,25 @@ module.exports = {
 	main: function(req,res){
 		return res.view('admin/index', {});
 	},
+
+	users: function(req,res){
+		User.find()
+		.exec(function(err, data){
+			if(err){
+				console.log(err);
+				return res.error(500);
+			}
+
+			return res.view('admin/users', {users: data});
+		});		
+	},
+
+	tags: function(req,res){
+		return res.view('admin/tags', {});
+	},
+
+	articles: function(req,res){
+		return res.view('admin/articles', {});
+	},
 };
 

@@ -40,7 +40,19 @@ module.exports.routes = {
 
   '/admin': 'AdminViewsController.main',
 
+  '/admin/users': 'AdminViewsController.users',
+
+  '/admin/addUser': 'AdminActionsController.createUser',
+
+  '/admin/deleteUser': 'AdminActionsController.deleteUser',
+
+  '/admin/tags': 'AdminViewsController.tags',
+
+  '/admin/articles': 'AdminViewsController.articles',
+
   '/api/login': 'AuthController.login',
+
+  '/logout': 'AuthController.logout',
 
 
   /***************************************************************************

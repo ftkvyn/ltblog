@@ -8,6 +8,7 @@
 
 module.exports = {
 	createUser: function(req, res){
+	  console.log(req.body);
       var login = req.body.login;
       var password = req.body.password;
       if(password.length < 6){
@@ -45,7 +46,6 @@ module.exports = {
                 };
                 User.create(userData).exec(function (err, user) {
                   if (user) {            
-                    req.session.user = user;
                     return res.send({success:true});
                   } else {
                     console.error(err);
@@ -57,5 +57,31 @@ module.exports = {
           });
         });
       },
+
+      deleteUser:function(req, res){
+      	console.log(req.body);
+      	var id = req.body.id;
+      	if(id == req.session.user.id){
+  			return res.error("Can't remove self");
+  		}
+      	Article.find({author: id})
+      	.exec(function(err, data){
+      		if(err){
+      			console.log(err);
+      			return res.error(500);
+      		}
+      		if(data && data.length > 0){
+      			return res.error("Can't remove author");
+      		}
+      		User.destroy({id:id})
+      		.exec(function(err, data){
+      			if(err){
+	      			console.log(err);
+	      			return res.error(500);
+	      		}
+	      		return res.redirect('/admin/users');
+      		});
+      	});
+      }
 };
 

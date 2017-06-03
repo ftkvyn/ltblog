@@ -1,0 +1,56 @@
+<h2>Users</h2>
+<a href="/admin">Back</a>
+
+<h3>New user</h3>
+<form action='/admin/addUser' style="margin-bottom: 30px;" method="post">
+	<div class="form-group">
+	    <label for="name">Name</label>
+	    <input type="text" class="form-control" name="name" id="name">
+	</div>
+	<div class="form-group">
+	    <label for="profilePicSmall">Profile Pic Small</label>
+	    <input type="text" class="form-control" name="profilePicSmall" id="profilePicSmall">
+	</div>
+	<div class="form-group">
+	    <label for="profilePicLarge">Profile Pic Large</label>
+	    <input type="text" class="form-control" name="profilePicLarge" id="profilePicLarge">
+	</div>
+	<div class="form-group">
+	    <label for="login">Login</label>
+	    <input type="text" class="form-control" name="login" id="login">
+	</div>
+	<div class="form-group">
+	    <label for="password">Password</label>
+	    <input type="password" class="form-control" name="password" id="password">
+	</div>
+	<div class="checkbox">
+	    <label>
+	      <input type="checkbox" name="isAdmin" id="isAdmin"> Is Admin
+	    </label>
+	</div>
+	<input type="submit" class="btn btn-success" value="Save"/>
+</form>
+
+<table class="table table-striped table-bordered">
+	<thead></thead>
+	<tbody>
+		<% for(var i = 0; i < users.length; i++){
+				var user = users[i] %>
+		<tr>		
+			<td>
+				<p><b><%= user.name %></b> <span><%= user.login %></span></p>
+				<p><img src="<%= user.profilePicSmall %>"/></p>
+			</td>
+			<td>
+				isAdmin=<%= user.isAdmin %>
+			</td>
+			<td>
+				<form action='/admin/deleteUser' method="post">
+					<input type="hidden" name="id" value="<%= user.id %>" />
+					<input type="submit" class="btn btn-danger" value="Delete"/>
+				</form>
+			</td>		
+		</tr>
+		<%}%>
+	</tbody>
+</table>
