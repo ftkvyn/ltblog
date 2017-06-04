@@ -209,3 +209,9 @@ footer {
 .vk-share:last-child {
 	margin-right: 0;
 }
+.table-admin{}
+
+.table-admin img{
+	max-width: 300px;
+	max-height: 300px;
+}

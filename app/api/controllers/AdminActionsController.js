@@ -68,7 +68,7 @@ module.exports = {
       	.exec(function(err, data){
       		if(err){
       			console.log(err);
-      			return res.error(500);
+      			return res.serverError();
       		}
       		if(data && data.length > 0){
       			return res.error("Can't remove author");
@@ -77,11 +77,57 @@ module.exports = {
       		.exec(function(err, data){
       			if(err){
 	      			console.log(err);
-	      			return res.error(500);
+	      			return res.serverError();
 	      		}
 	      		return res.redirect('/admin/users');
       		});
       	});
-      }
+      },
+
+    publishArticle:function(req, res){
+    	console.log(req.body);
+      	var id = req.body.id;
+      	Article.update({id: id}, {isPublished: true})
+      	.exec(function(err, data){
+      		if(err){
+      			console.error(err);
+      			return res.serverError();
+      		}
+      		return res.redirect('/admin/articles');
+      	}); 
+    },
+
+    hideArticle:function(req, res){
+    	console.log(req.body);
+      	var id = req.body.id;
+      	Article.update({id: id}, {isPublished: false})
+      	.exec(function(err, data){
+      		if(err){
+      			console.error(err);
+      			return res.serverError();
+      		}
+      		return res.redirect('/admin/articles');
+      	}); 
+    },
+
+    saveArticle:function(req, res){
+      	var id = req.body.id;
+      	var command = null;
+      	var model = req.body;
+      	if(id){
+      		delete model.author;
+      		command = Article.update({id: id}, model);
+      	}else{
+      		model.author = req.session.user.id;
+      		command = Article.create(model);
+      	}
+      	command.exec(function(err, data){
+      		if(err){
+      			console.error(err);
+      			return res.serverError();
+      		}
+      		return res.redirect('/admin/articles');
+      	});    	
+    },
 };
 

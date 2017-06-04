@@ -1,13 +1,39 @@
 <h2>Articles</h2>
 <a href="/admin">Back</a>
-<table>
+
+<h3><a href="/admin/articles/new">New article</a></h3>
+<table class="table table-striped table-bordered table-admin">
 	<thead></thead>
 	<tbody>
-		<tr>
+		<% for(var i = 0; i < articles.length; i++){
+				var article = articles[i]; %>
+		<tr>		
 			<td>
-				<p></p>
-				<p><img src=""/></p>
+				<p><b><%= article.title %></b></p>
+				<p><span><%= article.createdAt.toString() %></span></p>
+				<p><i>by <%= article.author.name %></i></p>
 			</td>
+			<td>
+				<p><img src="<%= article.image %>"/></p>
+			</td>
+			<td>
+				<p><%= article.description %></p>
+			</td>
+			<td>
+				<a href="/admin/articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+				<% if(!article.isPublished){ %>
+				<form action='/api/articles/publish' method="post">
+					<input type="hidden" name="id" value="<%= article.id %>" />
+					<input type="submit" class="btn btn-success" value="Publish"/>
+				</form>
+				<% } else { %>
+				<form action='/api/articles/hide' method="post">
+					<input type="hidden" name="id" value="<%= article.id %>" />
+					<input type="submit" class="btn btn-danger" value="Hide"/>
+				</form>
+				<% } %>
+			</td>		
 		</tr>
+		<%}%>
 	</tbody>
 </table>

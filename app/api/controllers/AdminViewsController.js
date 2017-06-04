@@ -16,10 +16,11 @@ module.exports = {
 
 	users: function(req,res){
 		User.find()
+		.sort('createdAt DESC')
 		.exec(function(err, data){
 			if(err){
 				console.log(err);
-				return res.error(500);
+				return res.serverError();
 			}
 
 			return res.view('admin/users', {users: data});
@@ -31,7 +32,34 @@ module.exports = {
 	},
 
 	articles: function(req,res){
-		return res.view('admin/articles', {});
+		Article.find()
+		.sort('createdAt DESC')
+		.populate('author')
+		.exec(function(err, data){
+			if(err){
+				console.log(err);
+				return res.serverError();
+			}
+			for (var i = data.length - 1; i >= 0; i--) {
+				delete data[i].body;
+			}
+			return res.view('admin/articles', {articles: data});
+		});	
+	},
+
+	newArticle: function(req,res){
+		return res.view('admin/editArticle', {article: {}});
+	},
+
+	editArticle: function(req,res){
+		Article.findOne({id: req.params.id})
+		.exec(function(err, data){
+			if(err){
+      			console.error(err);
+      			return res.serverError();
+      		}
+			return res.view('admin/editArticle', {article:data});
+		});	
 	},
 };
 

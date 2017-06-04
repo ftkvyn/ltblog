@@ -50,6 +50,16 @@ module.exports.routes = {
 
   '/admin/articles': 'AdminViewsController.articles',
 
+  '/admin/articles/new': 'AdminViewsController.newArticle',
+
+  '/admin/articles/edit/:id': 'AdminViewsController.editArticle',
+
+  '/api/articles/save': 'AdminActionsController.saveArticle',
+
+  '/api/articles/publish': 'AdminActionsController.publishArticle',
+
+  '/api/articles/hide': 'AdminActionsController.hideArticle',
+
   '/api/login': 'AuthController.login',
 
   '/logout': 'AuthController.logout',

@@ -1,0 +1,31 @@
+<% if(!article.id){ %>
+<h2>New article</h2>
+<% } else { %>
+<h2>Edit article</h2>
+<% } %>
+<a href="/admin">Back</a>
+<!-- ToDo: preview link -->
+
+<form action='/api/articles/save' method="post">
+	<div class="form-group">
+	    <label for="title">Title</label>
+	    <input type="text" required class="form-control" name="title" id="title" value="<%= article.title || '' %>">
+	</div>
+	<div class="form-group">
+	    <label for="description">Description</label>
+	    <textarea class="form-control" required name="description" id="description"><%= article.description || '' %></textarea>
+	</div>
+	<div class="form-group">
+	    <label for="image">Image</label>
+	    <input type="text" class="form-control"  name="image" id="image" value="<%= article.image || '' %>">
+	</div>
+	<div class="form-group">
+	    <label for="body">Text</label>
+	    <textarea class="form-control" required name="body" id="body"><%= article.body || '' %></textarea>
+	</div>
+	<% if(article.id){ %>
+	<input type="hidden" name="id" value="<%= article.id %>" />
+	<% } %>
+	<input type="submit" class="btn btn-success" value="Save"/>
+</form>
+
