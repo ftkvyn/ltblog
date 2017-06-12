@@ -61,5 +61,8 @@ module.exports = {
 			return res.view('admin/editArticle', {article:data});
 		});	
 	},
+	changePassword: function(req,res){
+		return res.view('admin/changePassword', {});
+	},
 };
 

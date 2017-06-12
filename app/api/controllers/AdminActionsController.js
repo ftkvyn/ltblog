@@ -129,5 +129,96 @@ module.exports = {
       		return res.redirect('/admin/articles');
       	});    	
     },
+
+    changePasswords:function(req, res){ 
+
+        var FormCurrentPassword = req.body.currentPassword;
+        var FormNewPassword = req.body.newPassword;
+        var thisIdUser = req.session.user.id;
+
+        User.findOne({id:thisIdUser}).exec(
+          function(err,user){
+            if(err){
+              console.error(err); 
+              return res.badRequest('Error.');
+            }
+            if(!user) {
+              return res.send({success:false, message:'User not found.'});
+            }
+            bcrypt.compare(FormCurrentPassword, user.password, function(err, result) {
+              if (err) { 
+                console.error(err);
+                return res.badRequest('Error.'); 
+              }
+              if(!result) {
+                return res.send({success:false, message:'Invalid current password.'});
+              }
+              bcrypt.genSalt(10, function(err, salt) {
+                bcrypt.hash(FormNewPassword, salt, function(err, hash) {
+                  if (err) {
+                    console.error(err);
+                    return res.badRequest('Error.');
+                  }
+                  user.password = hash;
+                  User.update({id: user.id}, {password: hash}).exec(
+                    function(err, user){
+                      if(err){
+                        console.error(err);
+                        return res.badRequest('Error.');
+                      }
+                      return res.send({success:true});
+                  });  
+                });
+              });
+            });
+        });
+
+        /*bcrypt.compare(FormCurrentPassword, thisPassword, function(err, res) {
+          if (err) {
+            console.error(err); 
+          }
+          else if(!res) {
+             
+          }
+          else if(res) {
+            bcrypt.genSalt(10, function(err, salt) {
+              bcrypt.hash(FormNewPassword, salt, function(err, hash) {
+                if (err) {
+                  console.error(err); 
+                }else{
+                  User.findOne({login:login}).exec(
+                    function(err,user){
+                      if(err){
+                        console.error(err); 
+                      }
+                      else if(user){
+
+                        user.password = hash;
+                        
+                        User.update({id: user.id}, {password: hash}).exec(
+                          function(err, user){
+                            if(err){
+                              console.error(err);
+                              return res.badRequest('Error.');
+                            }
+                            res.send({success:true});
+                        });
+                      }
+                  });
+                }
+              });
+            });
+          }
+        });*/
+    },
+
+
 };
+
+
+/*console.log(req.body);
+console.log('-----------------------------------------------------');
+console.log(req.session.user);
+console.log('-----------------------------------------------------');
+console.log(User);*/
 

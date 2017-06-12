@@ -64,6 +64,10 @@ module.exports.routes = {
 
   '/logout': 'AuthController.logout',
 
+  '/admin/changePassword': 'AdminViewsController.changePassword',
+
+  '/api/changePasswords': 'AdminActionsController.changePasswords',
+
 
   /***************************************************************************
   *                                                                          *
