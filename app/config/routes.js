@@ -68,6 +68,8 @@ module.exports.routes = {
 
   '/api/changePasswords': 'AdminActionsController.changePasswords',
 
+  '/about': 'ViewsController.about',
+
 
   /***************************************************************************
   *                                                                          *

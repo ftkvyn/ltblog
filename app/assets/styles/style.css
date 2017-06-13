@@ -1,3 +1,4 @@
+/* homepage start*/
 body {
 	position: relative;
 	background: #f9f9f9;
@@ -59,7 +60,7 @@ header a:hover{
 }
 .sotial-icons {
 	text-align: right;
-	    padding-top: 20px;
+	padding-top: 30px;
     padding-right: 5px;
 }
 .vk {
@@ -167,7 +168,15 @@ footer {
 	color: white;
 	background: #632222;
 }
-/* article */
+footer .about-wrap {
+	text-align: right; 
+}
+.about-link {
+	cursor: pointer;
+	color: #fff; 	
+}
+/* homepage finish*/
+/* article start*/
 .author-info {
 	margin: 20px 0;
 }
@@ -215,3 +224,35 @@ footer {
 	max-width: 300px;
 	max-height: 300px;
 }
+/* article finish*/
+/* about start*/
+.developer-wrapper {
+	margin: 20px 0;
+}
+.developer-wrapper div{
+	padding-left: 250px;
+}
+.developer-wrapper h3{
+	margin-top:-2px;
+	font-size: 28px;
+	margin-bottom: 20px;
+}
+.developer-wrapper img{
+	float: left;
+	max-width: 200px;
+}
+.developer-wrapper p{
+	font-size: 16px;
+}
+@media (max-width: 480px) {
+	.developer-wrapper div{
+		padding-left: 0px;
+	}
+	.developer-wrapper img{
+		float: none;
+	}
+	.developer-wrapper h3 {
+	    margin-top: 15px;
+	}
+}
+/* about finish*/

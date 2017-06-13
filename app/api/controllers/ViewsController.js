@@ -14,5 +14,8 @@ module.exports = {
 		var id = req.params.id;
 		return res.view('article' + id, {});
 	},
+	about: function(req,res){
+		return res.view('about', {});
+	},
 };
 
