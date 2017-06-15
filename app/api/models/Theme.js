@@ -1,5 +1,5 @@
 /**
- * Article.js
+ * Theme.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -11,32 +11,12 @@ module.exports = {
   	title:{
   		type:'string',
   		required: true,
+  		unique: true
   	},
-  	description:{
+  	url:{
   		type:'string',
   		required: true,
-  	},
-  	body:{
-  		type:'string',
-  		required: true,
-  	},
-  	isPublished:{
-  		type:'boolean',
-  		defaultsTo: false
-  	},
-    image:{
-    	type:'url',
-    },	  	
-    author:{
-  		model: 'User',
-  		required: true,
-  	},
-    theme:{
-      model: 'Theme',
-      required: true,
-    },
-	//tags
-	//drafts
+  		unique: true
+  	}
   }
 };
-

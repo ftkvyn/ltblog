@@ -35,6 +35,12 @@ module.exports.policies = {
   AdminActionsController:{
     "*": ['isAdmin']
   },
+
+  ThemeController:{
+    find: true,
+    create: "isAdmin",
+    destroy: "isAdmin"
+  },
   // '*': true,
 
   /***************************************************************************

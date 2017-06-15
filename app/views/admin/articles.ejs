@@ -10,8 +10,9 @@
 		<tr>		
 			<td>
 				<p><b><%= article.title %></b></p>
+				<p><i><%= article.theme.title %></i></p>
 				<p><span><%= article.createdAt.toString() %></span></p>
-				<p><i>by <%= article.author.name %></i></p>
+				<p>by <i><%= article.author.name %></i></p>
 			</td>
 			<td>
 				<p><img src="<%= article.image %>"/></p>

@@ -36,7 +36,7 @@ module.exports.connections = {
   * Installed by default.                                                    *
   *                                                                          *
   ***************************************************************************/
-   mysqlServer: {
+  mysqlServer: {
     adapter: 'sails-mysql',
     host: MYSQL_HOST,
     user: MYSQL_USER,

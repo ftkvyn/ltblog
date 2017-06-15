@@ -16,6 +16,20 @@
 	    <textarea class="form-control" required name="description" id="description"><%= article.description || '' %></textarea>
 	</div>
 	<div class="form-group">
+	    <label for="theme">Theme</label>
+	    <select required class="form-control" name="theme" id="theme">
+	    	<% for(var i = 0; i < themes.length; i++){%>
+	    	<option value="<%= themes[i].id %>"
+	    	<%if(themes[i].id == article.theme){%>
+	    		<%= "selected" %>
+	    	<%}%>
+	    	>
+	    		<%= themes[i].title %>
+	    	</option>
+	    	<%}%>
+	    </select>
+	</div>
+	<div class="form-group">
 	    <label for="image">Image</label>
 	    <input type="text" class="form-control"  name="image" id="image" value="<%= article.image || '' %>">
 	</div>

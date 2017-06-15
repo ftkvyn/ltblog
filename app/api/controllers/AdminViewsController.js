@@ -31,9 +31,16 @@ module.exports = {
 		return res.view('admin/tags', {});
 	},
 
+	themes: function(req,res){
+		Theme.find().exec(function(err, themes){
+			return res.view('admin/themes', {themes:themes});
+		});			
+	},
+
 	articles: function(req,res){
 		Article.find()
 		.sort('createdAt DESC')
+		.populate('theme')
 		.populate('author')
 		.exec(function(err, data){
 			if(err){
@@ -43,12 +50,16 @@ module.exports = {
 			for (var i = data.length - 1; i >= 0; i--) {
 				delete data[i].body;
 			}
-			return res.view('admin/articles', {articles: data});
+			Theme.find().exec(function(err, themes){
+				return res.view('admin/articles', {articles: data, themes:themes});
+			});
 		});	
 	},
 
 	newArticle: function(req,res){
-		return res.view('admin/editArticle', {article: {}});
+		Theme.find().exec(function(err, themes){
+			return res.view('admin/editArticle', {article: {}, themes:themes});
+		});		
 	},
 
 	editArticle: function(req,res){
@@ -58,9 +69,12 @@ module.exports = {
       			console.error(err);
       			return res.serverError();
       		}
-			return res.view('admin/editArticle', {article:data});
+      		Theme.find().exec(function(err, themes){
+				return res.view('admin/editArticle', {article:data, themes:themes});
+			});			
 		});	
 	},
+
 	changePassword: function(req,res){
 		return res.view('admin/changePassword', {});
 	},
