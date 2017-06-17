@@ -38,6 +38,7 @@ module.exports = {
 	},
 
 	articles: function(req,res){
+		//ToDo: add pagination
 		Article.find()
 		.sort('createdAt DESC')
 		.populate('theme')

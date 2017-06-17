@@ -7,7 +7,13 @@
 
 module.exports = {
 	home: function(req,res){
-		return res.view('homepage', {});
+		Article.find({limit: 10})
+		.sort('createdAt DESC')
+		.populate('theme')
+		.populate('author')
+		.exec(function(err, data){
+			return res.view('homepage', {articles: data});
+		});
 	},
 
 	article: function(req,res){

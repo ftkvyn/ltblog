@@ -2,21 +2,18 @@
 		<div class="row">
 			<div class="col-lg-9 col-sm-8">
 				<div class="row content">
-					<div class="col-lg-6">
-						<img src="/images/port-img1.jpg" alt="/">
-						<h4>About your product</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis facilis fuga, illo at. Natus eos, eligendi illum rerum omnis porro ex, magni, explicabo veniam incidunt in quam sapiente ut ipsum.</p>
+					<% for(var i = 0; i < articles.length; i++){
+						var article = articles[i]; %>
+					<div class="col-lg-6 main-article">
+						<a href="/article/<%= article.id %>">
+							<img src="<%= article.image %>" alt="/">
+							<h3><%= article.theme.title %></h3>
+							<h2><%= article.title %></h2>
+							<h4><i><%= article.author.name %></i>, <%= article.createdAt.toLocaleDateString() %> </h4>
+							<p><%= article.description %></p>
+						</a>
 					</div>
-					<div class="col-lg-6">
-						<img src="/images/port-img1.jpg" alt="/">
-						<h4>About your product</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis facilis fuga, illo at. Natus eos, eligendi illum rerum omnis porro ex, magni, explicabo veniam incidunt in quam sapiente ut ipsum.</p>
-					</div>
-					<div class="col-lg-6">
-						<img src="/images/port-img1.jpg" alt="/">
-						<h4>About your product</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis facilis fuga, illo at. Natus eos, eligendi illum rerum omnis porro ex, magni, explicabo veniam incidunt in quam sapiente ut ipsum.</p>
-					</div>
+					<%}%>
 				</div>
 			</div>
 			<div class="col-lg-3 col-sm-4">
