@@ -34,7 +34,7 @@ module.exports.routes = {
 
   '/': 'ViewsController.home',
 
-  '/article/:id': 'ViewsController.article',
+  /*'/article/:id': 'ViewsController.article',*/
 
   '/admin/login': 'AdminViewsController.login',
 
@@ -71,6 +71,10 @@ module.exports.routes = {
   '/api/changePasswords': 'AdminActionsController.changePasswords',
 
   '/about': 'ViewsController.about',
+
+  '/p/:theme/:id': 'ViewsController.article',
+
+
 
 
   /***************************************************************************

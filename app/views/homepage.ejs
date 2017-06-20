@@ -5,7 +5,7 @@
 					<% for(var i = 0; i < articles.length; i++){
 						var article = articles[i]; %>
 					<div class="col-lg-6 main-article">
-						<a href="/article/<%= article.id %>">
+						<a href="/p/<%= article.theme.url %>/<%= article.id %>">
 							<img src="<%= article.image %>" alt="/">
 							<h3><%= article.theme.title %></h3>
 							<h2><%= article.title %></h2>

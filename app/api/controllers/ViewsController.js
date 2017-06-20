@@ -17,8 +17,19 @@ module.exports = {
 	},
 
 	article: function(req,res){
-		var id = req.params.id;
-		return res.view('article' + id, {});
+		Article.findOne({id: req.params.id})
+		.populate('author')
+		.populate('theme')
+		.exec(function(err, data){
+			if(err){
+      			console.error(err);
+      			return res.serverError();
+      		}
+      		console.log('--------------------');
+      		console.log(data);
+      		console.log('--------------------');
+			return res.view('article', {article:data});	
+		});	
 	},
 	about: function(req,res){
 		return res.view('about', {});
