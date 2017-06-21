@@ -1,3 +1,16 @@
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+<script>
+$(document).ready(function() {
+    $('#summernote').summernote();
+});
+</script>
+<div id="summernote"><p>Hello Summernote</p></div>
+
 <% if(!article.id){ %>
 <h2>New article</h2>
 <% } else { %>
@@ -7,6 +20,7 @@
 <!-- ToDo: preview link -->
 
 <form action='/api/articles/save' method="post">
+	
 	<div class="form-group">
 	    <label for="title">Title</label>
 	    <input type="text" required class="form-control" name="title" id="title" value="<%= article.title || '' %>">
@@ -41,5 +55,6 @@
 	<input type="hidden" name="id" value="<%= article.id %>" />
 	<% } %>
 	<input type="submit" class="btn btn-success" value="Save"/>
-</form>
+</form>   
+
 

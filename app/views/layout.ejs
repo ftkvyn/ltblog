@@ -32,6 +32,9 @@
     <link rel="stylesheet" href="/styles/bootstrap.css">
     <link rel="stylesheet" href="/styles/style.css">
     <!--STYLES END-->
+
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet"> <!-- SUMMERNOTE -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet"> <!-- SUMMERNOTE -->
   </head>
 
   <body>
@@ -85,6 +88,9 @@
         </div>
       </div>
     </footer>
+    <div id="summernote"><p>Hello Summernote</p></div> <!-- SUMMERNOTE -->
+  
+  
 
     <!--
         Client-side Templates
@@ -139,5 +145,13 @@
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <!--SCRIPTS END-->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> <!-- SUMMERNOTE -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>  <!-- SUMMERNOTE -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script> <!-- SUMMERNOTE -->
+    <!-- SUMMERNOTE --><script> 
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+  </script><!-- SUMMERNOTE -->
   </body>
 </html>
