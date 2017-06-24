@@ -16,6 +16,9 @@ module.exports = {
   		type:'string',
   		required: true,
   	},
+    meta_keywords:{
+      type:'string'
+    },
   	body:{
   		type:'text',
   		required: true,
