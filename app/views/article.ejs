@@ -8,8 +8,10 @@
 				<img src="<%= article.author.profilePicLarge %>" alt="/">
 			</div> 
 
-			<p><%= article.description %></p>
-			<p><%= article.body %></p>
+			<p class="description"><%= article.description %></p>
+
+			<%- article.body %>
+			
 			<div class="view-statistic clearfix">
 				<div class="views">25</div>
 				<div class="sotal-share pull-right">

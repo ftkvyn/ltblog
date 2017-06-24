@@ -17,7 +17,7 @@ module.exports = {
   		required: true,
   	},
   	body:{
-  		type:'string',
+  		type:'text',
   		required: true,
   	},
   	isPublished:{

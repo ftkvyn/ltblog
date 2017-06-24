@@ -25,12 +25,10 @@ module.exports = {
       			console.error(err);
       			return res.serverError();
       		}
-      		console.log('--------------------');
-      		console.log(data);
-      		console.log('--------------------');
 			return res.view('article', {article:data});	
 		});	
 	},
+	
 	about: function(req,res){
 		return res.view('about', {});
 	},

@@ -1,15 +1,23 @@
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
 
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+<script src="/js/summernote.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('#summernote').summernote();
+$(function() {
+    $('#body-edit').summernote({
+    	height: 600,
+    	fontNames: [] //'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'
+    });
+
+    $('#edit-form').submit(function(){
+    	var code = $('#body-edit').summernote('code');
+    	if(!code){
+    		alert('No text!');
+    		return false;
+    	}
+    	$('#body').val(code);
+    	return true;
+    });
 });
 </script>
-<div id="summernote"><p>Hello Summernote</p></div>
 
 <% if(!article.id){ %>
 <h2>New article</h2>
@@ -19,7 +27,7 @@ $(document).ready(function() {
 <a href="/admin">Back</a>
 <!-- ToDo: preview link -->
 
-<form action='/api/articles/save' method="post">
+<form action='/api/articles/save' method="post" id='edit-form'>
 	
 	<div class="form-group">
 	    <label for="title">Title</label>
@@ -27,7 +35,7 @@ $(document).ready(function() {
 	</div>
 	<div class="form-group">
 	    <label for="description">Description</label>
-	    <textarea class="form-control" required name="description" id="description"><%= article.description || '' %></textarea>
+	    <textarea class="form-control" maxlength="255" required name="description" id="description"><%= article.description || '' %></textarea>
 	</div>
 	<div class="form-group">
 	    <label for="theme">Theme</label>
@@ -49,7 +57,8 @@ $(document).ready(function() {
 	</div>
 	<div class="form-group">
 	    <label for="body">Text</label>
-	    <textarea class="form-control" required name="body" id="body"><%= article.body || '' %></textarea>
+	    <input type="hidden" name="body" name="body" id="body" value="<%= article.body || '' %>" />
+	    <div class="form-control" required id="body-edit" style="height: 600px;"><%- article.body || '' %></div>
 	</div>
 	<% if(article.id){ %>
 	<input type="hidden" name="id" value="<%= article.id %>" />
