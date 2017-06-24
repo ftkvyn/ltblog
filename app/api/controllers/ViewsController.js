@@ -25,7 +25,7 @@ module.exports = {
       			console.error(err);
       			return res.serverError();
       		}
-			return res.view('article', {article:data});	
+			return res.view('article', {article:data, data : {origin: process.env.LTBLOG_ORIGIN || 'http://ltblog-dev.herokuapp.com'}});	
 		});	
 	},
 	
