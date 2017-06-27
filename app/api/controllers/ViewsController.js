@@ -12,6 +12,7 @@ module.exports = {
 		.populate('theme')
 		.populate('author')
 		.exec(function(err, data){
+			console.log(module);
 			return res.view('homepage', {articles: data});
 		});
 	},
