@@ -38,6 +38,10 @@ module.exports = {
       model: 'Theme',
       required: true,
     },
+    views: {
+      collection:'ReadedArticle',
+      via:'article'
+    },
 	//tags
 	//drafts
   }

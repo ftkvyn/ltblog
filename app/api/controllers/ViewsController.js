@@ -4,6 +4,35 @@
  * @description :: Server-side logic for managing Views
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+ var moment = require('moment');
+
+function countReader(req, article){
+	var checkDate = moment().add(12, 'hours').toDate();
+	ReadedArticle.find({
+		reader: req.session.reader.id,
+		createdAt: {'<' : checkDate}
+	}).exec(function(err, data){
+		if(err){
+			console.error(err);
+			return;
+		}
+		if(data && data.length){
+			return;
+		}
+		var model = {};
+		model.article = article.id;
+		model.reader = req.session.reader.id;
+		ReadedArticle.create(model)
+		.exec(function(err, data){
+			if(err){
+				console.error(err);
+				return;
+			}	
+			return;
+		});
+	})
+
+}
 
 module.exports = {
 	home: function(req,res){
@@ -43,6 +72,7 @@ module.exports = {
 		Article.findOne({id: req.params.id})
 		.populate('author')
 		.populate('theme')
+		.populate('views')
 		.exec(function(err, data){
 			if(err){
       			console.error(err);
@@ -54,6 +84,7 @@ module.exports = {
       		if(data.theme.url != req.params.theme){
       			return next();	
       		}
+      		countReader(req, data);
 			return res.view('article', {article:data, data : {origin: process.env.LTBLOG_ORIGIN || 'http://ltblog-dev.herokuapp.com'}});	
 		});	
 	},
