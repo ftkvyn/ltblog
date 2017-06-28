@@ -16,8 +16,11 @@ module.exports = {
   		type:'string',
   		required: true,
   	},
+    meta_keywords:{
+      type:'string'
+    },
   	body:{
-  		type:'string',
+  		type:'text',
   		required: true,
   	},
   	isPublished:{
@@ -34,6 +37,10 @@ module.exports = {
     theme:{
       model: 'Theme',
       required: true,
+    },
+    views: {
+      collection:'ReadedArticle',
+      via:'article'
     },
 	//tags
 	//drafts

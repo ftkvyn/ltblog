@@ -32,6 +32,10 @@ module.exports.policies = {
     "*": ['isAdmin']
   },
 
+  ViewsController:{
+    "article":"detectReader"
+  },
+
   AdminActionsController:{
     "*": ['isAdmin']
   },

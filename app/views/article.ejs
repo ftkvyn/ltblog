@@ -8,10 +8,12 @@
 				<img src="<%= article.author.profilePicLarge %>" alt="/">
 			</div> 
 
-			<p><%= article.description %></p>
-			<p><%= article.body %></p>
+			<p class="description"><%= article.description %></p>
+
+			<%- article.body %>
+			
 			<div class="view-statistic clearfix">
-				<div class="views">25</div>
+				<div class="views"><%= article.views.length %></div>
 				<div class="sotal-share pull-right">
 					<div class="vk-share">25</div>
 					<div class="vk-share">25</div>
@@ -20,6 +22,22 @@
 				</div>
 			</div>
 		</div>
+		<div id="disqus_thread"></div>
+		<script>
+
+		var disqus_config = function () {
+		this.page.url = '<%- data.origin %>' + '/p/' + '<%- article.theme.url %>' + '/' + '<%-article.id %>';
+		this.page.identifier = '<%- article.theme.url %>' + '_' + '<%-article.id %>';
+		};
+		
+		(function() {
+		var d = document, s = d.createElement('script');
+		s.src = 'https://the-living-thing-ru.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+		})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 	</div>
 	<div class="col-lg-3 col-sm-4">
 		<%- include sidebar.ejs %>		

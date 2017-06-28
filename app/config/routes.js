@@ -72,9 +72,9 @@ module.exports.routes = {
 
   '/about': 'ViewsController.about',
 
-  '/p/:theme/:id': 'ViewsController.article',
+  '/:theme/:id': 'ViewsController.article',
 
-
+  '/:theme': 'ViewsController.theme',
 
 
   /***************************************************************************
