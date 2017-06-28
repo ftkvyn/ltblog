@@ -1,7 +1,7 @@
 /* homepage start*/
 body {
 	position: relative;
-	background: #f9f9f9;
+	background: white;
 }
 header {
 	padding: 50px 0px 0px 0;
@@ -22,13 +22,13 @@ header .back{
     top: 0;
 }
 header .dropdown{
-	background: #89b399;
-	color: white;
+	background: white;
+	color: black;
     padding: 10px 30px;
 }
 header .dropdown li a,
 header .dropdown li a:hover
-{color: white; text-decoration: none;}
+{color: black; text-decoration: none;}
 .container {
   max-width: 1100px; 
 }
@@ -55,7 +55,6 @@ header a:hover{
     padding-right: 30px;
     padding-top: 40px;
     padding-bottom: 60px;
-    margin-top: -40px;
     margin-bottom: -40px;
 }
 .sotial-icons {
@@ -74,7 +73,7 @@ header a:hover{
 	margin-right: 0;
 }
 .menu {
-	text-align: right;
+	text-align: center;
 	margin-bottom: 0;
 }
 .menu li {
@@ -170,7 +169,7 @@ header a:hover{
 footer {	
 	padding: 30px 0px 30px 0;
 	color: white;
-	background: #632222;
+	background: #4c4c4c;
 }
 footer .about-wrap {
 	text-align: right; 
