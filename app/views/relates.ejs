@@ -1,0 +1,17 @@
+<div class="sidebar">
+	<div class="news-switch clearfix">
+		<div class="popular-news">Популярное</div>
+		<div class="active daily-news pull-right">Новое</div>
+	</div>
+  <% for(var i = 0; i < articles.length; i++){
+        var article = articles[i]; %>
+      <div class="sidenews clearfix">
+        <a href="/<%= article.theme.url %>/<%= article.id %>">
+          <img src="<%= article.author.profilePicSmall %>" alt="/">
+          <p class="side-title"><%= article.title %></p>
+          <p class="side-description"><%= article.description %></p>
+          <p class="article-author"><i><%= article.author.name %></i><span class="publish-date"><%= article.createdAt.toLocaleDateString() %></span></p>
+        </a>
+      </div>
+  <%}%>
+</div>

@@ -72,6 +72,8 @@ module.exports.routes = {
 
   '/about': 'ViewsController.about',
 
+  '/relates/:id': 'ViewsController.relates',
+
   '/:theme/:id': 'ViewsController.article',
 
   '/:theme': 'ViewsController.theme',

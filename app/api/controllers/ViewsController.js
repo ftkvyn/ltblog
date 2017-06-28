@@ -90,6 +90,17 @@ module.exports = {
 		});	
 	},
 	
+	relates: function(req, res){
+		//ToDo: implement logic
+		Article.find({limit: 5})
+		.sort('createdAt DESC')
+		.populate('theme')
+		.populate('author')
+		.exec(function(err, data){
+			return res.view('relates', {articles: data, layout: null});
+		});
+	},
+
 	about: function(req,res){
 		return res.view('about', {});
 	},
