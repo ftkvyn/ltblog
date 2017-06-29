@@ -2,6 +2,7 @@
 	<div class="col-lg-9 col-sm-8">
 		<div class="row content">
 			<h1><%= article.title %></h1>
+			<h3 class="theme-link"><a href="/<%= article.theme.url %>/"><%= article.theme.title %></a></h3>
 			<p class="article-data">Опубликовано: <%= article.createdAt.toLocaleDateString() %></p>
 			<div class="author-info">
 				<p class="article-author"><strong><i><%= article.author.name %></i></strong></p>

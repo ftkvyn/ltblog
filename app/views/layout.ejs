@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TLT journal</title>
+    <title><%= __('The Living Thing') %></title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -24,7 +24,7 @@
           <div class="col-sm-8" style="text-align: center;">
             <a href="/">
               <img src="/images/hedg.jpg" alt="logo" class="logo" /> 
-              <h1 class="logo-text">The Living Thing</h1>
+              <h1 class="logo-text"><%= __('The Living Thing') %></h1>
             </a>
             </div>
             <div class="col-sm-4">
@@ -38,11 +38,10 @@
             <div class="col-xs-12 col-lg-12">
               <div class="dropdown">
               <ul class="menu">
-                <li><a href = "/">home</a></li>
-                <li><a href = "#">menu</a></li>
-                <li><a href = "#">pages</a></li>
-                <li><a class="about-link" href="/about">About</a></li>
-                <li><a href = "#">contacts</a></li>
+                <li><a href = "/psychology/"><%= __('Psychology') %></a></li>
+                <li><a href = "/music/"><%= __('Music') %></a></li>
+                <li><a href = "/science/"><%= __('Science') %></a></li>
+                <li><a class="about-link" href="/about"><%= __('About') %></a></li>
               </ul>
               </div>
             </div>
@@ -65,7 +64,7 @@
             &copy;Tonki&#38;Tonki production
           </div>
           <div class="col-xs-3 about-wrap">
-            <a class="about-link" href="/about">About</a>
+            <a class="about-link" href="/about"><%= __('About') %></a>
           </div>
         </div>
       </div>

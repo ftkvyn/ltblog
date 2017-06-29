@@ -1,4 +1,14 @@
 {
-	"Welcome": "Welcome",
-	"A brand new app.": "A brand new app."
+	"The Living Thing": "The Living Thing",
+	"About": "About",
+	"Psychology":"Psychology",
+	"Music":"Music",
+	"Science":"Science",
+
+	// about page info
+	"Marchenko Andrei":"Marchenko Andrei",
+	"Marchenko Andrei__role":"Site developer.",
+
+	"Machkin Yanis":"Machkin Yanis",
+	"Machkin Yanis__role":"Front-end development, technical support."
 }

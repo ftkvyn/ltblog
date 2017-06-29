@@ -55,7 +55,7 @@ header a:hover{
     padding-right: 30px;
     padding-top: 40px;
     padding-bottom: 60px;
-    margin-bottom: -40px;
+    margin-bottom: 20px;
 }
 .sotial-icons {
 	text-align: right;
@@ -246,6 +246,25 @@ footer .about-wrap {
 }
 .developer-wrapper p{
 	font-size: 16px;
+}
+.img-container{
+	position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+.img-container .img{
+	position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.content img.author-img{
+	height: 50px;
+	width:initial;
+}
+.theme-link a,
+.theme-link a:hover{
+	color: black;
+	text-decoration: none;
 }
 @media (max-width: 480px) {
 	.developer-wrapper div{
