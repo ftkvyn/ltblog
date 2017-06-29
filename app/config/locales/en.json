@@ -4,10 +4,15 @@
 	"Psychology":"Psychology",
 	"Music":"Music",
 	"Science":"Science",
+	"locale":"en",
+	"locale_full":"en_EN",
 
 	"Marchenko Andrei":"Marchenko Andrei",
 	"Marchenko Andrei__role":"Site developer.",
 
 	"Machkin Yanis":"Machkin Yanis",
-	"Machkin Yanis__role":"Front-end development, technical support."
+	"Machkin Yanis__role":"Front-end development, technical support.",
+
+	"main__meta__title":"Main",
+	"main__meta__description":"Web journal that is living by its own."
 }

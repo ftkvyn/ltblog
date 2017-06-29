@@ -7,11 +7,11 @@
 
 module.exports = {
 	login: function(req,res){
-		return res.view('admin/login', {});
+		return res.view('admin/login', {meta: null});
 	},
 
 	main: function(req,res){
-		return res.view('admin/index', {});
+		return res.view('admin/index', {meta: null});
 	},
 
 	users: function(req,res){
@@ -23,17 +23,17 @@ module.exports = {
 				return res.serverError();
 			}
 
-			return res.view('admin/users', {users: data});
+			return res.view('admin/users', {users: data, meta: null});
 		});		
 	},
 
 	tags: function(req,res){
-		return res.view('admin/tags', {});
+		return res.view('admin/tags', {meta: null});
 	},
 
 	themes: function(req,res){
 		Theme.find().exec(function(err, themes){
-			return res.view('admin/themes', {themes:themes});
+			return res.view('admin/themes', {themes:themes, meta: null});
 		});			
 	},
 
@@ -52,14 +52,14 @@ module.exports = {
 				delete data[i].body;
 			}
 			Theme.find().exec(function(err, themes){
-				return res.view('admin/articles', {articles: data, themes:themes});
+				return res.view('admin/articles', {articles: data, themes:themes, meta: null});
 			});
 		});	
 	},
 
 	newArticle: function(req,res){
 		Theme.find().exec(function(err, themes){
-			return res.view('admin/editArticle', {article: {}, themes:themes});
+			return res.view('admin/editArticle', {article: {}, themes:themes, meta: null});
 		});		
 	},
 
@@ -71,13 +71,13 @@ module.exports = {
       			return res.serverError();
       		}
       		Theme.find().exec(function(err, themes){
-				return res.view('admin/editArticle', {article:data, themes:themes});
+				return res.view('admin/editArticle', {article:data, themes:themes, meta: null});
 			});			
 		});	
 	},
 
 	changePassword: function(req,res){
-		return res.view('admin/changePassword', {});
+		return res.view('admin/changePassword', {meta: null});
 	},
 };
 

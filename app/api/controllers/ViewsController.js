@@ -34,6 +34,20 @@ function countReader(req, article){
 
 }
 
+var mainMeta = null;
+
+function getMainMeta(req){
+	if(mainMeta){
+		return mainMeta;
+	}else{
+		mainMeta = {};
+		mainMeta.title = req.__('main__meta__title');
+		mainMeta.image = '';
+		mainMeta.description = req.__('main__meta__description');
+		return mainMeta;
+	}
+}
+
 module.exports = {
 	home: function(req,res){
 		req.setLocale("ru");
@@ -42,7 +56,7 @@ module.exports = {
 		.populate('theme')
 		.populate('author')
 		.exec(function(err, data){
-			return res.view('homepage', {articles: data});
+			return res.view('homepage', {articles: data, meta: getMainMeta(req)});
 		});
 	},
 
@@ -61,7 +75,10 @@ module.exports = {
 			.populate('theme')
 			.populate('author')
 			.exec(function(err, articles){
-				return res.view('theme', {articles: articles, theme: data});
+				var meta = {
+					title: data.title
+				};
+				return res.view('theme', {articles: articles, theme: data, meta: meta});
 			});
 		});		
 	},	
@@ -86,7 +103,16 @@ module.exports = {
       			return next();	
       		}
       		countReader(req, data);
-			return res.view('article', {article:data, data : {origin: process.env.LTBLOG_ORIGIN || 'http://ltblog-dev.herokuapp.com'}});	
+
+      		var meta = {
+				title: data.title,
+				description: data.description,
+				image: data.image,
+				keywords: data.meta_keywords
+			};
+			return res.view('article', {article:data, 
+				meta: meta,
+				data : {origin: process.env.LTBLOG_ORIGIN || 'http://ltblog-dev.herokuapp.com'}});	
 		});	
 	},
 	
@@ -102,7 +128,7 @@ module.exports = {
 	},
 
 	about: function(req,res){
-		return res.view('about', {});
+		return res.view('about', {meta: null});
 	},
 };
 
