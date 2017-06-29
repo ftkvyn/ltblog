@@ -36,6 +36,7 @@ function countReader(req, article){
 
 module.exports = {
 	home: function(req,res){
+		req.setLocale("ru");
 		Article.find({limit: 10})
 		.sort('createdAt DESC')
 		.populate('theme')

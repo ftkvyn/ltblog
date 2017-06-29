@@ -174,8 +174,10 @@ footer {
 footer .about-wrap {
 	text-align: right; 
 }
-.about-link {
+.about-link,
+.about-link:hover {
 	cursor: pointer;
+	text-decoration: none;
 	color: #fff; 	
 }
 /* homepage finish*/
