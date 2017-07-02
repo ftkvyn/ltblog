@@ -78,7 +78,30 @@ module.exports = {
 				var meta = {
 					title: data.title
 				};
-				return res.view('theme', {articles: articles, theme: data, meta: meta});
+				return res.view('theme', {articles: articles, theme: data, author:null, meta: meta});
+			});
+		});		
+	},	
+
+	author: function(req, res, next){
+		if (req.path.match(/\..*/g) || req.path.match(/^\/api\/.*$/)) {
+	        return next();
+	    }
+	    //console.log(req.query["page"]);
+		User.findOne({url : req.params.authorUrl})
+		.exec(function(err, user){
+			if(!user){
+      			return next();
+      		}
+			Article.find({where: {author: user.id, isPublished: true} ,limit: 10})
+			.sort('createdAt DESC')
+			.populate('theme')
+			.populate('author')
+			.exec(function(err, articles){
+				var meta = {
+					title: user.name
+				};
+				return res.view('theme', {articles: articles, theme:null, author: user, meta: meta});
 			});
 		});		
 	},	

@@ -146,7 +146,9 @@ header a:hover{
 	color: black;
 	margin: 0;
 	font-size: 80%;
-	border-bottom: 2px solid #f4f4f4;
+}
+.author-theme-img{
+	max-height: 200px;
 }
 .publish-date {
 	font-size: 12px;

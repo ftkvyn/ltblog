@@ -4,6 +4,7 @@ function FilledFields( formData ) {
 		formData.profilePicSmall !== '' &&
 		formData.profilePicLarge !== '' &&
 		formData.login !== '' &&
+		formData.url !== '' &&
 		formData.password !== '') {
 		filled = true;
 	}
@@ -20,6 +21,7 @@ $(".new-user-form").submit(function() {
 		profilePicLarge: $("#profilePicLarge").val(),
 		login: $("#login").val(),
 		password: $("#password").val(),
+		url: $("#url").val(),
 		isAdmin: $("#isAdmin").prop("checked")
 	};
 	if (!FilledFields( formData )) {

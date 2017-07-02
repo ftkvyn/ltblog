@@ -78,6 +78,8 @@ module.exports.routes = {
 
   '/:theme': 'ViewsController.theme',
 
+  '/:authorUrl': 'ViewsController.author'
+
 
   /***************************************************************************
   *                                                                          *
