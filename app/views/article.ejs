@@ -14,7 +14,9 @@
 			<%- article.body %>
 			
 			<div class="view-statistic clearfix">
+				<% if(data.isAuthor || true) { %>
 				<div class="views"><%= article.views.length %></div>
+				<% } %>
 				<div class="sotal-share pull-right">
 					<div class="vk-share">25</div>
 					<div class="vk-share">25</div>

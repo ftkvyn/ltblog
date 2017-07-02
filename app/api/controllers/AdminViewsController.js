@@ -11,7 +11,7 @@ module.exports = {
 	},
 
 	main: function(req,res){
-		return res.view('admin/index', {meta: null});
+		return res.view('admin/index', {meta: null, data: {isAdmin: req.session.user.isAdmin}});
 	},
 
 	users: function(req,res){
@@ -38,8 +38,12 @@ module.exports = {
 	},
 
 	articles: function(req,res){
+		var query = Article.find({author: req.session.user.id});
+		if(req.session.user && req.session.user.isAdmin){
+			query = Article.find();
+		}
 		//ToDo: add pagination
-		Article.find()
+		query
 		.sort('createdAt DESC')
 		.populate('theme')
 		.populate('author')
@@ -71,6 +75,11 @@ module.exports = {
       			return res.serverError();
       		}
       		Theme.find().exec(function(err, themes){
+      			if(!req.session.user.isAdmin){
+      				if(data.author !== req.session.user.id){
+      					return res.notFound();
+      				}
+      			}
 				return res.view('admin/editArticle', {article:data, themes:themes, meta: null});
 			});			
 		});	

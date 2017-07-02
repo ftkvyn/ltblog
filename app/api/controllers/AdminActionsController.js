@@ -7,8 +7,7 @@
  var bcrypt = require('bcrypt');
 
 module.exports = {
-	createUser: function(req, res){
-	  console.log(req.body);
+	 createUser: function(req, res){
       var login = req.body.login;
       var password = req.body.password;
       if(password.length < 6){
@@ -85,7 +84,7 @@ module.exports = {
       },
 
     publishArticle:function(req, res){
-    	console.log(req.body);
+
       	var id = req.body.id;
       	Article.update({id: id}, {isPublished: true})
       	.exec(function(err, data){
@@ -98,7 +97,6 @@ module.exports = {
     },
 
     hideArticle:function(req, res){
-    	console.log(req.body);
       	var id = req.body.id;
       	Article.update({id: id}, {isPublished: false})
       	.exec(function(err, data){

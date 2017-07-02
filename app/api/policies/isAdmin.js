@@ -4,5 +4,5 @@ module.exports = function(req, res, next) {
     return next();
   }
 
-  return res.redirect('/error');
+  return res.forbidden('You are not permitted to perform this action.');
 };

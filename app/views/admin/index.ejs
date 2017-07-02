@@ -1,17 +1,19 @@
 <h2>Admin here</h2>
 <ul>
+	<% if(data.isAdmin) { %>
 	<li>
 		<a href="/admin/users">Users</a>
 	</li>
+	<% } %>
 	<li>
 		<a href="/admin/articles">Articles</a>
 	</li>
 	<li>
 		<a href="/admin/themes">Themes</a>
 	</li>
-	<li>
+	<!-- <li>
 		<a href="/admin/tags">Tags</a>
-	</li>
+	</li> -->
 	<li>
 		<a href="/admin/changePassword">Change Password</a>
 	</li>

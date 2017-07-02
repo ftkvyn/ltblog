@@ -13,6 +13,7 @@
 				<p><i><%= article.theme.title %></i></p>
 				<p><span><%= article.createdAt.toString() %></span></p>
 				<p>by <i><%= article.author.name %></i></p>
+				<p><a href="/<%= article.theme.url %>/<%= article.id %>">preview</a></p>
 			</td>
 			<td>
 				<p><img src="<%= article.image %>"/></p>
