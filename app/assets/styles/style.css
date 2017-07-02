@@ -1,4 +1,15 @@
 /* homepage start*/
+
+@font-face {
+    font-family: "Logo2";
+    src: url(/fonts/10072.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Menu2";
+    src: url(/fonts/menu.ttf) format("truetype");
+}
+
 body {
 	position: relative;
 	background: white;
@@ -18,19 +29,25 @@ header .back{
     position: absolute;
     z-index: 10;
     pointer-events: none;
-    height: 50px;
+    height: 65px;
     top: 0;
 }
 header .dropdown{
 	background: white;
 	color: black;
-    padding: 10px 30px;
+    padding: 50px 30px 20px 30px
 }
 header .dropdown li a,
 header .dropdown li a:hover
-{color: black; text-decoration: none !important;}
+{
+	color: black; 
+	text-decoration: none !important;
+	font-family: "Menu2";
+	letter-spacing: 0.15em;
+}
 .container {
   max-width: 1100px; 
+  padding-top: 40px;
 }
 .logo{
 	max-height: 100px;
@@ -43,22 +60,31 @@ header a:hover{
 	display: block;
 }
 .logo-text, .logo-text:hover{
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Logo2";
 	color: black;
 	text-decoration: none !important;
 	margin-bottom: 0;
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
+	font-size: 48px;
+	margin-top: 25px;
+	margin-bottom: 5px;
 }
 .logo-subtext, .logo-subtext:hover{
 	text-decoration: none !important;
 	display: inline;
-	color: #89b399;
-	font-size: 14px;
+	color: #73ab6b;
+	font-size: 13px;
+	text-transform: uppercase;
+	font-family: "Menu2";
+	letter-spacing: 0.25em;
+	font-weight: 500;
 }
 .logo-img-container{
 	text-align: right;
 }
 .logo-txt-container{
-	text-align: left;
+	text-align: center;
 }
 
 .main .container{
@@ -71,19 +97,27 @@ header a:hover{
     margin-bottom: 20px;
 }
 .sotial-icons {
-	text-align: right;
+	text-align: center;
 	padding-top: 30px;
     padding-right: 5px;
 }
-.vk {
+.soc-icon {
 	display: inline-block;
 	width: 25px;
 	height: 25px;
-	margin: 0 10px 10px 0;
-	background: url(/images/vk.png);
+	margin: 0 20px 10px 10px;	
+	background-size: contain;
+	background-position-x: center;
+    background-repeat: no-repeat;
 }
-.vk:last-child {
-	margin-right: 0;
+.soc-icon.vk{
+	background-image: url(/images/vk.png);
+}
+.soc-icon.fb{
+	background-image: url(/images/fb.svg);
+}
+.soc-icon.tg{
+	background-image: url(/images/tg.svg);
 }
 .menu {
 	text-align: center;
@@ -92,7 +126,9 @@ header a:hover{
 }
 .menu li {
 	display: inline-block;
-	margin-left: 20px;
+	margin-left: 60px;
+	margin-right: 60px;
+	font-weight: 600;
 }
 .menu a {
 	text-transform: uppercase;
