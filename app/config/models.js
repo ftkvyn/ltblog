@@ -33,4 +33,18 @@ module.exports.models = {
   ***************************************************************************/
   // migrate: 'alter'
 
+  attributes:{
+    createdAtStr:function (locale) {
+      if(!locale){
+        return this.createdAt.toLocaleDateString();
+      }
+      if(locale == 'en'){
+        return `${this.createdAt.getDate()}/${this.createdAt.getMonth() + 1}/${this.createdAt.getFullYear()}`;
+      }
+      if(locale == 'ru'){
+        return `${this.createdAt.getDate()}.${this.createdAt.getMonth() + 1}.${this.createdAt.getFullYear()}`;  
+      }
+      return this.createdAt.toLocaleDateString(); 
+    },
+  }  
 };

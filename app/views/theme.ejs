@@ -15,7 +15,7 @@
 					</div>	
 					<h3><%= article.theme.title %></h3>
 					<h2><%= article.title %></h2>
-					<h4><img class="author-img" src="<%= article.author.profilePicSmall %>" /><i><%= article.author.name %></i>, <%= article.createdAt.toLocaleDateString() %> </h4>
+					<h4><img class="author-img" src="<%= article.author.profilePicSmall %>" /><i><%= article.author.name %></i>, <%= article.createdAtStr(__('locale')) %> </h4>
 					<p><%= article.description %></p>
 				</a>
 			</div>

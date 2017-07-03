@@ -10,7 +10,7 @@
           <img src="<%= article.author.profilePicSmall %>" alt="/">
           <p class="side-title"><%= article.title %></p>
           <p class="side-description"><%= article.description %></p>
-          <p class="article-author"><i><%= article.author.name %></i><span class="publish-date"><%= article.createdAt.toLocaleDateString() %></span></p>
+          <p class="article-author"><i><%= article.author.name %></i><span class="publish-date"><%= article.createdAtStr(__('locale')) %></span></p>
         </a>
       </div>
   <%}%>

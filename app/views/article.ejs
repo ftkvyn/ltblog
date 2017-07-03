@@ -3,7 +3,7 @@
 		<div class="row content">
 			<h1><%= article.title %></h1>
 			<h3 class="theme-link"><a href="/<%= article.theme.url %>/"><%= article.theme.title %></a></h3>
-			<p class="article-data"> <%= __('Published') %>: <%= article.createdAt.toLocaleDateString() %></p>
+			<p class="article-data"> <%= __('Published') %>: <%= article.createdAtStr(__('locale')) %></p>
 			<div class="author-info">
 				<a href="/<%= article.author.url %>">
 					<p class="article-author"><strong><i><%= article.author.name %></i></strong></p>
