@@ -24,6 +24,9 @@ module.exports = {
 	name: {
 	    type: 'string'  
 	},
+	about:{
+		type:'text'
+	},
 	profilePicSmall: {
 		type: 'string'
 	},
