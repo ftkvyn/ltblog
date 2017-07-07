@@ -7,12 +7,12 @@
       <div class="sidenews clearfix">
         <a href="/<%= article.theme.url %>/<%= article.id %>">
           <p class="side-title"><%= article.title %></p>
-          <% if(!article.isRepost) { %>
-            <img src="<%= article.image %>" alt="/">
-          <% } else { %>
-            <img src="<%= article.image %>" alt="/">
-          <% }  %>
-          <p class="side-description"><%= article.description %></p>
+          <div style="overflow: hidden;">
+            <div class="rel-pic">
+              <img src="<%= article.image %>" alt="/">
+            </div>
+            <p class="side-description"><%= article.description %></p>
+          </div>
           <p class="article-author">
             <% if(!article.isRepost) { %>
               <i><%= article.author.name %></i>

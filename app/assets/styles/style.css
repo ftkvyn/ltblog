@@ -208,12 +208,16 @@ header a:hover{
 	margin-bottom: 5px;
 	font-family: "Date";
 }
-.sidenews img {
+.sidenews .rel-pic {
 	float: left;
 	height: 120px;
     max-width: 120px;
 	margin-right: 20px;
 	border-radius: 60px;
+	overflow: hidden;
+}
+.sidenews .rel-pic img{
+	max-height: 120px;
 }
 .article-author {
 	color: black;
@@ -289,7 +293,7 @@ footer .about-wrap {
 }
 .article-author {
 	color: black;
-	margin: 0;
+	margin-top: 10px;
 }
 .article-data {
 	color: #666666;
