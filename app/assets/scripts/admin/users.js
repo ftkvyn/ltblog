@@ -36,8 +36,9 @@ $(".new-user-form").submit(function() {
 		posting.done(function(data) {
 			if (!data.success) {
 				alert(data.message);
+			}else{
+				location.reload();
 			}
-			location.reload();
 		});
 	}
 	return false;

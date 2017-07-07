@@ -41,7 +41,8 @@ module.exports = {
                   name: req.body.name,
                   profilePicSmall:req.body.profilePicSmall,
                   profilePicLarge:req.body.profilePicLarge,
-                  
+                  url: req.body.url,
+                  about: req.body.about
                 };
                 User.create(userData).exec(function (err, user) {
                   if (user) {            
