@@ -1,6 +1,14 @@
 
 <script src="/js/summernote.min.js"></script>
 <script>
+function showRepost(){
+	if($('#isRepostCheck').is(":checked")){
+    	$('.repostData').show();
+    }else{
+    	$('.repostData').hide();
+    }
+}
+
 $(function() {
     $('#body-edit').summernote({
     	height: 600,
@@ -14,8 +22,18 @@ $(function() {
     		return false;
     	}
     	$('#body').val(code);
+
+    	if($('#isRepostCheck').is(":checked")){
+	    	$('#isRepost').val(true);
+	    }else{
+	    	$('#isRepost').val(false);
+	    }
+
     	return true;
     });
+
+    showRepost();
+    $('#isRepostCheck').change(showRepost);
 });
 </script>
 
@@ -28,7 +46,6 @@ $(function() {
 <!-- ToDo: preview link -->
 
 <form action='/api/articles/save' method="post" id='edit-form'>
-	
 	<div class="form-group">
 	    <label for="title">Title</label>
 	    <input type="text" required class="form-control" name="title" id="title" value="<%= article.title || '' %>">
@@ -58,6 +75,30 @@ $(function() {
 	<div class="form-group">
 	    <label for="image">Image</label>
 	    <input type="text" class="form-control"  name="image" id="image" value="<%= article.image || '' %>">
+	</div>
+	<div class="form-group">
+	    <label for="isRepostCheck">Is repost</label>
+	    <input type="hidden"  name="isRepost" id="isRepost" value="<%= article.isRepost || '' %>">
+	    <input type="checkbox"  name="isRepostCheck" id="isRepostCheck" 
+	    <% if(article.isRepost){ %>
+	    	checked="checked"
+	    <% } %> >
+	</div>
+	<div class="repostData">
+		<div class="form-group">
+		    <label for="originalUrl">Original Url</label>
+		    <input type="text" class="form-control"  name="originalUrl" id="originalUrl" value="<%= article.originalUrl || '' %>">
+		</div>
+
+		<div class="form-group">
+		    <label for="originalAuthor">Original Author</label>
+		    <input type="text" class="form-control"  name="originalAuthor" id="originalAuthor" value="<%= article.originalAuthor || '' %>">
+		</div>
+
+		<div class="form-group">
+		    <label for="originalAuthorImg">Original Author Image</label>
+		    <input type="text" class="form-control"  name="originalAuthorImg" id="originalAuthorImg" value="<%= article.originalAuthorImg || '' %>">
+		</div>
 	</div>
 	<div class="form-group">
 	    <label for="body">Text</label>

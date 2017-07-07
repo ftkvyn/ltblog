@@ -188,32 +188,32 @@ header a:hover{
 .news-switch {
 	margin-top: 20px;
 }
-.news-switch div{
-	outline: 1px solid #89b399;
-	width: 49.8%;
+.news-switch .switch{
+	outline: 1px solid #e4e4e4;
+	width: 100%;
+	text-align: center;
 	display: inline-block;
-	padding: 5px 10px;
-	background-color: #f9f9f9;
+	padding: 8px 10px;
 	cursor: pointer;
-	
-}
-.news-switch .active{
-	background-color: #fff;
-	color: #89b399;
-	outline: 1px solid #89b399;
-	font-weight: 700;
-}
+	text-transform: uppercase;
+	font-family: "Menu2";
+	font-size:17px;
+	letter-spacing: 0.13em;
+}	
 
 .sidenews {
-	margin: 20px 0;
+	margin: 40px 0;
 }
 .side-description{
 	margin-bottom: 5px;
+	font-family: "Date";
 }
 .sidenews img {
 	float: left;
-	width: 60px;
-	margin-right: 10px;
+	height: 120px;
+    max-width: 120px;
+	margin-right: 20px;
+	border-radius: 60px;
 }
 .article-author {
 	color: black;
@@ -228,6 +228,8 @@ header a:hover{
 	color: #666666;
 	margin-bottom: 5px;
 	float: right;
+	color:  #73ab6b;
+	font-family: "Date";
 }
 .sidenews a,
 .sidenews a:hover{
@@ -236,7 +238,10 @@ header a:hover{
 }
 .side-title {
 	font-weight: bold;
-	font-size: 110%;
+	font-size: 15px;
+	color:  #73ab6b;
+	font-family: "Menu2";
+	text-transform: uppercase;
 }
 .sidenews p {
 }

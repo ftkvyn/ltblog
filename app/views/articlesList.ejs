@@ -1,0 +1,25 @@
+<div class="row content">
+	<% for(var i = 0; i < articles.length; i++){
+		var article = articles[i]; %>
+	<div class="col-md-12 main-article">
+		<a href="/<%= article.theme.url %>/<%= article.id %>">
+			<h2 class="art-title"><%= article.title %></h2>
+			<h3 class="art-theme"><%= article.theme.title %></h3>
+			<div class="img-container">
+				<img src="<%= article.image %>" class='img' alt="/" />
+			</div>
+			<h4>
+				<% if(!article.isRepost) { %>
+				<img class="author-img" src="<%= article.author.profilePicSmall %>" /> 
+				<span class="author-name"><%= article.author.name %></span> 
+				<% } else { %>
+				<img class="author-img" src="<%= article.originalAuthorImg %>" /> 
+				<span class="author-name"><%= article.originalAuthor %></span> 
+				<% }  %>
+				<span class="art-date pull-right"><%= article.createdAtStr(__('locale')) %></span>
+			</h4>
+			<p class="art-description"><%= article.description %></p>
+		</a>
+	</div>
+	<%}%>
+</div>

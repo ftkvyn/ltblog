@@ -5,10 +5,19 @@
 			<h3 class="theme-link"><a href="/<%= article.theme.url %>/"><%= article.theme.title %></a></h3>
 			<p class="article-data"> <%= __('Published') %>: <%= article.createdAtStr(__('locale')) %></p>
 			<div class="author-info">
+				<% if(!article.isRepost) { %>
 				<a href="/<%= article.author.url %>">
 					<p class="article-author"><strong><i><%= article.author.name %></i></strong></p>
 					<img src="<%= article.author.profilePicLarge %>" alt="/">
 				</a>
+				<% } else { %>
+				<div>
+					<p class="article-author"><strong><i><%= article.originalAuthor %></i></strong></p>
+					<img src="<%= article.originalAuthorImg %>" alt="/">
+					<br/>
+					<a href="<%= article.originalUrl %>" tatget='_blank'><%= __('Source') %></a>
+				</div>
+				<% } %>
 			</div> 
 
 			<p class="description"><%= article.description %></p>
