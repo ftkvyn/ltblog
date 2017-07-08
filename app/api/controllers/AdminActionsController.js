@@ -123,9 +123,10 @@ module.exports = {
       	command.exec(function(err, data){
       		if(err){
       			console.error(err);
-      			return res.serverError();
+      			return res.send({success: false});
       		}
-      		return res.redirect('/admin/articles');
+          var id = data.id || data[0].id;
+      		return res.send({success: true, id: id});
       	});    	
     },
 
