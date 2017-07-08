@@ -15,9 +15,9 @@
           </div>
           <p class="article-author">
             <% if(!article.isRepost) { %>
-              <i><%= article.author.name %></i>
+              <%= article.author.name %>
             <% } else { %>
-              <i><%= article.originalAuthor %></i>
+              <%= article.originalAuthor %>
             <% }  %>
             <span class="publish-date"><%= article.createdAtStr(__('locale')) %></span>
           </p>
