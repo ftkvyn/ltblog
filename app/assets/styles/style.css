@@ -104,14 +104,20 @@ header a:hover{
 }
 .sotial-icons {
 	text-align: center;
-	padding-top: 30px;
     padding-right: 5px;
+}
+.share-txt{
+	font-family: "Date";
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 10px;
 }
 .soc-icon {
 	display: inline-block;
 	width: 25px;
 	height: 25px;
-	margin: 0 20px 10px 10px;	
+	margin: 0 10px -5px 10px;	
 	background-size: contain;
 	background-position-x: center;
     background-repeat: no-repeat;
@@ -124,6 +130,9 @@ header a:hover{
 }
 .soc-icon.tg{
 	background-image: url(/images/tg.svg);
+}
+.soc-icon.tw{
+	background-image: url(/images/tw.png);
 }
 .menu {
 	text-align: center;
@@ -342,12 +351,6 @@ header a:hover{
 	font-size: 12px;
 	color: #666666;
 }
-.sidenews .views {
-	display: inline-block;
-	background: url(/images/eye.png) no-repeat;
-	padding-left: 23px;
-	background-position: 0 2px;
-}
 .vk-share {
 	display: inline-block;
 	background: url(/images/vk.png) no-repeat;
@@ -399,10 +402,16 @@ footer .about-wrap {
 }
 .views {
 	display: inline-block;
-	background: url(/images/eye.png) no-repeat;
-	padding-left: 23px;
-	background-position: 0 2px;
-	margin: 15px 0;
+    background-image: url(/images/eye.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-left: 40px;
+    padding-top: 5px;
+    font-family: "Date";
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    height: 31px;
 }
 .sotal-share {
 	display: inline-block;

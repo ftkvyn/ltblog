@@ -35,12 +35,12 @@
 				<% if(data.isAuthor || true) { %>
 				<div class="views"><%= article.views.length %></div>
 				<% } %>
-				<div class="sotal-share pull-right">
-					<div class="vk-share">25</div>
-					<div class="vk-share">25</div>
-					<div class="vk-share">25</div>
-					<div class="vk-share">25</div>
-				</div>
+				<div class="sotial-icons pull-right">
+					<div class="share-txt"> <%= __("Share")%>: </div>
+                    <a class="soc-icon vk" href="#"></a>
+                    <a class="soc-icon fb" href="#"></a>
+                    <a class="soc-icon tw" href="#"></a>
+                  </div>
 			</div>
 		</div>
 		<div id="disqus_thread"></div>
