@@ -36,7 +36,7 @@
 	      <input type="checkbox" name="isAdmin" id="isAdmin"> Is Admin
 	    </label>
 	</div>
-	<input type="text" id="EditUserId" value="">
+	<input type="hidden" id="EditUserId" value="">
 	<button type="submit" class="btn btn-success">Save</button>
 </form>
 
@@ -55,8 +55,8 @@
 				isAdmin=<%= user.isAdmin %>
 			</td>
 			<td>
-				<form class="edit-user-form" action='/admin/editUser/:id' method="get">
-					<input type="text" name="id" id="id" value="<%= user.id %>" />
+				<form class="edit-user-form" action='/admin/editUser/<%= user.id %>' method="get">
+					<input type="hidden" name="id" id="id" value="<%= user.id %>" />
 					<input  type="submit" class="btn btn-warning" value="Edit"/>
 				</form>
 				<form action='/admin/deleteUser' method="post">
