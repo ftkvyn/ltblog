@@ -29,7 +29,22 @@ module.exports = {
   	},
     image:{
     	type:'url',
-    },	  	
+    },	
+
+    isRepost:{
+      type:'boolean',
+      defaultsTo: false
+    },
+    originalAuthor:{
+      type: 'string'
+    },
+    originalAuthorImg:{
+      type: 'url'
+    },
+    originalUrl:{
+      type:'url'
+    },
+
     author:{
   		model: 'User',
   		required: true,

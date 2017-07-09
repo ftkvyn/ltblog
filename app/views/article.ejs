@@ -1,37 +1,53 @@
 <div class="row">
-	<div class="col-lg-9 col-sm-8">
+	<div class="col-lg-9 col-sm-8 article-body">
 		<div class="row content">
-			<h1><%= article.title %></h1>
-			<h3 class="theme-link"><a href="/<%= article.theme.url %>/"><%= article.theme.title %></a></h3>
-			<p class="article-data"> <%= __('Published') %>: <%= article.createdAtStr(__('locale')) %></p>
-			<div class="author-info">
-				<a href="/<%= article.author.url %>">
-					<p class="article-author"><strong><i><%= article.author.name %></i></strong></p>
-					<img src="<%= article.author.profilePicLarge %>" alt="/">
+			<h1 class="art-title"><%= article.title %></h1>
+
+			<h3 class="art-theme">
+				<div class="back">
+					<a href="/<%= article.theme.url %>/">		
+						<%= article.theme.title %>
+					</a>				
+				</div>
+			</h3>		
+			<hr class="separator" />
+
+			<h4 class="author-info">
+				<% if(!article.isRepost) { %>
+				<a href="/<%= article.author.url %>/">
+					<img class="author-img" src="<%= article.author.profilePicSmall %>" /> 
+					<span class="author-name"><%= article.author.name %></span> 
 				</a>
-			</div> 
+				<% } else { %>
+				<img class="author-img" src="<%= article.originalAuthorImg %>" /> 
+				<span class="author-name"><%= article.originalAuthor %></span> 
+				<% }  %>
+				<span class="art-date pull-right"><%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %></span>
+			</h4>		
 
-			<p class="description"><%= article.description %></p>
+			<p class="art-description"><%= article.description %></p>
 
-			<%- article.body %>
+			<div class="main-body">
+				<%- article.body %>
+			</div>
 			
 			<div class="view-statistic clearfix">
 				<% if(data.isAuthor || true) { %>
 				<div class="views"><%= article.views.length %></div>
 				<% } %>
-				<div class="sotal-share pull-right">
-					<div class="vk-share">25</div>
-					<div class="vk-share">25</div>
-					<div class="vk-share">25</div>
-					<div class="vk-share">25</div>
-				</div>
+				<div class="sotial-icons pull-right">
+					<div class="share-txt"> <%= __("Share")%>: </div>
+                    <a class="soc-icon vk" href="#"></a>
+                    <a class="soc-icon fb" href="#"></a>
+                    <a class="soc-icon tw" href="#"></a>
+                  </div>
 			</div>
 		</div>
 		<div id="disqus_thread"></div>
 		<script>
 
 		var disqus_config = function () {
-		this.page.url = '<%- data.origin %>' + '/p/' + '<%- article.theme.url %>' + '/' + '<%-article.id %>';
+		this.page.url = '<%- data.origin %>' + '/' + '<%- article.theme.url %>' + '/' + '<%-article.id %>';
 		this.page.identifier = '<%- article.theme.url %>' + '_' + '<%-article.id %>';
 		};
 		

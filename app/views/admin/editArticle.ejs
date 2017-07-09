@@ -1,6 +1,14 @@
 
 <script src="/js/summernote.min.js"></script>
 <script>
+function showRepost(){
+	if($('#isRepostCheck').is(":checked")){
+    	$('.repostData').show();
+    }else{
+    	$('.repostData').hide();
+    }
+}
+
 $(function() {
     $('#body-edit').summernote({
     	height: 600,
@@ -14,8 +22,46 @@ $(function() {
     		return false;
     	}
     	$('#body').val(code);
-    	return true;
+
+    	if($('#isRepostCheck').is(":checked")){
+	    	$('#isRepost').val(true);
+	    }else{
+	    	$('#isRepost').val(false);
+	    }
+
+	    var model = {};
+	    var inputs = $('#edit-form input, #edit-form textarea, #edit-form select');
+	    for (var i = inputs.length - 1; i >= 0; i--) {
+	    	var id = $(inputs[i]).attr('id');
+	    	var val = $(inputs[i]).val();
+	    	if(id){
+		    	model[id]=val;
+		    }
+	    }
+	    
+	    $.post('/api/articles/save', model)
+	    .done(function(data){
+	    	if(data.success){
+	    		$('.saved-label').show();
+	    		$('#id').val(data.id);
+			    setTimeout(function(){
+			    	$('.saved-label').hide();
+			    },3000);
+	    	}else{
+	    		alert('Error!');
+	    	}
+	    })
+	    .fail(function (data){
+			alert('Error!');
+		});
+
+    	return false;
     });
+
+    showRepost();
+    $('#isRepostCheck').change(showRepost);
+
+
 });
 </script>
 
@@ -27,8 +73,7 @@ $(function() {
 <a href="/admin">Back</a>
 <!-- ToDo: preview link -->
 
-<form action='/api/articles/save' method="post" id='edit-form'>
-	
+<form method="post" id='edit-form'>
 	<div class="form-group">
 	    <label for="title">Title</label>
 	    <input type="text" required class="form-control" name="title" id="title" value="<%= article.title || '' %>">
@@ -60,14 +105,37 @@ $(function() {
 	    <input type="text" class="form-control"  name="image" id="image" value="<%= article.image || '' %>">
 	</div>
 	<div class="form-group">
+	    <label for="isRepostCheck">Is repost</label>
+	    <input type="hidden"  name="isRepost" id="isRepost" value="<%= article.isRepost || '' %>">
+	    <input type="checkbox"  name="isRepostCheck" id="isRepostCheck" 
+	    <% if(article.isRepost){ %>
+	    	checked="checked"
+	    <% } %> >
+	</div>
+	<div class="repostData">
+		<div class="form-group">
+		    <label for="originalUrl">Original Url</label>
+		    <input type="text" class="form-control"  name="originalUrl" id="originalUrl" value="<%= article.originalUrl || '' %>">
+		</div>
+
+		<div class="form-group">
+		    <label for="originalAuthor">Original Author</label>
+		    <input type="text" class="form-control"  name="originalAuthor" id="originalAuthor" value="<%= article.originalAuthor || '' %>">
+		</div>
+
+		<div class="form-group">
+		    <label for="originalAuthorImg">Original Author Image</label>
+		    <input type="text" class="form-control"  name="originalAuthorImg" id="originalAuthorImg" value="<%= article.originalAuthorImg || '' %>">
+		</div>
+	</div>
+	<div class="form-group main-body">
 	    <label for="body">Text</label>
 	    <input type="hidden" name="body" name="body" id="body" value="<%= article.body || '' %>" />
 	    <div class="form-control" required id="body-edit" style="height: 600px;"><%- article.body || '' %></div>
 	</div>
-	<% if(article.id){ %>
-	<input type="hidden" name="id" value="<%= article.id %>" />
-	<% } %>
+	<input type="hidden" name="id" id='id' value="<%= article.id || '' %>" />
 	<input type="submit" class="btn btn-success" value="Save"/>
+	<span class="saved-label" style="display: none;font-weight: bold;font-size: 20px;color: #73ab6b;margin-left: 20px;">Saved</span>
 </form>   
 
 

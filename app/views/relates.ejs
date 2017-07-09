@@ -1,16 +1,26 @@
 <div class="sidebar">
 	<div class="news-switch clearfix">
-		<div class="popular-news"><%= __('Popular') %></div>
-		<div class="active daily-news pull-right"><%= __('New') %></div>
+		<div class="popular-news switch"><%= __('Popular') %></div>
 	</div>
   <% for(var i = 0; i < articles.length; i++){
         var article = articles[i]; %>
       <div class="sidenews clearfix">
         <a href="/<%= article.theme.url %>/<%= article.id %>">
-          <img src="<%= article.author.profilePicSmall %>" alt="/">
           <p class="side-title"><%= article.title %></p>
-          <p class="side-description"><%= article.description %></p>
-          <p class="article-author"><i><%= article.author.name %></i><span class="publish-date"><%= article.createdAtStr(__('locale')) %></span></p>
+          <div style="overflow: hidden;">
+            <div class="rel-pic">
+              <img src="<%= article.image %>" alt="/">
+            </div>
+            <p class="side-description"><%= article.description %></p>
+          </div>
+          <p class="article-author">
+            <% if(!article.isRepost) { %>
+              <%= article.author.name %>
+            <% } else { %>
+              <%= article.originalAuthor %>
+            <% }  %>
+            <span class="publish-date"><%= article.createdAtStr(__('locale')) %></span>
+          </p>
         </a>
       </div>
   <%}%>
