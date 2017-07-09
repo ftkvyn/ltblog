@@ -69,7 +69,9 @@ $(".edit-user-form").submit(function() {
 		$("#password").css("display", "none");
 		$('[for=password]').css("display", "none");
 		$("#EditUserId").attr("value", data.editUser.id);
-		/* is admin */
+		if (data.editUser.isAdmin) {
+			$("#isAdmin").attr("checked", "checked");
+		}
 		for(var key in data.editUser){
 			$('#' + key).val(data.editUser[key]);
 		}
