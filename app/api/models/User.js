@@ -10,13 +10,22 @@ module.exports = {
   attributes: {
   	login: {
 	    type: 'string',
-	    unique: true
+	    unique: true,
+	    required: true
+	},
+	url: {
+	    type: 'string',
+	    unique: true,
+	    required: true
 	},
 	password: {
 	    type: 'string'	    
 	},
 	name: {
 	    type: 'string'  
+	},
+	about:{
+		type:'text'
 	},
 	profilePicSmall: {
 		type: 'string'

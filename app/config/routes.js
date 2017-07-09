@@ -70,6 +70,10 @@ module.exports.routes = {
 
   '/api/changePasswords': 'AdminActionsController.changePasswords',
 
+  '/admin/editUser/:id': 'AdminActionsController.editUser',
+
+  '/admin/saveEditingUser': 'AdminActionsController.saveEditingUser',
+
   '/about': 'ViewsController.about',
 
   '/relates/:id': 'ViewsController.relates',
@@ -77,6 +81,10 @@ module.exports.routes = {
   '/:theme/:id': 'ViewsController.article',
 
   '/:theme': 'ViewsController.theme',
+
+  '/:authorUrl': 'ViewsController.author',
+
+
 
 
   /***************************************************************************

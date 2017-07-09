@@ -1,0 +1,24 @@
+{
+	"The Living Thing": "Живая Вещь",
+	"About": "О нас",
+	"Psychology":"Психология",
+	"Music":"Музыка",
+	"Science":"Наука",
+	"locale":"ru",
+	"locale_full":"ru_RU",
+
+	"Marchenko Andrei":"Марченко Андрей",
+	"Marchenko Andrei__role":"Разработчик сайта.",
+
+	"Machkin Yanis":"Мачкин Янис",
+	"Machkin Yanis__role":"Фронт-энд разработчик, техническая поддержка.",
+
+	"main__meta__title":"Главная",
+	"main__meta__description":"Интернет-жунрал, который живёт своей собственной жизнью.",
+
+	"Live long and prosper":"Живи и процветай",
+	"Published":"Опубликовано",
+	"Popular":"Популярное",
+	"New":"Новое",
+	"__default__keywords" : "журнал, веб журнал, Интернет-жунрал, интернет журнал, наука, психология, музыка, искусство, литература, книги"
+}

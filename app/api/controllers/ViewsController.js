@@ -34,15 +34,29 @@ function countReader(req, article){
 
 }
 
+var mainMeta = null;
+
+function getMainMeta(req){
+	if(mainMeta){
+		return mainMeta;
+	}else{
+		mainMeta = {};
+		mainMeta.title = req.__('main__meta__title');
+		mainMeta.image = '';
+		mainMeta.description = req.__('main__meta__description');
+		return mainMeta;
+	}
+}
+
 module.exports = {
 	home: function(req,res){
-		Article.find({limit: 10})
+		req.setLocale("ru");
+		Article.find({limit: 10, where:{isPublished: true}})
 		.sort('createdAt DESC')
 		.populate('theme')
 		.populate('author')
 		.exec(function(err, data){
-			console.log(module);
-			return res.view('homepage', {articles: data});
+			return res.view('homepage', {articles: data, meta: getMainMeta(req)});
 		});
 	},
 
@@ -56,12 +70,38 @@ module.exports = {
 			if(!data){
       			return next();
       		}
-			Article.find({where: {theme: data.id} ,limit: 10})
+			Article.find({where: {theme: data.id, isPublished: true} ,limit: 10})
 			.sort('createdAt DESC')
 			.populate('theme')
 			.populate('author')
 			.exec(function(err, articles){
-				return res.view('theme', {articles: articles, theme: data});
+				var meta = {
+					title: data.title
+				};
+				return res.view('theme', {articles: articles, theme: data, author:null, meta: meta});
+			});
+		});		
+	},	
+
+	author: function(req, res, next){
+		if (req.path.match(/\..*/g) || req.path.match(/^\/api\/.*$/)) {
+	        return next();
+	    }
+	    //console.log(req.query["page"]);
+		User.findOne({url : req.params.authorUrl})
+		.exec(function(err, user){
+			if(!user){
+      			return next();
+      		}
+			Article.find({where: {author: user.id, isPublished: true} ,limit: 10})
+			.sort('createdAt DESC')
+			.populate('theme')
+			.populate('author')
+			.exec(function(err, articles){
+				var meta = {
+					title: user.name
+				};
+				return res.view('theme', {articles: articles, theme:null, author: user, meta: meta});
 			});
 		});		
 	},	
@@ -85,14 +125,36 @@ module.exports = {
       		if(data.theme.url != req.params.theme){
       			return next();	
       		}
+      		var isAuthor = false;
+      		if(req.session.user && req.session.user.isAdmin){
+  				isAuthor = true;
+  			}
+  			if(req.session.user && (req.session.user.id === data.author.id) ){
+  				isAuthor = true;
+  			}
+      		if(!data.isPublished){
+      			//admin and author can view it.
+      			if(!isAuthor){
+      				return next();
+      			}
+      		}
       		countReader(req, data);
-			return res.view('article', {article:data, data : {origin: process.env.LTBLOG_ORIGIN || 'http://ltblog-dev.herokuapp.com'}});	
+
+      		var meta = {
+				title: data.title,
+				description: data.description,
+				image: data.image,
+				keywords: data.meta_keywords
+			};
+			return res.view('article', {article:data, 
+				meta: meta,
+				data : {origin: process.env.LTBLOG_ORIGIN || 'http://ltblog-dev.herokuapp.com', isAuthor: isAuthor}});	
 		});	
 	},
 	
 	relates: function(req, res){
 		//ToDo: implement logic
-		Article.find({limit: 5})
+		Article.find({limit: 5, where: {isPublished: true}})
 		.sort('createdAt DESC')
 		.populate('theme')
 		.populate('author')
@@ -102,7 +164,7 @@ module.exports = {
 	},
 
 	about: function(req,res){
-		return res.view('about', {});
+		return res.view('about', {meta: null});
 	},
 };
 

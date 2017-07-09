@@ -41,9 +41,11 @@ module.exports = {
     views: {
       collection:'ReadedArticle',
       via:'article'
-    },
+    },    
 	//tags
 	//drafts
-  }
+  },
+
+
 };
 

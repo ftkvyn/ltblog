@@ -2,10 +2,13 @@
 	<div class="col-lg-9 col-sm-8">
 		<div class="row content">
 			<h1><%= article.title %></h1>
-			<p class="article-data">Опубликовано: <%= article.createdAt.toLocaleDateString() %></p>
+			<h3 class="theme-link"><a href="/<%= article.theme.url %>/"><%= article.theme.title %></a></h3>
+			<p class="article-data"> <%= __('Published') %>: <%= article.createdAtStr(__('locale')) %></p>
 			<div class="author-info">
-				<p class="article-author"><strong><i><%= article.author.name %></i></strong></p>
-				<img src="<%= article.author.profilePicLarge %>" alt="/">
+				<a href="/<%= article.author.url %>">
+					<p class="article-author"><strong><i><%= article.author.name %></i></strong></p>
+					<img src="<%= article.author.profilePicLarge %>" alt="/">
+				</a>
 			</div> 
 
 			<p class="description"><%= article.description %></p>
@@ -13,7 +16,9 @@
 			<%- article.body %>
 			
 			<div class="view-statistic clearfix">
+				<% if(data.isAuthor || true) { %>
 				<div class="views"><%= article.views.length %></div>
+				<% } %>
 				<div class="sotal-share pull-right">
 					<div class="vk-share">25</div>
 					<div class="vk-share">25</div>

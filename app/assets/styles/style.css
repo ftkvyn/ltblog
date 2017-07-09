@@ -1,7 +1,23 @@
 /* homepage start*/
+
+@font-face {
+    font-family: "Logo2";
+    src: url(/fonts/10072.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Menu2";
+    src: url(/fonts/menu.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Date";
+    src: url(/fonts/date.ttf) format("truetype");
+}
+
 body {
 	position: relative;
-	background: #f9f9f9;
+	background: white;
 }
 header {
 	padding: 50px 0px 0px 0;
@@ -18,19 +34,25 @@ header .back{
     position: absolute;
     z-index: 10;
     pointer-events: none;
-    height: 50px;
+    height: 65px;
     top: 0;
 }
 header .dropdown{
-	background: #89b399;
-	color: white;
-    padding: 10px 30px;
+	background: white;
+	color: black;
+    padding: 50px 30px 20px 30px
 }
 header .dropdown li a,
 header .dropdown li a:hover
-{color: white; text-decoration: none;}
+{
+	color: black; 
+	text-decoration: none !important;
+	font-family: "Menu2";
+	letter-spacing: 0.15em;
+}
 .container {
   max-width: 1100px; 
+  padding-top: 40px;
 }
 .logo{
 	max-height: 100px;
@@ -43,11 +65,33 @@ header a:hover{
 	display: block;
 }
 .logo-text, .logo-text:hover{
-	display: inline;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Logo2";
 	color: black;
-	text-decoration: none;
+	text-decoration: none !important;
+	margin-bottom: 0;
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
+	font-size: 48px;
+	margin-top: 25px;
+	margin-bottom: 5px;
 }
+.logo-subtext, .logo-subtext:hover{
+	text-decoration: none !important;
+	display: inline;
+	color: #73ab6b;
+	font-size: 13px;
+	text-transform: uppercase;
+	font-family: "Menu2";
+	letter-spacing: 0.25em;
+	font-weight: 500;
+}
+.logo-img-container{
+	text-align: right;
+}
+.logo-txt-container{
+	text-align: center;
+}
+
 .main .container{
 	background: #ffffff;
     border: 2px solid #f4f4f4;
@@ -55,40 +99,87 @@ header a:hover{
     padding-right: 30px;
     padding-top: 40px;
     padding-bottom: 60px;
-    margin-top: -40px;
-    margin-bottom: -40px;
+    margin-bottom: 20px;
 }
 .sotial-icons {
-	text-align: right;
+	text-align: center;
 	padding-top: 30px;
     padding-right: 5px;
 }
-.vk {
+.soc-icon {
 	display: inline-block;
 	width: 25px;
 	height: 25px;
-	margin: 0 10px 10px 0;
-	background: url(/images/vk.png);
+	margin: 0 20px 10px 10px;	
+	background-size: contain;
+	background-position-x: center;
+    background-repeat: no-repeat;
 }
-.vk:last-child {
-	margin-right: 0;
+.soc-icon.vk{
+	background-image: url(/images/vk.png);
+}
+.soc-icon.fb{
+	background-image: url(/images/fb.svg);
+}
+.soc-icon.tg{
+	background-image: url(/images/tg.svg);
 }
 .menu {
-	text-align: right;
+	text-align: center;
 	margin-bottom: 0;
+	padding-left: 0;
 }
 .menu li {
 	display: inline-block;
-	margin-left: 20px;
+	margin-left: 60px;
+	margin-right: 60px;
+	font-weight: 600;
 }
 .menu a {
 	text-transform: uppercase;
+}
+@media (max-width: 767px){
+	.sotial-icons{
+		text-align: center;
+	}
+	.soc-icon{
+		width: 19%;
+		margin-top: 20px;
+		height: 50px;
+	}
 }
 .content {
 	margin: 20px 0;
 }
 .content img {
 	width:100%;
+}
+.art-title{
+	text-align: left;
+	font-family: "Menu2";
+}
+.art-theme{
+	text-align: left;
+	font-family: "Menu2";
+}
+.author-name{
+	font-family: "Date"
+}
+.art-date{
+	font-family: "Date";
+	color:#73ab6b;
+	font-weight: bold;
+}
+.art-description{
+	font-family: "Date"
+}
+.content img.author-img{
+	height: 50px;
+	width:initial;
+	border-radius: 50px;
+}
+.main-article{
+	margin-bottom: 30px;
 }
 .main-article a{
 	color: black;
@@ -128,7 +219,9 @@ header a:hover{
 	color: black;
 	margin: 0;
 	font-size: 80%;
-	border-bottom: 2px solid #f4f4f4;
+}
+.author-theme-img{
+	max-height: 200px;
 }
 .publish-date {
 	font-size: 12px;
@@ -170,13 +263,15 @@ header a:hover{
 footer {	
 	padding: 30px 0px 30px 0;
 	color: white;
-	background: #632222;
+	background: #4c4c4c;
 }
 footer .about-wrap {
 	text-align: right; 
 }
-.about-link {
+.about-link,
+.about-link:hover {
 	cursor: pointer;
+	text-decoration: none;
 	color: #fff; 	
 }
 /* homepage finish*/
@@ -197,6 +292,7 @@ footer .about-wrap {
 }
 .author-info p {
 }
+
 .view-statistic {
 	font-size: 12px;
 	color: #666666;
@@ -247,6 +343,21 @@ footer .about-wrap {
 }
 .developer-wrapper p{
 	font-size: 16px;
+}
+.img-container{
+	position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+.img-container .img{
+	position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.theme-link a,
+.theme-link a:hover{
+	color: black;
+	text-decoration: none;
 }
 @media (max-width: 480px) {
 	.developer-wrapper div{

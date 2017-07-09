@@ -24,6 +24,7 @@ module.exports.bootstrap = function(cb) {
 	            bcrypt.hash(pass, salt, function(err, hash) {
 				var userData = {
 	              login: 'admin',
+	              url: 'ufo',
 	              password: hash,
 	              isAdmin: true,
 	              name: 'Main admin',

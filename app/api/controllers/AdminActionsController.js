@@ -7,8 +7,7 @@
  var bcrypt = require('bcrypt');
 
 module.exports = {
-	createUser: function(req, res){
-	  console.log(req.body);
+	 createUser: function(req, res){
       var login = req.body.login;
       var password = req.body.password;
       if(password.length < 6){
@@ -42,7 +41,8 @@ module.exports = {
                   name: req.body.name,
                   profilePicSmall:req.body.profilePicSmall,
                   profilePicLarge:req.body.profilePicLarge,
-                  
+                  url: req.body.url,
+                  about: req.body.about  
                 };
                 User.create(userData).exec(function (err, user) {
                   if (user) {            
@@ -84,8 +84,61 @@ module.exports = {
       	});
       },
 
+      editUser:function(req, res){
+        console.log(req.params.id);
+        
+        var id = req.params.id;
+        if(!id){
+            return res.send({success:false, message:'Error occurred. 123'});
+        }
+        User.findOne({id:id}).exec(
+          function(err,editUser){
+            if(err){
+              return res.send({success:false, message:'Error occurred. 333'});
+            }
+            if(!editUser) {
+              return res.send({success:false, message:'User not found.'});
+            }
+            User.find()
+              .sort('createdAt DESC')
+              .exec(function(err, data){
+                if(err){
+                  console.log(err);
+                  return res.serverError();
+                }
+                return res.send({users: data, meta: null, success:true, editUser: editUser});
+            });
+        });
+      },
+
+    saveEditingUser:function(req, res){
+
+      console.log(req.body);
+      var id = req.body.id;
+      var login = req.body.login;
+
+      User.findOne({id:id}).exec(
+        function(err,user){
+          if(err){
+            return res.send({success:false, message:'Error occurred. 333'});
+          }
+          if(!user) {
+            return res.send({success:false, message:'serverError.'});
+          }
+          delete req.body.password;
+          User.update({id: id}, req.body)
+            .exec(function(err, data){
+              if(err){
+                console.error(err);
+                return res.serverError();
+              }
+              return res.send({success:true});
+          });
+      });
+    },
+
     publishArticle:function(req, res){
-    	console.log(req.body);
+
       	var id = req.body.id;
       	Article.update({id: id}, {isPublished: true})
       	.exec(function(err, data){
@@ -98,7 +151,6 @@ module.exports = {
     },
 
     hideArticle:function(req, res){
-    	console.log(req.body);
       	var id = req.body.id;
       	Article.update({id: id}, {isPublished: false})
       	.exec(function(err, data){

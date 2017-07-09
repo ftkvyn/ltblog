@@ -48,7 +48,7 @@ module.exports = function created (data, options) {
   // Otherwise try to guess an appropriate view, or if that doesn't
   // work, just send JSON.
   if (options.view) {
-    return res.view(options.view, { data: viewData, title: 'Created' });
+    return res.view(options.view, { data: viewData, title: 'Created',meta: null });
   }
 
   // If no second argument provided, try to serve the implied view,

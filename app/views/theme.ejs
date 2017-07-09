@@ -1,4 +1,9 @@
+<% if(theme){%>
 <h2><%= theme.title %></h2>
+<%} else if(author) {%>
+<h2><img class="author-theme-img" src="<%= author.profilePicLarge %>" /><%= author.name %></h2>
+<p><%= author.about %></p>
+<%}%>
 <div class="row">
 	<div class="col-lg-12 col-sm-12">
 		<div class="row content">
@@ -6,10 +11,12 @@
 				var article = articles[i]; %>
 			<div class="col-lg-6 main-article">
 				<a href="/<%= article.theme.url %>/<%= article.id %>">
-					<img src="<%= article.image %>" alt="/">
+					<div class="img-container">
+						<img src="<%= article.image %>" class='img' alt="/" />
+					</div>	
 					<h3><%= article.theme.title %></h3>
 					<h2><%= article.title %></h2>
-					<h4><i><%= article.author.name %></i>, <%= article.createdAt.toLocaleDateString() %> </h4>
+					<h4><img class="author-img" src="<%= article.author.profilePicSmall %>" /><i><%= article.author.name %></i>, <%= article.createdAtStr(__('locale')) %> </h4>
 					<p><%= article.description %></p>
 				</a>
 			</div>

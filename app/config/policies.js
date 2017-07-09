@@ -28,8 +28,8 @@ module.exports.policies = {
 
   AdminViewsController:{
     "login": true,
-    "main":'sessionAuth',
-    "*": ['isAdmin']
+    "*": ['sessionAuth'],
+    "users":"isAdmin"
   },
 
   ViewsController:{
@@ -37,12 +37,17 @@ module.exports.policies = {
   },
 
   AdminActionsController:{
-    "*": ['isAdmin']
+    "*": ['isAdmin'],
+    "changePasswords":"sessionAuth",
+    "saveArticle":"checkArticleAuthor",
+    "hideArticle":"checkArticleAuthor",
+    "publishArticle":"checkArticleAuthor",
   },
 
   ThemeController:{
     find: true,
-    create: "isAdmin",
+    create: "sessionAuth",
+    update: "isAdmin",
     destroy: "isAdmin"
   },
   // '*': true,
