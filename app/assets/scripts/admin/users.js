@@ -5,7 +5,7 @@ function FilledFields( formData ) {
 		formData.profilePicLarge !== '' &&
 		formData.login !== '' &&
 		formData.url !== '' &&	
-		formData.password !== '') {
+		( ($("input").is("#EditUserId")) || formData.password !== '')) {
 		filled = true;
 	}
 	return filled;
@@ -14,41 +14,59 @@ function FilledFields( formData ) {
 $("h3").click(function(){
 	$(".new-user-form").toggle();
 });
-if (false) { /* тонки, это заглушка, чтобы edit норм работал, я не знаю, какое 
-надо сюда условие, чтобы при edit было false, при create- true */
 
-/*конечно есть идея спрятать обычнуб кнопку, при edit добавить 
-другую и повесить обработку формы на клик по кнопке, но я даже хз */
-	$(".new-user-form").submit(function() {
-		var formData = {
-			name: $("#name").val(),
-			profilePicSmall: $("#profilePicSmall").val(),
-			profilePicLarge: $("#profilePicLarge").val(),
-			login: $("#login").val(),
-			password: $("#password").val(),
-			url: $("#url").val(),
-			about: $("#about").val(),
-			isAdmin: $("#isAdmin").prop("checked")
-		};
-		if (!FilledFields( formData )) {
-			alert('filled all fields');
-		}
-		else {
-			var posting = $.post("/admin/addUser", formData)
-			posting.fail(function (data){
+$(".new-user-form").submit(function() {
+	var id;
+	var password;
+	if(($("input").is("#EditUserId"))) {
+		id = $("#EditUserId").val();
+	} else {
+		password = $("#password").val();
+	}
+	var formData = {
+		name: $("#name").val(),
+		profilePicSmall: $("#profilePicSmall").val(),
+		profilePicLarge: $("#profilePicLarge").val(),
+		login: $("#login").val(),
+		
+		url: $("#url").val(),
+		about: $("#about").val(),
+		isAdmin: $("#isAdmin").prop("checked"),
+		id: id,
+		password: password
+	};
+	
+	if (!FilledFields( formData )) {
+		alert('filled all fields');
+	}
+	else if(($("input").is("#EditUserId"))){
+		var posting = $.post("/admin/saveEditingUser", formData)
+		posting.fail(function (data){
+			alert(data.message);
+		});
+		posting.done(function(data) {
+			if (!data.success) {
 				alert(data.message);
-			});
-			posting.done(function(data) {
-				if (!data.success) {
-					alert(data.message);
-				}else{
-					location.reload();
-				};
-			});
-		}
-		return false;
-	});
-};
+			}
+			location.reload();
+			alert("user's data successfully changed");
+		});
+	}else{
+		var posting = $.post("/admin/addUser", formData)
+		posting.fail(function (data){
+			alert(data.message);
+		});
+		posting.done(function(data) {
+			if (!data.success) {
+				alert(data.message);
+			}else{
+				location.reload();
+			};
+		});
+	}
+	return false;
+});
+
 
 $(".edit-user-form").submit(function() {
 	var userData = {
@@ -76,37 +94,6 @@ $(".edit-user-form").submit(function() {
 		for(var key in data.editUser){
 			$('#' + key).val(data.editUser[key]);
 		}
-		$(".new-user-form").submit(function() {
-
-			var formData = {
-				name: $("#name").val(),
-				profilePicSmall: $("#profilePicSmall").val(),
-				profilePicLarge: $("#profilePicLarge").val(),
-				login: $("#login").val(),
-				url: $("#url").val(),
-				about: $("#about").val(),
-				id: $("#EditUserId").val(),
-				isAdmin: $("#isAdmin").prop("checked"),
-			};
-			if (!FilledFields( formData )) {
-				alert('filled all fields');
-			}
-			else {
-				var posting = $.post("/admin/saveEditingUser", formData)
-				posting.fail(function (data){
-					alert(data.message);
-				});
-				posting.done(function(data) {
-					if (!data.success) {
-						alert(data.message);
-					}
-					location.reload();
-					alert("user's data successfully changed");
-				});
-			}
-			return false;
-		});
-		
 	});
 	return false;
 });
