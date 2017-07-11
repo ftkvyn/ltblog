@@ -86,7 +86,7 @@ $(".edit-user-form").submit(function() {
 		$("h3").text("Edit user:" + " " + data.editUser.login);
 		$("#password").css("display", "none");
 		$('[for=password]').css("display", "none");
-		$('.new-user-form').prepend('<input type="hidden" id="EditUserId" value="">'); 
+		$('.new-user-form').prepend('<input type="text" id="EditUserId" value="">'); 
 		$("#EditUserId").attr("value", data.editUser.id); 
 		if (data.editUser.isAdmin) {
 			$("#isAdmin").attr("checked", "checked");
@@ -94,6 +94,9 @@ $(".edit-user-form").submit(function() {
 		for(var key in data.editUser){
 			$('#' + key).val(data.editUser[key]);
 		}
+
+		$('.new-user-form').append('<input type="reset" id="reset" class="btn btn-danger" value="Reset"/>'); /* users id standing full */
 	});
 	return false;
 });
+
