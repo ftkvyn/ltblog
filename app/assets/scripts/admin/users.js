@@ -81,12 +81,11 @@ $(".edit-user-form").submit(function() {
 		if (!data.success) {
 			alert(data.message);
 		}
-		console.log(data);
 		$(".new-user-form").css("display", "block");
 		$("h3").text("Edit user:" + " " + data.editUser.login);
 		$("#password").css("display", "none");
 		$('[for=password]').css("display", "none");
-		$('.new-user-form').prepend('<input type="text" id="EditUserId" value="">'); 
+		$('.new-user-form').prepend('<input type="hidden" id="EditUserId" value="">'); 
 		$("#EditUserId").attr("value", data.editUser.id); 
 		if (data.editUser.isAdmin) {
 			$("#isAdmin").attr("checked", "checked");
@@ -94,9 +93,14 @@ $(".edit-user-form").submit(function() {
 		for(var key in data.editUser){
 			$('#' + key).val(data.editUser[key]);
 		}
-
-		$('.new-user-form').append('<input type="reset" id="reset" class="btn btn-danger" value="Reset"/>'); /* users id standing full */
+		$('.new-user-form').append('<button type="button" id="reset" class="btn btn-danger">Reset</button>');
+		$('.edit-user-form').css("display", "none");
+		$('.delete-user-form').css("display", "none");
 	});
 	return false;
+});
+
+$(document).on('click', '#reset', function() {
+   location.reload();
 });
 

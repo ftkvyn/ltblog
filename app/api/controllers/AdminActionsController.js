@@ -85,7 +85,6 @@ module.exports = {
       },
 
       editUser:function(req, res){
-        console.log(req.params.id);
         
         var id = req.params.id;
         if(!id){
