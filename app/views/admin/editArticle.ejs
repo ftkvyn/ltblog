@@ -8,7 +8,7 @@ function showRepost(){
     	$('.repostData').hide();
     }
 }
-
+var isSaving = false;
 $(function() {
     $('#body-edit').summernote({
     	height: 600,
@@ -39,21 +39,26 @@ $(function() {
 		    }
 	    }
 	    
-	    $.post('/api/articles/save', model)
-	    .done(function(data){
-	    	if(data.success){
-	    		$('.saved-label').show();
-	    		$('#id').val(data.id);
-			    setTimeout(function(){
-			    	$('.saved-label').hide();
-			    },3000);
-	    	}else{
-	    		alert('Error!');
-	    	}
-	    })
-	    .fail(function (data){
-			alert('Error!');
-		});
+	    if(!isSaving){
+	    	isSaving = true;
+		    $.post('/api/articles/save', model)
+		    .done(function(data){
+		    	isSaving = false;
+		    	if(data.success){
+		    		$('.saved-label').show();
+		    		$('#id').val(data.id);
+				    setTimeout(function(){
+				    	$('.saved-label').hide();
+				    },3000);
+		    	}else{
+		    		alert('Error!');
+		    	}
+		    })
+		    .fail(function (data){
+		    	isSaving = false;
+				alert('Error!');
+			});
+		}
 
     	return false;
     });
@@ -70,7 +75,7 @@ $(function() {
 <% } else { %>
 <h2>Edit article</h2>
 <% } %>
-<a href="/admin">Back</a>
+<a href="/admin/articles">Back</a>
 <!-- ToDo: preview link -->
 
 <form method="post" id='edit-form'>
