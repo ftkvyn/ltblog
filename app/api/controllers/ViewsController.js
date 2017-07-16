@@ -154,10 +154,10 @@ module.exports = {
 			};
 			return res.view('article', {article:data, 
 				meta: meta,
-				data : {origin: process.env.LTBLOG_ORIGIN, isAuthor: isAuthor}});	
+				data : {origin: process.env.LTBLOG_ORIGIN, disqusId: process.env.LTBLOG_DISQUS_ID || 'the-living-thing-ru', isAuthor: isAuthor}});
 		});	
 	},
-	
+
 	relates: function(req, res){
 		//ToDo: implement logic
 		Article.find({limit: 5, where: {isPublished: true}})

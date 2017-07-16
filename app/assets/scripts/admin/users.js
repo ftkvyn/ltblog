@@ -72,7 +72,6 @@ $(".edit-user-form").submit(function() {
 	var userData = {
 		id: $(this).children("#id").val(),
 	}; 
-
 	var get = $.get("/api/getUserData/" + userData.id)
 	get.fail(function (data){
 		alert(data.message);
@@ -81,11 +80,15 @@ $(".edit-user-form").submit(function() {
 		if (!data.success) {
 			alert(data.message);
 		}
+		$("#EditUserId").remove();
+		$("#reset").remove();
+		$("#isAdmin").removeAttr("checked");
+
 		$(".new-user-form").css("display", "block");
 		$("h3").text("Edit user:" + " " + data.editUser.login);
 		$("#password").css("display", "none");
 		$('[for=password]').css("display", "none");
-		$('.new-user-form').prepend('<input type="hidden" id="EditUserId" value="">'); 
+		$('.new-user-form').prepend('<input type="text" id="EditUserId" value="">'); 
 		$("#EditUserId").attr("value", data.editUser.id); 
 		if (data.editUser.isAdmin) {
 			$("#isAdmin").attr("checked", "checked");
@@ -94,8 +97,6 @@ $(".edit-user-form").submit(function() {
 			$('#' + key).val(data.editUser[key]);
 		}
 		$('.new-user-form').append('<button type="button" id="reset" class="btn btn-danger">Reset</button>');
-		$('.edit-user-form').css("display", "none");
-		$('.delete-user-form').css("display", "none");
 	});
 	return false;
 });
