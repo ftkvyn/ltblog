@@ -159,10 +159,11 @@ module.exports = {
       	var id = req.body.id;
       	var command = null;
       	var model = req.body;
-      	if(id){
+      	if(id && +id){
       		delete model.author;
       		command = Article.update({id: id}, model);
       	}else{
+          delete model.id;
       		model.author = req.session.user.id;
       		command = Article.create(model);
       	}
