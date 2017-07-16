@@ -8,7 +8,7 @@
 		<% for(var i = 0; i < articles.length; i++){
 				var article = articles[i]; %>
 		<tr>		
-			<td>
+			<td style="min-width: 300px;">
 				<p><b><%= article.title %></b></p>
 				<p><i><%= article.theme.title %></i></p>
 				<p><span><%= article.createdAtStr(__('locale')) %></span></p>

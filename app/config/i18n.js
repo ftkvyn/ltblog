@@ -14,7 +14,7 @@
  *
  *
  */
- var locale = process.env.LTBLOG_LANG || "ru";
+ var locale = 'en';//process.env.LTBLOG_LANG || "ru";
 
 module.exports.i18n = {
 

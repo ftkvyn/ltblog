@@ -79,11 +79,11 @@ $(function() {
 	    <input type="text" required class="form-control" name="title" id="title" value="<%= article.title || '' %>">
 	</div>
 	<div class="form-group">
-	    <label for="description">Description</label>
+	    <label for="description">Description (visible for users)</label>
 	    <textarea class="form-control" maxlength="255" required name="description" id="description"><%= article.description || '' %></textarea>
 	</div>
 	<div class="form-group">
-	    <label for="title">Meta keywords</label>
+	    <label for="title">Meta keywords (for google and other robots)</label>
 	    <input type="text" class="form-control" name="meta_keywords" id="meta_keywords" value="<%= article.meta_keywords || '' %>">
 	</div>
 	<div class="form-group">

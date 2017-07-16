@@ -84,7 +84,7 @@ module.exports = {
       	});
       },
 
-      editUser:function(req, res){
+      getUserData:function(req, res){
         
         var id = req.params.id;
         if(!id){
@@ -93,35 +93,29 @@ module.exports = {
         User.findOne({id:id}).exec(
           function(err,editUser){
             if(err){
+              console.error(err);
               return res.send({success:false, message:'Error occurred. 333'});
             }
             if(!editUser) {
               return res.send({success:false, message:'User not found.'});
             }
-            User.find()
-              .sort('createdAt DESC')
-              .exec(function(err, data){
-                if(err){
-                  console.log(err);
-                  return res.serverError();
-                }
-                return res.send({users: data, meta: null, success:true, editUser: editUser});
-            });
+            return res.send({success:true, editUser: editUser});
         });
       },
 
-    saveEditingUser:function(req, res){
+    saveUser:function(req, res){
 
-      console.log(req.body);
       var id = req.body.id;
       var login = req.body.login;
 
       User.findOne({id:id}).exec(
         function(err,user){
           if(err){
+            console.error(err);
             return res.send({success:false, message:'Error occurred. 333'});
           }
           if(!user) {
+            console.error(err);
             return res.send({success:false, message:'serverError.'});
           }
           delete req.body.password;

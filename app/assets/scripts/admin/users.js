@@ -40,7 +40,7 @@ $(".new-user-form").submit(function() {
 		alert('filled all fields');
 	}
 	else if(($("input").is("#EditUserId"))){
-		var posting = $.post("/admin/saveEditingUser", formData)
+		var posting = $.post("/api/saveUser", formData)
 		posting.fail(function (data){
 			alert(data.message);
 		});
@@ -52,7 +52,7 @@ $(".new-user-form").submit(function() {
 			alert("user's data successfully changed");
 		});
 	}else{
-		var posting = $.post("/admin/addUser", formData)
+		var posting = $.post("/api/addUser", formData)
 		posting.fail(function (data){
 			alert(data.message);
 		});
@@ -73,7 +73,7 @@ $(".edit-user-form").submit(function() {
 		id: $(this).children("#id").val(),
 	}; 
 
-	var get = $.get("/admin/editUser/" + userData.id)
+	var get = $.get("/api/getUserData/" + userData.id)
 	get.fail(function (data){
 		alert(data.message);
 	});

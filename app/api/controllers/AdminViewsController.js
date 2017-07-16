@@ -7,11 +7,11 @@
 
 module.exports = {
 	login: function(req,res){
-		return res.view('admin/login', {meta: null});
+		return res.view('admin/login');
 	},
 
 	main: function(req,res){
-		return res.view('admin/index', {meta: null, data: {isAdmin: req.session.user.isAdmin}});
+		return res.view('admin/index', { data: {isAdmin: req.session.user.isAdmin}});
 	},
 
 	users: function(req,res){
@@ -23,17 +23,17 @@ module.exports = {
 				return res.serverError();
 			}
 
-			return res.view('admin/users', {users: data, meta: null});
+			return res.view('admin/users', {users: data});
 		});		
 	},
 
 	tags: function(req,res){
-		return res.view('admin/tags', {meta: null});
+		return res.view('admin/tags');
 	},
 
 	themes: function(req,res){
 		Theme.find().exec(function(err, themes){
-			return res.view('admin/themes', {themes:themes, meta: null});
+			return res.view('admin/themes', {themes:themes});
 		});			
 	},
 
@@ -56,14 +56,14 @@ module.exports = {
 				delete data[i].body;
 			}
 			Theme.find().exec(function(err, themes){
-				return res.view('admin/articles', {articles: data, themes:themes, meta: null});
+				return res.view('admin/articles', {articles: data, themes:themes});
 			});
 		});	
 	},
 
 	newArticle: function(req,res){
 		Theme.find().exec(function(err, themes){
-			return res.view('admin/editArticle', {article: {}, themes:themes, meta: null});
+			return res.view('admin/editArticle', {article: {}, themes:themes});
 		});		
 	},
 
@@ -80,13 +80,13 @@ module.exports = {
       					return res.notFound();
       				}
       			}
-				return res.view('admin/editArticle', {article:data, themes:themes, meta: null});
+				return res.view('admin/editArticle', {article:data, themes:themes});
 			});			
 		});	
 	},
 
 	changePassword: function(req,res){
-		return res.view('admin/changePassword', {meta: null});
+		return res.view('admin/changePassword');
 	},
 };
 

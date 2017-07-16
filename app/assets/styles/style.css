@@ -98,6 +98,10 @@ header a:hover{
 }
 .articles-list{
 	padding-right: 30px;
+	margin-top: -20px;
+}
+.sidebar{
+	padding-top: 33px;
 }
 .theme-list .articles-list{
 	padding-right: 0;
@@ -259,13 +263,14 @@ header a:hover{
 	margin-bottom: 5px;
 	font-family: "Date";
 	font-size: 16px;
+	line-height: 1.45;
 }
 .sidenews .rel-pic {
 	float: left;
 	height: 120px;
     width: 120px;
 	margin-right: 20px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	border-radius: 60px;
 	overflow: hidden;
 	position: relative;
@@ -365,9 +370,18 @@ footer {
 	padding: 30px 0px 30px 0;
 	color: white;
 	background: #4c4c4c;
+	font-family: "Logo2";
+	font-size: 18px;
+	font-weight: bold;
 }
 footer .about-wrap {
 	text-align: right; 
+}
+footer .container{
+	padding-top: 0;
+}
+footer .sotial-icons{
+	filter: invert(100%);
 }
 .about-link,
 .about-link:hover {

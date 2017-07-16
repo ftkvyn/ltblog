@@ -5,6 +5,7 @@
 		<a href="/<%= article.theme.url %>/<%= article.id %>">
 			<h2 class="art-title"><%= article.title %></h2>
 		</a>
+		<% if(!article.theme.hide) { %>
 		<h3 class="art-theme">
 			<div class="back">
 				<a href="/<%= article.theme.url %>/">		
@@ -13,22 +14,26 @@
 			</div>
 		</h3>		
 		<hr class="separator" />
+		<% } %>
 		<a href="/<%= article.theme.url %>/<%= article.id %>">
 			<div class="img-container">
 				<img src="<%= article.image %>" class='img' alt="/" />
 			</div>
 			<p class="art-description"><%= article.description %></p>
 		</a>
+		
 		<h4 class="author-info">
-			<% if(!article.isRepost) { %>
-			<a href="/<%= article.author.url %>/">
-				<img class="author-img" src="<%= article.author.profilePicSmall %>" /> 
-				<span class="author-name"><%= article.author.name %></span> 
-			</a>
-			<% } else { %>
-			<img class="author-img" src="<%= article.originalAuthorImg %>" /> 
-			<span class="author-name"><%= article.originalAuthor %></span> 
-			<% }  %>
+			<% if(!article.author.hide) { %>
+				<% if(!article.isRepost) { %>
+				<a href="/<%= article.author.url %>/">
+					<img class="author-img" src="<%= article.author.profilePicSmall %>" /> 
+					<span class="author-name"><%= article.author.name %></span> 
+				</a>
+				<% } else { %>
+				<img class="author-img" src="<%= article.originalAuthorImg %>" /> 
+				<span class="author-name"><%= article.originalAuthor %></span> 
+				<% }  %>
+			<% } %>
 			<span class="art-date pull-right"><%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %></span>
 		</h4>			
 		

@@ -78,6 +78,9 @@ module.exports = {
 				var meta = {
 					title: data.title
 				};
+				for (var i = articles.length - 1; i >= 0; i--) {
+					articles[i].theme.hide = true;
+				}
 				return res.view('theme', {articles: articles, theme: data, author:null, meta: meta});
 			});
 		});		
@@ -101,6 +104,9 @@ module.exports = {
 				var meta = {
 					title: user.name
 				};
+				for (var i = articles.length - 1; i >= 0; i--) {
+					articles[i].author.hide = true;
+				}
 				return res.view('theme', {articles: articles, theme:null, author: user, meta: meta});
 			});
 		});		
@@ -148,7 +154,7 @@ module.exports = {
 			};
 			return res.view('article', {article:data, 
 				meta: meta,
-				data : {origin: process.env.LTBLOG_ORIGIN || 'http://ltblog-dev.herokuapp.com', isAuthor: isAuthor}});	
+				data : {origin: process.env.LTBLOG_ORIGIN, isAuthor: isAuthor}});	
 		});	
 	},
 	
@@ -164,7 +170,7 @@ module.exports = {
 	},
 
 	about: function(req,res){
-		return res.view('about', {meta: null});
+		return res.view('about');
 	},
 };
 

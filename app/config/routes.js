@@ -42,9 +42,9 @@ module.exports.routes = {
 
   '/admin/users': 'AdminViewsController.users',
 
-  '/admin/addUser': 'AdminActionsController.createUser',
+  '/api/addUser': 'AdminActionsController.createUser',
 
-  '/admin/deleteUser': 'AdminActionsController.deleteUser',
+  '/api/deleteUser': 'AdminActionsController.deleteUser',
 
   '/admin/tags': 'AdminViewsController.tags',
 
@@ -70,9 +70,9 @@ module.exports.routes = {
 
   '/api/changePasswords': 'AdminActionsController.changePasswords',
 
-  '/admin/editUser/:id': 'AdminActionsController.editUser',
+  '/api/getUserData/:id': 'AdminActionsController.getUserData',
 
-  '/admin/saveEditingUser': 'AdminActionsController.saveEditingUser',
+  '/api/saveUser': 'AdminActionsController.saveUser',
 
   '/about': 'ViewsController.about',
 

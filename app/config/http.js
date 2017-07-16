@@ -30,23 +30,33 @@ module.exports.http = {
   *                                                                          *
   ***************************************************************************/
 
-    // order: [
-    //   'startRequestTimer',
-    //   'cookieParser',
-    //   'session',
-    //   'myRequestLogger',
-    //   'bodyParser',
-    //   'handleBodyParserError',
-    //   'compress',
-    //   'methodOverride',
-    //   'poweredBy',
-    //   '$custom',
-    //   'router',
-    //   'www',
-    //   'favicon',
-    //   '404',
-    //   '500'
-    // ],
+    order: [
+      'startRequestTimer',
+      'cookieParser',
+      'session',
+      'myRequestLogger',
+      'bodyParser',
+      'handleBodyParserError',
+      'compress',
+      'methodOverride',
+      'poweredBy',
+      'globalLocals',
+      'router',
+      'www',
+      'favicon',
+      '404',
+      '500'
+    ],
+
+    globalLocals: function (req, res, next) {
+        res.locals({ 
+            origin: process.env.LTBLOG_ORIGIN,
+            path: req.path,
+            meta: null
+        });
+        next();
+    },
+
 
   /****************************************************************************
   *                                                                           *

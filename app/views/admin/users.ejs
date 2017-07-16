@@ -54,11 +54,11 @@
 				isAdmin=<%= user.isAdmin %>
 			</td>
 			<td>
-				<form class="edit-user-form" action='/admin/editUser/<%= user.id %>' method="get">
+				<form class="edit-user-form">
 					<input type="hidden" name="id" id="id" value="<%= user.id %>" />
 					<input  type="submit" class="btn btn-warning" value="Edit"/>
 				</form>
-				<form class="delete-user-form" action='/admin/deleteUser' method="post">
+				<form class="delete-user-form" action='/api/deleteUser' method="post">
 					<input type="hidden" name="id" value="<%= user.id %>" />
 					<input type="submit" class="btn btn-danger" value="Delete"/>
 				</form>
