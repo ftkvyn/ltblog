@@ -154,7 +154,7 @@ module.exports = {
 			};
 			return res.view('article', {article:data, 
 				meta: meta,
-				data : {origin: process.env.LTBLOG_ORIGIN, disqusId: process.env.LTBLOG_DISQUS_ID || 'the-living-thing-ru', isAuthor: isAuthor}});
+				data : {origin: process.env.LTBLOG_ORIGIN, disqusId: process.env.LTBLOG_ORIGIN || 'the-living-thing-ru', isAuthor: isAuthor}});
 		});	
 	},
 
