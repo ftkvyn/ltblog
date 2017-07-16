@@ -88,7 +88,7 @@ $(".edit-user-form").submit(function() {
 		$("h3").text("Edit user:" + " " + data.editUser.login);
 		$("#password").css("display", "none");
 		$('[for=password]').css("display", "none");
-		$('.new-user-form').prepend('<input type="text" id="EditUserId" value="">'); 
+		$('.new-user-form').prepend('<input type="hidden" id="EditUserId" value="">'); 
 		$("#EditUserId").attr("value", data.editUser.id); 
 		if (data.editUser.isAdmin) {
 			$("#isAdmin").attr("checked", "checked");
