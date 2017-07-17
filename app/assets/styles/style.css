@@ -26,7 +26,7 @@ header {
     position: relative;
 }
 header .back{
-	background-image: url(/images/header.png);
+	background-image: url(/images/header1.png);
     background-size: contain;
     background-repeat: repeat-x;
     width: 100%;
@@ -34,13 +34,13 @@ header .back{
     position: absolute;
     z-index: 10;
     pointer-events: none;
-    height: 65px;
+    height: 61px;
     top: 0;
 }
 header .dropdown{
 	background: white;
 	color: black;
-    padding: 50px 30px 20px 30px
+    padding: 50px 30px 5px 30px;
 }
 header .dropdown li a,
 header .dropdown li a:hover
@@ -53,6 +53,8 @@ header .dropdown li a:hover
 .container {
   max-width: 1200px; 
   padding-top: 40px;
+  position: relative;
+  z-index: 11;
 }
 .logo{
 	max-height: 100px;
@@ -91,10 +93,10 @@ header a:hover{
 .logo-txt-container{
 	text-align: center;
 }
-
 .main .container{
 	background: #ffffff;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
+    padding-top: 0px;
 }
 .articles-list{
 	padding-right: 30px;
@@ -149,10 +151,16 @@ header a:hover{
 	margin-right: 60px;
 	font-weight: 600;
 }
+.menu li:first-child { 
+	margin-left: 0px;
+}
+.menu li:last-child { 
+	margin-right: 0px;
+}
 .menu a {
 	text-transform: uppercase;
 }
-@media (max-width: 767px){
+/*@media (max-width: 767px){
 	.sotial-icons{
 		text-align: center;
 	}
@@ -161,7 +169,7 @@ header a:hover{
 		margin-top: 20px;
 		height: 50px;
 	}
-}
+}*/
 .content {
 	margin: 20px 0;
 }
@@ -496,3 +504,192 @@ footer .sotial-icons{
 	}
 }
 /* about finish*/
+@media (max-width: 1200px){
+
+	.content img.author-img {
+	    margin-right: 20px;
+	}
+	/* изменение первонач варианта НАЧАЛО */
+	.img-container {
+	    height: auto;
+	}
+	.img-container .img {
+	    position: static;
+	    transform: inherit;
+	    max-height: 330px;
+	} /* изменение первонач варианта КОНЕЦ */
+}
+
+@media (max-width: 992px){
+
+}
+@media (max-width: 992px) and (min-width: 768px){
+	.author-info { /* */ 
+	    clear: both;
+	}
+	.main-article { 
+    	padding-top: 25px;
+	}
+	.content img.author-img { 
+    	float: left;
+	}
+	.author-name { 
+    	display: block;
+	    margin-top: 5px;
+	    padding-top: 15px;
+	}
+	h4 span.art-date {  /* */
+		float:none !important;
+	    margin-top: 7px; 
+	    display: inline-block;
+	}
+	#relates {
+		padding-left: 0; 
+	}
+	.sidenews .rel-pic {
+	    height: 105px;
+	    width: 105px;
+	    margin-right: 10px;
+	    margin-bottom: 10px;
+	    border-radius: 53px;
+	}
+	.sidenews .rel-pic img {
+	    max-height: 105px;
+	}
+}
+@media (min-width: 768px){ 
+	content:last-child {
+    	margin-bottom: 0px;
+	}
+}
+@media (max-width: 767px){
+	header .container {
+	    padding-top: 20px;
+	}
+	header .dropdown {
+	    padding: 30px 30px 5px 30px;
+	}
+	.soc-icon {
+	    width: 14%;
+	    margin-top: 20px;
+	    height: 35px;
+	}
+	header .dropdown {
+	    background: white;
+	    color: black;
+	    padding: 30px 30px 0px 30px;
+	}
+
+	.menu li {
+    	margin-right: 30px;
+    	margin-left: 30px;
+	}
+	.articles-list {
+	    padding-right: 0px;
+	}
+	h2 {
+    	margin-top: 15px;
+	}
+	.img-container {
+	    height: auto;
+	}
+	/* уже нужно, я считаю */
+	/*.img-container .img {
+	    position: static;
+	    transform: inherit;
+	}
+	.sidebar {
+    	padding-top: 0px;
+	}*/
+	.sidebar {
+	    padding-top: 0px;
+	}
+	.copyright {
+		text-align: center;
+	}
+	footer .sotial-icons{
+		text-align: center;
+		margin-top: -25px; 
+    	margin-bottom: -10px; 
+    	padding-right: 0px; 
+	}
+	footer .about-wrap {
+    	text-align: center;
+	}
+}
+@media (max-width: 620px){
+	header .container {
+	    padding-top: 10px;
+	}
+	.logo {
+	    max-height: 80px;
+	    margin-left: 15px;
+	}
+	.logo-text, .logo-text:hover {
+	    letter-spacing: 0.07em;
+	    font-size: 35px;
+	    margin-top: 16px;
+	   
+	}
+	.soc-icon {
+	    width: 14%;
+	    margin-top: 20px;
+	    height: 35px;
+	}
+	.menu li {
+		font-size: 16px;
+	    margin-right: 0px;
+	    display: block;
+	    margin-left: 0px;
+	}
+	.menu li:first-child {
+	    margin-left: 30px;
+	}
+	.menu li:last-child {
+	    margin-right: 30px;
+	}
+	.menu li a{
+		font-size: 17px;
+	}
+	.author-info { /* */ 
+	    clear: both;
+	    margin: 0px 0 60px 0;
+	}
+	.main-article {
+    	padding-top: 0px;
+	}
+	.content img.author-img {
+    	float: left;
+	}
+	.author-name { 
+    	display: block;
+	    margin-top: 5px;
+	    padding-top: 15px;
+	}
+	h4 span.art-date {  /* */
+		float:none !important;
+	    margin-top: 7px; 
+	    display: inline-block;
+	}
+	.menu li {
+    	margin-right: 30px;
+    	margin-left: 30px;
+	}
+	.art-description {
+	    padding-bottom: 10px;
+	}
+	.sidenews {
+	    margin: 30px 0;
+	}
+	.copyright {
+		font-size: 16px;
+	}
+	footer .sotial-icons {
+	    margin-top: -20px;
+	}
+}
+@media (max-width: 500px) {
+	.logo {
+	    margin-left: 0;
+	}
+}
