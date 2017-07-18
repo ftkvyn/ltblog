@@ -26,11 +26,15 @@
 			<% if(!article.author.hide) { %>
 				<% if(!article.isRepost) { %>
 				<a href="/<%= article.author.url %>/">
-					<img class="author-img" src="<%= article.author.profilePicSmall %>" /> 
+					<div class="author-img rel-pic">
+						<img src="<%= article.author.profilePicSmall %>" /> 
+					</div>
 					<span class="author-name"><%= article.author.name %></span> 
 				</a>
 				<% } else { %>
-				<img class="author-img" src="<%= article.originalAuthorImg %>" /> 
+				<div class="author-img rel-pic">
+					<img class="author-img" src="<%= article.originalAuthorImg %>" /> 
+				</div>
 				<span class="author-name"><%= article.originalAuthor %></span> 
 				<% }  %>
 			<% } %>

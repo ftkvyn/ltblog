@@ -230,6 +230,7 @@ header a:hover{
 }
 .content .author-img img{
 	max-height: 80px;
+	width: initial;
 }
 .main-body{
 	font-size: 18px;
