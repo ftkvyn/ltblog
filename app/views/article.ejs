@@ -15,14 +15,18 @@
 			<h4 class="author-info">
 				<% if(!article.isRepost) { %>
 				<a href="/<%= article.author.url %>/">
-					<img class="author-img" src="<%= article.author.profilePicSmall %>" /> 
-					<span class="author-name"><%= article.author.name %></span> 
+					<div class="author-img rel-pic">
+						<img src="<%= article.author.profilePicSmall %>" /> 
+					</div>
+					<div class="author-name"><%= article.author.name %></div> 
 				</a>
 				<% } else { %>
-				<img class="author-img" src="<%= article.originalAuthorImg %>" /> 
-				<span class="author-name"><%= article.originalAuthor %></span> 
+				<div class="author-img rel-pic">
+					<img src="<%= article.originalAuthorImg %>" /> 
+				</div>
+				<div class="author-name"><%= article.originalAuthor %></div> 
 				<% }  %>
-				<span class="art-date pull-right"><%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %></span>
+				<div class="art-date pull-right"><%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %></div>
 			</h4>		
 
 			<p class="art-description"><%= article.description %></p>
@@ -53,7 +57,7 @@
 		
 		(function() {
 		var d = document, s = d.createElement('script');
-		s.src = 'https://the-living-thing-ru.disqus.com/embed.js';
+		s.src = 'https://<%- data.disqusId %>.disqus.com/embed.js';
 		s.setAttribute('data-timestamp', +new Date());
 		(d.head || d.body).appendChild(s);
 		})();

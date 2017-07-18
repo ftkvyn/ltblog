@@ -4,24 +4,20 @@
 
     <meta property="og:locale" content="<%= __('locale_full')%>" />
     <meta property="og:site_name" content='<%= __('The Living Thing') %>' />
-    <meta property="og:title" content='<%= locals.title || __('The Living Thing') %>' />
     
     <meta property="og:url" content='<%- origin + path %>' />
 
     <% if(meta){%>
-    <title><%= __('The Living Thing') %> - <%= meta.title %></title>
+    <title><%= meta.title %></title>
     
-    
-    
+    <meta property="og:title" content='<%= meta.title %>' />
+    <meta property="og:type" content="article">
     <meta property="og:description" content='<%- meta.description %>' />
     <meta property="og:image" content='<%- meta.image || ("/images/" + __("locale") + ".png") %>' />
     <!-- <meta property="og:image:secure_url" content='' /> -->
     <link rel="image_src" href="<%- meta.image || ("/images/" + __("locale") + ".png") %>" />
 
-    <meta name="twitter:card" content="summary_large_image"/> 
-    <meta name="twitter:site" content="@"/> 
-    <meta name="twitter:creator" content="@"/> 
-    <meta name="twitter:title" content="<%= __('The Living Thing') %> - <%= meta.title %>"> 
+    <meta name="twitter:title" content="<%= meta.title %>"> 
     <meta name="twitter:description" content="<%- meta.description %>"> 
     <meta name="twitter:image" content='<%- meta.image || ("/images/" + __("locale") + ".png") %>'>
     
@@ -29,6 +25,8 @@
 
     <%}else{%>
     <title><%= __('The Living Thing') %></title>
+    <meta property="og:title" content='<%= __('The Living Thing') %>' />
+    <meta property="og:type" content="website">
     <meta property="og:description" content='<%- __("_site_description") %>' />
     <meta property="og:image" content='<%- "/images/" + __("locale") + ".png" %>' />
     <meta name="twitter:title" content="<%= __('The Living Thing') %>"> 
@@ -36,6 +34,8 @@
     <meta name="twitter:description" content='<%- __("_site_description") %>'> 
     <%}%>
 
+    <meta name="twitter:card" content="summary_large_image"/> 
+    <meta name="twitter:site" content="@living_thing_me"/> 
     <link rel="canonical" href="<%- origin + path %>" />
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -79,9 +79,9 @@
 
                 <div class="col-md-3  col-sm-3 col-xs-12">
                   <div class="sotial-icons">
-                    <a class="soc-icon vk" href="#"></a>
-                    <a class="soc-icon fb" href="#"></a>
-                    <a class="soc-icon tg" href="#"></a>
+                    <a class="soc-icon vk" href="<%- __('__vk_link') %>"></a>
+                    <a class="soc-icon fb" href="<%- __('__fb_link') %>"></a>
+                    <a class="soc-icon tg" href="<%- __('__tg_link') %>"></a>
                   </div>
                 </div>
 
@@ -100,6 +100,7 @@
               <ul class="menu">
                 <li><a href = "/psychology/"><%= __('Psychology') %></a></li>
                 <li><a href = "/music/"><%= __('Music') %></a></li>
+                <li><a href = "/poetry/"><%= __('Poetry') %></a></li>                
                 <li><a href = "/science/"><%= __('Science') %></a></li>
                 <li><a class="about-link" href="/about"><%= __('About') %></a></li>
               </ul>
@@ -125,9 +126,9 @@
           </div>
           <div class="col-md-4  col-sm-4 col-xs-5 sotial-wrap">
             <div class="sotial-icons">
-              <a class="soc-icon vk" href="#"></a>
-              <a class="soc-icon fb" href="#"></a>
-              <a class="soc-icon tg" href="#"></a>
+              <a class="soc-icon vk" href="<%- __('__vk_link') %>"></a>
+              <a class="soc-icon fb" href="<%- __('__fb_link') %>"></a>
+              <a class="soc-icon tg" href="<%- __('__tg_link') %>"></a>
             </div>
           </div>
           <div class="col-md-4 col-xs-2 about-wrap">

@@ -36,18 +36,6 @@ function countReader(req, article){
 
 var mainMeta = null;
 
-function getMainMeta(req){
-	if(mainMeta){
-		return mainMeta;
-	}else{
-		mainMeta = {};
-		mainMeta.title = req.__('main__meta__title');
-		mainMeta.image = '';
-		mainMeta.description = req.__('main__meta__description');
-		return mainMeta;
-	}
-}
-
 module.exports = {
 	home: function(req,res){
 		req.setLocale("ru");
@@ -56,7 +44,7 @@ module.exports = {
 		.populate('theme')
 		.populate('author')
 		.exec(function(err, data){
-			return res.view('homepage', {articles: data, meta: getMainMeta(req)});
+			return res.view('homepage', {articles: data, meta: null});
 		});
 	},
 
