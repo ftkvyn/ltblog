@@ -95,8 +95,7 @@ header a:hover{
 }
 .main .container{
 	background: #ffffff;
-    /*margin-bottom: 20px;*/
-    padding-top: 40px;
+    padding-top: 55px;
 }
 .articles-list{
 	padding-right: 30px;
@@ -160,16 +159,7 @@ header a:hover{
 .menu a {
 	text-transform: uppercase;
 }
-/*@media (max-width: 767px){
-	.sotial-icons{
-		text-align: center;
-	}
-	.soc-icon{
-		width: 19%;
-		margin-top: 20px;
-		height: 50px;
-	}
-}*/
+
 .content {
 	margin: 20px 0;
 }
@@ -194,19 +184,25 @@ header a:hover{
 	display: inline;
 }
 .author-name{
-	font-family: "Date"
+	font-family: "Date";
+	display: inline;
+	float: left;
+	margin-top: 30px;
 }
 .art-date{
 	font-family: "Date";
 	color:#73ab6b;
 	font-weight: bold;
 	margin-top: 30px;
+	display: inline-block;
 }
 .art-description{
 	font-family: "Date";
     padding-bottom: 25px;
     border-bottom: 1px solid #e0e0e0;
     font-size: 16px;
+    clear: both;
+    padding-top: 20px;
 }
 .author-info a,
 .author-info a:hover,
@@ -224,11 +220,17 @@ header a:hover{
 .article-body .author-info{
 	padding-right: 30px;
 }
-.content img.author-img{
+.content .author-img{
 	height: 80px;
-	width:initial;
+	width: 80px;
 	border-radius: 80px;
 	margin-right: 40px;
+	display: inline-block;
+	float: left;
+}
+.content .author-img img{
+	max-height: 80px;
+	width: initial;
 }
 .main-body{
 	font-size: 18px;
@@ -276,6 +278,17 @@ header a:hover{
 	font-size: 16px;
 	line-height: 1.45;
 }
+
+.rel-pic {
+	overflow: hidden;
+	position: relative;
+}
+.rel-pic img{
+	position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .sidenews .rel-pic {
 	float: left;
 	height: 120px;
@@ -283,14 +296,9 @@ header a:hover{
 	margin-right: 20px;
 	margin-bottom: 10px;
 	border-radius: 60px;
-	overflow: hidden;
-	position: relative;
 }
 .sidenews .rel-pic img{
 	max-height: 120px;
-	position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
 }
 .article-author {
 	color: black;
@@ -406,7 +414,7 @@ footer .sotial-icons{
 	margin: 20px 0;
 }
 .author-info img {
-	width: 120px;
+	
 }
 .article-author {
 	color: black;
@@ -509,7 +517,7 @@ footer .sotial-icons{
 /* about finish*/
 @media (max-width: 1200px){
 
-	.content img.author-img {
+	.content .author-img {
 	    margin-right: 20px;
 	}
 	/* изменение первонач варианта НАЧАЛО */
@@ -533,7 +541,7 @@ footer .sotial-icons{
 	.main-article { 
     	padding-top: 25px;
 	}
-	.content img.author-img { 
+	.content .author-img { 
     	float: left;
 	}
 	.author-name { 
@@ -541,7 +549,7 @@ footer .sotial-icons{
 	    margin-top: 5px;
 	    padding-top: 15px;
 	}
-	h4 span.art-date {  /* */
+	.author-info .art-date {  /* */
 		float:none !important;
 	    margin-top: 7px; 
 	    display: inline-block;
@@ -658,7 +666,7 @@ footer .sotial-icons{
 	.main-article {
     	padding-top: 0px;
 	}
-	.content img.author-img {
+	.content .author-img {
     	float: left;
 	}
 	.author-name { 
@@ -666,7 +674,7 @@ footer .sotial-icons{
 	    margin-top: 5px;
 	    padding-top: 15px;
 	}
-	h4 span.art-date {  /* */
+	.author-info .art-date {  /* */
 		float:none !important;
 	    margin-top: 7px; 
 	    display: inline-block;

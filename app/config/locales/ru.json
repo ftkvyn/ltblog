@@ -3,6 +3,7 @@
 	"About": "О нас",
 	"Psychology":"Психология",
 	"Music":"Музыка",
+	"Poetry":"Поэзия",
 	"Science":"Наука",
 	"locale":"ru",
 	"locale_full":"ru_RU",
@@ -33,5 +34,9 @@
 
 	"Share":"Поделиться",
 
-	"_site_description":"Твой любимый сетевой журнал о Психологии, Науке, Искусстве и Музыке."
+	"_site_description":"Твой любимый сетевой журнал о Психологии, Науке, Искусстве и Музыке.",
+
+	"__vk_link":"https://vk.com/living_thing_me",
+	"__fb_link":"https://www.facebook.com/%D0%96%D0%B8%D0%B2%D0%B0%D1%8F-%D0%92%D0%B5%D1%89%D1%8C-300925093703559/",
+	"__tg_link":"https://t.me/living_thing_me"
 }

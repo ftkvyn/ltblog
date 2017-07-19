@@ -3,6 +3,7 @@
 	"About": "About",
 	"Psychology":"Psychology",
 	"Music":"Music",
+	"Poetry":"Poetry",
 	"Science":"Science",
 	"locale":"en",
 	"locale_full":"en_EN",
@@ -33,5 +34,9 @@
 
 	"Share":"Share",
 
-	"_site_description":"Your favourite web journal about Psychology, Science, Art and Music."
+	"_site_description":"Your favourite web journal about Psychology, Science, Art and Music.",
+
+	"__vk_link":"https://vk.com/living_thing_me",
+	"__fb_link":"https://www.facebook.com/The.Living.Thing.net",
+	"__tg_link":"https://t.me/the_living_thing"
 }
