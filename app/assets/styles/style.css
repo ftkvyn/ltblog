@@ -578,7 +578,7 @@ footer .sotial-icons{
 	.soc-icon {
 	    width: 14%;
 	    margin-top: 20px;
-	    height: 35px;
+	    height: 25px;
 	}
 	header .dropdown {
 	    background: white;
@@ -609,7 +609,7 @@ footer .sotial-icons{
 		text-align: center;
 	}
 	footer .sotial-icons{
-		margin-top: -25px; 
+		margin-top: -20px; 
     	margin-bottom: -10px; 
     	padding-right: 0px; 
 	}
@@ -631,11 +631,11 @@ footer .sotial-icons{
 	    margin-top: 16px;
 	   
 	}
-	.soc-icon {
+	/*.soc-icon {
 	    width: 14%;
 	    margin-top: 20px;
 	    height: 35px;
-	}
+	}*/
 	.menu li {
 		font-size: 16px;
 	    margin-right: 0px;
@@ -714,11 +714,11 @@ footer .sotial-icons{
 	    margin-top: -0px;
 	}
 	.sotial-wrap {
-		width: 70%;
+		width: 100%;
 	}
 	footer .about-wrap {
 	    font-size: 18px;
-	    width: 30%;
+	    width: 100%;
 	    margin-top: 20px;
 	}
 }
