@@ -28,9 +28,9 @@
     <meta property="og:title" content='<%= __('The Living Thing') %>' />
     <meta property="og:type" content="website">
     <meta property="og:description" content='<%- __("_site_description") %>' />
-    <meta property="og:image" content='<%- "/images/" + __("locale") + ".png" %>' />
+    <meta property="og:image" content='<%- origin %><%- "/images/" + __("locale") + ".png" %>' />
     <meta name="twitter:title" content="<%= __('The Living Thing') %>"> 
-    <meta name="twitter:image" content='<%- "/images/" + __("locale") + ".png" %>'>
+    <meta name="twitter:image" content='<%- origin %><%- "/images/" + __("locale") + ".png" %>'>
     <meta name="twitter:description" content='<%- __("_site_description") %>'> 
     <%}%>
 
@@ -126,8 +126,8 @@
           </div>
           <div class="col-md-4  col-sm-4 col-xs-5 sotial-wrap">
             <div class="sotial-icons">
-              <a class="soc-icon vk" href="<%- __('__vk_link') %>"></a>
-              <a class="soc-icon fb" href="<%- __('__fb_link') %>"></a>
+              <a class="soc-icon vk" onclick="Share.vkontakte()"></a>   <!-- href="<%- __('__vk_link') %>"-->
+              <a class="soc-icon fb" onclick="Share.facebook()"></a> <!-- href="<%- __('__fb_link') %>"-->
               <a class="soc-icon tg" href="<%- __('__tg_link') %>"></a>
             </div>
           </div>
@@ -139,3 +139,5 @@
     </footer>
   </body>
 </html>
+
+<a href="https://vk.com/share.php?url=http://mysite.com" target="_blank">Поделиться ВКонтакте</a>
