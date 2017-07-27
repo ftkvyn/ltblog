@@ -38,17 +38,30 @@ var mainMeta = null;
 
 module.exports = {
 	home: function(req,res){
+		var totalpages = 20;
+		var page;
+		if (req.url != "/") {
+			var a = req.url;
+			var b = a.indexOf("?page=");
+			var c = a.substr(b+6);
+			var d = +c; 
+			if (d <= totalpages && d > 0){
+				page = d;
+			} else {
+				return res.badRequest('Bad request.');
+			}
+		};
 		req.setLocale("ru");
 		Article.find({limit: 10, where:{isPublished: true}})
 		.sort('createdAt DESC')
 		.populate('theme')
 		.populate('author')
 		.exec(function(err, data){
-			return res.view('homepage', {articles: data, meta: null});
+			return res.view('homepage', {articles: data, meta: null, page: (page || 1), totalPages: 20}); /*pagination*/
 		});
 	},
 
-	theme: function(req, res, next){
+	theme: function(req, res, next){ /* вооооооооооооооот это фигачим */
 		if (req.path.match(/\..*/g) || req.path.match(/^\/api\/.*$/)) {
 	        return next();
 	    }
@@ -69,12 +82,12 @@ module.exports = {
 				for (var i = articles.length - 1; i >= 0; i--) {
 					articles[i].theme.hide = true;
 				}
-				return res.view('theme', {articles: articles, theme: data, author:null, meta: meta});
+				return res.view('theme', {articles: articles, theme: data, author:null, meta: meta, page:  6, totalPages: 19});
 			});
 		});		
 	},	
 
-	author: function(req, res, next){
+	author: function(req, res, next){ /* вооооооооооооооот это фигачим */
 		if (req.path.match(/\..*/g) || req.path.match(/^\/api\/.*$/)) {
 	        return next();
 	    }
@@ -95,7 +108,7 @@ module.exports = {
 				for (var i = articles.length - 1; i >= 0; i--) {
 					articles[i].author.hide = true;
 				}
-				return res.view('theme', {articles: articles, theme:null, author: user, meta: meta});
+				return res.view('theme', {articles: articles, theme:null, author: user, meta: meta, page:  4, totalPages: 15});
 			});
 		});		
 	},	
@@ -160,5 +173,6 @@ module.exports = {
 	about: function(req,res){
 		return res.view('about');
 	},
+
 };
 

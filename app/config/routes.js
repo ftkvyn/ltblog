@@ -31,7 +31,7 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-
+  
   '/': 'ViewsController.home',
 
   /*'/article/:id': 'ViewsController.article',*/

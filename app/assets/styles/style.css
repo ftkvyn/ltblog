@@ -393,6 +393,13 @@ footer {
 	font-size: 18px;
 	font-weight: bold;
 }
+ /* pagination */
+ .pagination li {
+ 	font-size: 15px;
+ }
+.pagination .active {
+	font-weight: bold;
+}
 footer .about-wrap {
 	text-align: right; 
 }

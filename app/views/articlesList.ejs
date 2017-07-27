@@ -39,8 +39,32 @@
 				<% }  %>
 			<% } %>
 			<span class="art-date pull-right"><%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %></span>
-		</h4>			
-		
+		</h4>
 	</div>
 	<%}%>
+	<ul class="pagination">
+	<% 
+	var downLimit;
+	var topLimit;
+	if (page<=6) {
+		downLimit = 1;
+	};
+	if (totalPages-page<=6) {
+		topLimit = totalPages+1;
+	}
+	%>
+	<% for(var k = (downLimit || page - 6) ; k < (topLimit || page + 6); k++){ %>
+		<li <% if(k == page) { %> class="active" 
+		<% } %>>
+			<% if( typeof(theme) != 'undefined') { %>
+			<a href="<%= "/" + theme.url + "?page=" + k %>"> <%= k %> </a>
+			<% } else if( typeof(author) != 'undefined') { %>
+			<a href="<%= "/" + author.url + "?page=" + k %>"> <%= k %> </a>
+			<%	} else { %>
+			<a href="<%= "/" + "?page=" + k %>"> <%= k %> </a>
+			<% } %>
+		</li>
+	<% } %>
+	</ul>
 </div>
+

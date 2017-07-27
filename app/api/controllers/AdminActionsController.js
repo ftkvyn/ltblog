@@ -88,13 +88,13 @@ module.exports = {
         
         var id = req.params.id;
         if(!id){
-            return res.send({success:false, message:'Error occurred. 123'});
+            return res.send({success:false, message:'Error occurred.'});
         }
         User.findOne({id:id}).exec(
           function(err,editUser){
             if(err){
               console.error(err);
-              return res.send({success:false, message:'Error occurred. 333'});
+              return res.send({success:false, message:'Error occurred.'});
             }
             if(!editUser) {
               return res.send({success:false, message:'User not found.'});
@@ -112,7 +112,7 @@ module.exports = {
         function(err,user){
           if(err){
             console.error(err);
-            return res.send({success:false, message:'Error occurred. 333'});
+            return res.send({success:false, message:'Error occurred.'});
           }
           if(!user) {
             console.error(err);
