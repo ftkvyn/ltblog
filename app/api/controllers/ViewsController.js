@@ -66,6 +66,21 @@ module.exports = {
 	        return next();
 	    }
 	    //console.log(req.query["page"]);
+	    /*console.log((req.url).slice(1, -1));*/
+	    var z = (req.url).slice(1, -1)
+	    var totalpages = 15;
+		var page;
+	    if (z != req.params.theme) {
+	    	var a = req.url;
+			var b = a.indexOf("?page=");
+			var c = a.substr(b+6);
+			var d = +c; 
+			if (d <= totalpages && d > 0){
+				page = d;
+			} else {
+				return res.badRequest('Bad request.');
+			}
+	    }
 		Theme.findOne({url : req.params.theme})
 		.exec(function(err, data){
 			if(!data){
@@ -82,16 +97,30 @@ module.exports = {
 				for (var i = articles.length - 1; i >= 0; i--) {
 					articles[i].theme.hide = true;
 				}
-				return res.view('theme', {articles: articles, theme: data, author:null, meta: meta, page:  6, totalPages: 19});
+				return res.view('theme', {articles: articles, theme: data, author:null, meta: meta, page:  (page || 1), totalPages: 15});
 			});
 		});		
 	},	
 
-	author: function(req, res, next){ /* вооооооооооооооот это фигачим */
+	author: function(req, res, next){
 		if (req.path.match(/\..*/g) || req.path.match(/^\/api\/.*$/)) {
 	        return next();
 	    }
 	    //console.log(req.query["page"]);
+	    var z = (req.url).slice(1, -1)
+	    var totalpages = 15;
+		var page;
+	    if (z != req.params.authorUrl) {
+	    	var a = req.url;
+			var b = a.indexOf("?page=");
+			var c = a.substr(b+6);
+			var d = +c; 
+			if (d <= totalpages && d > 0){
+				page = d;
+			} else {
+				return res.badRequest('Bad request.');
+			}
+	    }
 		User.findOne({url : req.params.authorUrl})
 		.exec(function(err, user){
 			if(!user){
@@ -108,7 +137,7 @@ module.exports = {
 				for (var i = articles.length - 1; i >= 0; i--) {
 					articles[i].author.hide = true;
 				}
-				return res.view('theme', {articles: articles, theme:null, author: user, meta: meta, page:  4, totalPages: 15});
+				return res.view('theme', {articles: articles, theme:null, author: user, meta: meta, page:  (page || 1), totalPages: 15});
 			});
 		});		
 	},	

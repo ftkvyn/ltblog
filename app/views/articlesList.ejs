@@ -56,9 +56,9 @@
 	<% for(var k = (downLimit || page - 6) ; k < (topLimit || page + 6); k++){ %>
 		<li <% if(k == page) { %> class="active" 
 		<% } %>>
-			<% if( typeof(theme) != 'undefined') { %>
+			<% if( typeof(theme) != 'undefined' && theme != null) { %>
 			<a href="<%= "/" + theme.url + "?page=" + k %>"> <%= k %> </a>
-			<% } else if( typeof(author) != 'undefined') { %>
+			<% } else if( typeof(author) != 'undefined' && author != null) { %>
 			<a href="<%= "/" + author.url + "?page=" + k %>"> <%= k %> </a>
 			<%	} else { %>
 			<a href="<%= "/" + "?page=" + k %>"> <%= k %> </a>
