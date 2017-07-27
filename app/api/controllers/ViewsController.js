@@ -38,15 +38,15 @@ var mainMeta = null;
 
 module.exports = {
 	home: function(req,res){
+		/*console.log(req.query);
+		console.log(+req.query.page);
+		console.log(typeof(+req.query.page));*/
 		var totalpages = 20;
 		var page;
-		if (req.url != "/") {
-			var a = req.url;
-			var b = a.indexOf("?page=");
-			var c = a.substr(b+6);
-			var d = +c; 
-			if (d <= totalpages && d > 0){
-				page = d;
+		if (typeof(req.query.page) != 'undefined') {
+			var a = +req.query.page;
+			if (a <= totalpages && a > 0){
+				page = a;
 			} else {
 				return res.badRequest('Bad request.');
 			}
@@ -61,26 +61,21 @@ module.exports = {
 		});
 	},
 
-	theme: function(req, res, next){ /* вооооооооооооооот это фигачим */
+	theme: function(req, res, next){ 
 		if (req.path.match(/\..*/g) || req.path.match(/^\/api\/.*$/)) {
 	        return next();
 	    }
 	    //console.log(req.query["page"]);
-	    /*console.log((req.url).slice(1, -1));*/
-	    var z = (req.url).slice(1, -1)
 	    var totalpages = 15;
 		var page;
-	    if (z != req.params.theme) {
-	    	var a = req.url;
-			var b = a.indexOf("?page=");
-			var c = a.substr(b+6);
-			var d = +c; 
-			if (d <= totalpages && d > 0){
-				page = d;
+	    if (typeof(req.query.page) != 'undefined') {
+			var a = +req.query.page;
+			if (a <= totalpages && a > 0){
+				page = a;
 			} else {
 				return res.badRequest('Bad request.');
 			}
-	    }
+		};
 		Theme.findOne({url : req.params.theme})
 		.exec(function(err, data){
 			if(!data){
@@ -107,20 +102,16 @@ module.exports = {
 	        return next();
 	    }
 	    //console.log(req.query["page"]);
-	    var z = (req.url).slice(1, -1)
 	    var totalpages = 15;
 		var page;
-	    if (z != req.params.authorUrl) {
-	    	var a = req.url;
-			var b = a.indexOf("?page=");
-			var c = a.substr(b+6);
-			var d = +c; 
-			if (d <= totalpages && d > 0){
-				page = d;
+	    if (typeof(req.query.page) != 'undefined') {
+			var a = +req.query.page;
+			if (a <= totalpages && a > 0){
+				page = a;
 			} else {
 				return res.badRequest('Bad request.');
 			}
-	    }
+		};
 		User.findOne({url : req.params.authorUrl})
 		.exec(function(err, user){
 			if(!user){
