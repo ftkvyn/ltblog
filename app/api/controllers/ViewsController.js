@@ -38,26 +38,23 @@ var mainMeta = null;
 
 module.exports = {
 	home: function(req,res){
-		/*console.log(req.query);
-		console.log(+req.query.page);
-		console.log(typeof(+req.query.page));*/
 		var totalpages = 20;
-		var page;
-		if (typeof(req.query.page) != 'undefined') {
+		var page = 1;
+		if (req.query.page) {
 			var a = +req.query.page;
 			if (a <= totalpages && a > 0){
 				page = a;
 			} else {
 				return res.badRequest('Bad request.');
 			}
-		};
+		}
 		req.setLocale("ru");
 		Article.find({limit: 10, where:{isPublished: true}})
 		.sort('createdAt DESC')
 		.populate('theme')
 		.populate('author')
 		.exec(function(err, data){
-			return res.view('homepage', {articles: data, meta: null, page: (page || 1), totalPages: 20}); /*pagination*/
+			return res.view('homepage', {articles: data, meta: null, page: page, totalPages: totalpages, theme: null, author: null});
 		});
 	},
 
