@@ -1,0 +1,65 @@
+<% if (totalPages > 1) { %>
+<div class="pagination-container">
+	<ul class="pagination">
+		<% 
+		function getPageLink(page, base, isActive, linkClass){
+			var link = '/';
+			if(base){
+				link += base.url;
+			}
+
+			link += '?page=' + page;
+			var activeClass = '';
+			if(isActive){
+				activeClass = 'active';
+			}
+
+			linkClass = linkClass || '';
+
+			var aTag = '<a href="' + link + '">' + page + '</a>';
+			var liTag = '<li class="' + activeClass + ' ' + linkClass + '">' + aTag + '</li>';
+
+			return liTag;
+		}
+
+		var showPages = 3;
+		var downLimit;
+		var topLimit;
+		if (page<=3) {
+			downLimit = 1;
+		};
+		if (totalPages-page<=showPages) {
+			topLimit = totalPages+1;
+		}
+		%>
+		<% if (page>showPages) { %>
+			<%- getPageLink(1, author || theme, false, 'first-page') %>
+		<% } %>
+		
+		<% if (page != 1) { %>
+			<%- getPageLink(page-1, author || theme, false, 'prev-page') %>		
+		<% } %>
+
+		<% if (page>showPages) { %>
+		<li><span>...</span></li>
+		<% } %>
+
+		<% for(var k = (downLimit || page - showPages) ; k < (topLimit || page + showPages + 1); k++){ %>
+			<%- getPageLink(k, author || theme, k == page) %>		
+		<% } %>
+
+		<% if (totalPages-page>showPages) { %>
+		<li><span>...</span></li>
+		<% } %>
+
+		<% if (page != totalPages) { %>
+			<%- getPageLink(page+1, author || theme, false, 'next-page') %>		
+		<% } %>
+
+		<% if (totalPages-page>showPages) { %>
+			<%- getPageLink(totalPages, author || theme, false, 'last-page') %>		
+		<% } %>
+
+	</ul>
+</div>
+<% } %>

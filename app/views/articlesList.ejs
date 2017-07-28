@@ -41,90 +41,9 @@
 			<span class="art-date pull-right"><%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %></span>
 		</h4>
 	</div>
-	<%}%>
-	<ul class="pagination">
-	<% 
-	function getPagingLink(thisPage) {
-			
-	}
-	var downLimit;
-	var topLimit;
-	if (page<=6) {
-		downLimit = 1;
-	};
-	if (totalPages-page<=6) {
-		topLimit = totalPages+1;
-	}
-	%>
-	<% if (page>6) { %>
-	<li> 
-		<% if( typeof(theme) != 'undefined' && theme != null) { %>
-			<a href="<%= "/" + theme.url + "?page=" + 1 %>"> <%= 1 %> </a>
-			<% } else if( typeof(author) != 'undefined' && author != null) { %>
-			<a href="<%= "/" + author.url + "?page=" + 1 %>"> <%= 1 %> </a>
-			<%	} else { %>
-			<a href="<%= "/" + "?page=" + 1 %>"> <%= 1 %> </a>
-		<% } %>
-	</li>
-	<% } %>
+	<%}%>	
+
+	<%- include pagination.ejs %>
 	
-	<% if (page != 1) { %>
-	<li>
-		<% if( typeof(theme) != 'undefined' && theme != null) { %>
-			<a href="<%= "/" + theme.url + "?page=" + (page-1) %>"> Prev </a>
-			<% } else if( typeof(author) != 'undefined' && author != null) { %>
-			<a href="<%= "/" + author.url + "?page=" + (page-1) %>"> Prev </a>
-			<%	} else { %>
-			<a href="<%= "/" + "?page=" + (page-1) %>"> Prev </a>
-		<% } %>
-	</li>
-	<% } %>
-
-	<% if (page>6) { %>
-	<li><span>...</span></li>
-	<% } %>
-
-	<% for(var k = (downLimit || page - 6) ; k < (topLimit || page + 6); k++){ %>
-		<li <% if(k == page) { %> class="active" 
-		<% } %>>
-			<% if( typeof(theme) != 'undefined' && theme != null) { %>
-			<a href="<%= "/" + theme.url + "?page=" + k %>"> <%= k %> </a>
-			<% } else if( typeof(author) != 'undefined' && author != null) { %>
-			<a href="<%= "/" + author.url + "?page=" + k %>"> <%= k %> </a>
-			<%	} else { %>
-			<a href="<%= "/" + "?page=" + k %>"> <%= k %> </a>
-			<% } %>
-		</li>
-	<% } %>
-
-	<% if (totalPages-page>6) { %>
-	<li><span>...</span></li>
-	<% } %>
-
-	<% if (page != totalPages) { %>
-	<li>
-		<% if( typeof(theme) != 'undefined' && theme != null) { %>
-			<a href="<%= "/" + theme.url + "?page=" + (page+1) %>"> Next </a>
-			<% } else if( typeof(author) != 'undefined' && author != null) { %>
-			<a href="<%= "/" + author.url + "?page=" + (page+1) %>"> Next </a>
-			<%	} else { %>
-			<a href="<%= "/" + "?page=" + (page+1) %>"> Next </a>
-		<% } %>
-	</li>
-	<% } %>
-
-	<% if (totalPages-page>6) { %>
-	<li> 
-		<% if( typeof(theme) != 'undefined' && theme != null) { %>
-			<a href="<%= "/" + theme.url + "?page=" + totalPages %>"> <%= totalPages %> </a>
-			<% } else if( typeof(author) != 'undefined' && author != null) { %>
-			<a href="<%= "/" + author.url + "?page=" + totalPages %>"> <%= totalPages %> </a>
-			<%	} else { %>
-			<a href="<%= "/" + "?page=" + totalPages %>"> <%= totalPages %> </a>
-		<% } %>
-	</li>
-	<% } %>
-
-	</ul>
 </div>
 

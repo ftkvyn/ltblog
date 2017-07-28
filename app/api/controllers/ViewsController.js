@@ -34,66 +34,50 @@ function countReader(req, article){
 
 }
 
-var mainMeta = null;
+var PAGE_SIZE = 10;
 
 module.exports = {
 	home: function(req,res){
-		/*console.log(req.query);
-		console.log(+req.query.page);
-		console.log(typeof(+req.query.page));*/
-		var totalpages = 20;
-		var page;
-		if (typeof(req.query.page) != 'undefined') {
-			var a = +req.query.page;
-			if (a <= totalpages && a > 0){
-				page = a;
-			} else {
-				return res.badRequest('Bad request.');
-			}
-		};
-		req.setLocale("ru");
-		Article.find({limit: 10, where:{isPublished: true}})
-		.sort('createdAt DESC')
-		.populate('theme')
-		.populate('author')
-		.exec(function(err, data){
-			return res.view('homepage', {articles: data, meta: null, page: (page || 1), totalPages: 20}); /*pagination*/
-		});
+		var page = +req.query.page || 1;
+		
+		articlesLoader.loadArticlesPage({isPublished: true}, {page : page, pageSize: PAGE_SIZE})
+		.then(function(data){
+			return res.view('homepage', {articles: data.articles, meta: null, page: page, totalPages: data.totalPages, theme: null, author: null});
+		})
+		.catch(function (err) {
+	        console.error(err);
+	        return res.serverError();
+	    })
+	    .done();	
 	},
 
 	theme: function(req, res, next){ 
 		if (req.path.match(/\..*/g) || req.path.match(/^\/api\/.*$/)) {
 	        return next();
 	    }
-	    //console.log(req.query["page"]);
-	    var totalpages = 15;
-		var page;
-	    if (typeof(req.query.page) != 'undefined') {
-			var a = +req.query.page;
-			if (a <= totalpages && a > 0){
-				page = a;
-			} else {
-				return res.badRequest('Bad request.');
-			}
-		};
+	    var page = +req.query.page || 1;
+
 		Theme.findOne({url : req.params.theme})
-		.exec(function(err, data){
-			if(!data){
+		.exec(function(err, theme){
+			if(!theme){
       			return next();
       		}
-			Article.find({where: {theme: data.id, isPublished: true} ,limit: 10})
-			.sort('createdAt DESC')
-			.populate('theme')
-			.populate('author')
-			.exec(function(err, articles){
+
+      		articlesLoader.loadArticlesPage({theme: theme.id, isPublished: true}, {page : page, pageSize: PAGE_SIZE})
+			.then(function(data){
 				var meta = {
-					title: data.title
+					title: theme.title
 				};
-				for (var i = articles.length - 1; i >= 0; i--) {
-					articles[i].theme.hide = true;
+				for (var i = data.articles.length - 1; i >= 0; i--) {
+					data.articles[i].theme.hide = true;
 				}
-				return res.view('theme', {articles: articles, theme: data, author:null, meta: meta, page:  (page || 1), totalPages: 15});
-			});
+				return res.view('theme', {articles: data.articles, meta: meta, page: page, totalPages: data.totalPages, theme: theme, author: null});
+			})
+			.catch(function (err) {
+		        console.error(err);
+		        return res.serverError();
+		    })
+		    .done();
 		});		
 	},	
 
@@ -101,35 +85,29 @@ module.exports = {
 		if (req.path.match(/\..*/g) || req.path.match(/^\/api\/.*$/)) {
 	        return next();
 	    }
-	    //console.log(req.query["page"]);
-	    var totalpages = 15;
-		var page;
-	    if (typeof(req.query.page) != 'undefined') {
-			var a = +req.query.page;
-			if (a <= totalpages && a > 0){
-				page = a;
-			} else {
-				return res.badRequest('Bad request.');
-			}
-		};
+	    var page = +req.query.page || 1;
+
 		User.findOne({url : req.params.authorUrl})
 		.exec(function(err, user){
 			if(!user){
       			return next();
       		}
-			Article.find({where: {author: user.id, isPublished: true} ,limit: 10})
-			.sort('createdAt DESC')
-			.populate('theme')
-			.populate('author')
-			.exec(function(err, articles){
+
+      		articlesLoader.loadArticlesPage({author: user.id, isPublished: true}, {page : page, pageSize: PAGE_SIZE})
+			.then(function(data){
 				var meta = {
 					title: user.name
 				};
-				for (var i = articles.length - 1; i >= 0; i--) {
-					articles[i].author.hide = true;
+				for (var i = data.articles.length - 1; i >= 0; i--) {
+					data.articles[i].author.hide = true;
 				}
-				return res.view('theme', {articles: articles, theme:null, author: user, meta: meta, page:  (page || 1), totalPages: 15});
-			});
+				return res.view('theme', {articles: data.articles, meta: meta, page: page, totalPages: data.totalPages, theme: null, author: user});
+			})
+			.catch(function (err) {
+		        console.error(err);
+		        return res.serverError();
+		    })
+		    .done();
 		});		
 	},	
 

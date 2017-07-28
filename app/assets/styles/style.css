@@ -505,6 +505,69 @@ footer .sotial-icons{
     top: 50%;
     transform: translateY(-50%);
 }
+.pagination-container{
+	width: 100%;
+	text-align: center;
+}
+
+.pagination-container .pagination > li > a, 
+.pagination-container .pagination > li > span{
+	border:none;
+	color: black;
+	font-family: "Date";
+	font-size: 18px;
+    margin-left: 7px;
+    margin-right: 7px;
+	
+}
+.pagination-container .pagination > .active > a, 
+.pagination-container .pagination > .active > span, 
+.pagination-container .pagination > .active > a:hover, 
+.pagination-container .pagination > .active > span:hover, 
+.pagination-container .pagination > .active > a:focus, 
+.pagination-container .pagination > .active > span:focus{
+	font-weight: bold;
+	background-color: white;
+	color: #73ab6b;
+    font-size: 24px;
+    padding-top: 0px;
+}
+
+.pagination-container .pagination > li > span:hover, 
+.pagination-container .pagination > li > span:focus,
+.pagination-container .pagination > li > a:hover, 
+.pagination-container .pagination > li > a:focus{
+	background-color: white;	
+}
+
+.pagination-container .pagination .first-page a,
+.pagination-container .pagination .prev-page a,
+.pagination-container .pagination .next-page a,
+.pagination-container .pagination .last-page a{
+	font-size: 0;
+	height: 37px;
+	width: 35px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	
+}
+
+.pagination-container .pagination .first-page a{
+	background-image: url(/images/last.png);
+	transform: scaleX(-1);
+}
+.pagination-container .pagination .prev-page a{
+	background-image: url(/images/next.png);
+	transform: scaleX(-1);
+}
+.pagination-container .pagination .next-page a{
+	background-image: url(/images/next.png);
+}
+.pagination-container .pagination .last-page a{
+	background-image: url(/images/last.png);
+}
+
 .theme-link a,
 .theme-link a:hover{
 	color: black;
