@@ -126,6 +126,7 @@ header a:hover{
 	background-size: contain;
 	background-position-x: center;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 .soc-icon.vk{
 	background-image: url(/images/vk.png);
@@ -189,6 +190,11 @@ header a:hover{
 	float: left;
 	margin-top: 30px;
 }
+.original-url{
+    display: block;
+    font-family: Date;
+    font-size: 18px;
+}
 .art-date{
 	font-family: "Date";
 	color:#73ab6b;
@@ -213,6 +219,7 @@ header a:hover{
 }
 .author-info{
 	margin-top: 20px;
+	overflow: hidden;
 }
 .article-body{
 	padding-right: 30px;
