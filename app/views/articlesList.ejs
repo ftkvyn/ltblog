@@ -55,14 +55,29 @@
 	%>
 	<% if (page>6) { %>
 	<li> 
-	<% if( typeof(theme) != 'undefined' && theme != null) { %>
-		<a href="<%= "/" + theme.url + "?page=" + 1 %>"> <%= 1 %> </a>
-		<% } else if( typeof(author) != 'undefined' && author != null) { %>
-		<a href="<%= "/" + author.url + "?page=" + 1 %>"> <%= 1 %> </a>
-		<%	} else { %>
-		<a href="<%= "/" + "?page=" + 1 %>"> <%= 1 %> </a>
-	<% } %>
+		<% if( typeof(theme) != 'undefined' && theme != null) { %>
+			<a href="<%= "/" + theme.url + "?page=" + 1 %>"> <%= 1 %> </a>
+			<% } else if( typeof(author) != 'undefined' && author != null) { %>
+			<a href="<%= "/" + author.url + "?page=" + 1 %>"> <%= 1 %> </a>
+			<%	} else { %>
+			<a href="<%= "/" + "?page=" + 1 %>"> <%= 1 %> </a>
+		<% } %>
 	</li>
+	<% } %>
+	
+	<% if (page != 1) { %>
+	<li>
+		<% if( typeof(theme) != 'undefined' && theme != null) { %>
+			<a href="<%= "/" + theme.url + "?page=" + (page-1) %>"> Prev </a>
+			<% } else if( typeof(author) != 'undefined' && author != null) { %>
+			<a href="<%= "/" + author.url + "?page=" + (page-1) %>"> Prev </a>
+			<%	} else { %>
+			<a href="<%= "/" + "?page=" + (page-1) %>"> Prev </a>
+		<% } %>
+	</li>
+	<% } %>
+
+	<% if (page>6) { %>
 	<li><span>...</span></li>
 	<% } %>
 
@@ -81,16 +96,32 @@
 
 	<% if (totalPages-page>6) { %>
 	<li><span>...</span></li>
-	<li> 
-	<% if( typeof(theme) != 'undefined' && theme != null) { %>
-		<a href="<%= "/" + theme.url + "?page=" + totalPages %>"> <%= totalPages %> </a>
-		<% } else if( typeof(author) != 'undefined' && author != null) { %>
-		<a href="<%= "/" + author.url + "?page=" + totalPages %>"> <%= totalPages %> </a>
-		<%	} else { %>
-		<a href="<%= "/" + "?page=" + totalPages %>"> <%= totalPages %> </a>
 	<% } %>
+
+	<% if (page != totalPages) { %>
+	<li>
+		<% if( typeof(theme) != 'undefined' && theme != null) { %>
+			<a href="<%= "/" + theme.url + "?page=" + (page+1) %>"> Next </a>
+			<% } else if( typeof(author) != 'undefined' && author != null) { %>
+			<a href="<%= "/" + author.url + "?page=" + (page+1) %>"> Next </a>
+			<%	} else { %>
+			<a href="<%= "/" + "?page=" + (page+1) %>"> Next </a>
+		<% } %>
 	</li>
 	<% } %>
+
+	<% if (totalPages-page>6) { %>
+	<li> 
+		<% if( typeof(theme) != 'undefined' && theme != null) { %>
+			<a href="<%= "/" + theme.url + "?page=" + totalPages %>"> <%= totalPages %> </a>
+			<% } else if( typeof(author) != 'undefined' && author != null) { %>
+			<a href="<%= "/" + author.url + "?page=" + totalPages %>"> <%= totalPages %> </a>
+			<%	} else { %>
+			<a href="<%= "/" + "?page=" + totalPages %>"> <%= totalPages %> </a>
+		<% } %>
+	</li>
+	<% } %>
+
 	</ul>
 </div>
 
