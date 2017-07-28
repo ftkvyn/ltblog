@@ -51,6 +51,7 @@ module.exports.http = {
     globalLocals: function (req, res, next) {
         res.locals({ 
             origin: process.env.LTBLOG_ORIGIN,
+            googleAnalyticsId:  process.env.LTBLOG_GOOGLE_ANALYTICS_ID,
             path: req.path,
             meta: null
         });
