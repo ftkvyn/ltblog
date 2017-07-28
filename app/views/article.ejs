@@ -27,7 +27,12 @@
 				<div class="author-name"><%= article.originalAuthor %></div> 
 				<% }  %>
 				<div class="art-date pull-right"><%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %></div>
-			</h4>		
+			</h4>	
+			<% if(article.isRepost) { %>	
+			<div class="original-url">
+				<a href="<%- article.originalUrl %>" target='_blank'> <%- __('Source') %></a>
+			</div>
+			<% }  %>
 
 			<p class="art-description"><%= article.description %></p>
 
