@@ -1,4 +1,21 @@
 /* homepage start*/
+ div.modal-backdrop.in {
+	display: none;
+ }
+@font-face {
+    font-family: 'Gothic';
+    src: url(/fonts/date.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url(/fonts/menu.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: 'arial';
+    src: url(/fonts/arial.ttf) format("truetype");
+}
 
 @font-face {
     font-family: "Logo2";

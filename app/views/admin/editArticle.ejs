@@ -1,6 +1,7 @@
 
 <script src="/js/summernote.min.js"></script>
 <script>
+
 function showRepost(){
 	if($('#isRepostCheck').is(":checked")){
     	$('.repostData').show();
@@ -12,7 +13,15 @@ var isSaving = false;
 $(function() {
     $('#body-edit').summernote({
     	height: 600,
-    	fontNames: [] //'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'
+    	fontNames: ['Gothic','Roboto','arial'],  
+    	fontNamesIgnoreCheck: ['Gothic','Roboto','arial'], 
+    	toolbar: [
+		    ['style', ['fontname', 'fontsize','color','bold', 'italic', 'underline','strikethrough','superscript','subscript', 'clear']],
+		    ['font', ['strikethrough', 'superscript', 'subscript']],
+		    ['para', ['style','ul', 'ol', 'paragraph','height']],
+		    ['Insert', ['picture','link','video','table','hr']],
+		    ['misk', ['fullscreen','codeview','undo','redo','help']]
+		]
     });
 
     $('#edit-form').submit(function(){
