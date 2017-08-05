@@ -144,6 +144,7 @@ module.exports = {
     },
 
     hideArticle:function(req, res){
+
       	var id = req.body.id;
       	Article.update({id: id}, {isPublished: false})
       	.exec(function(err, data){

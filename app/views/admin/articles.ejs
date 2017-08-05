@@ -21,21 +21,28 @@
 			<td>
 				<p><%= article.description %></p>
 			</td>
-			<td>
+			<td class="editbox">
 				<a href="/admin/articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
-				<% if(!article.isPublished){ %>
-				<form action='/api/articles/publish' method="post">
-					<input type="hidden" name="id" value="<%= article.id %>" />
+				<form class="publish-form hidePublish" <% if(article.isPublished){ %>
+					style="display:none"
+				<% } %>
+				> 
+					<input type="hidden" name="id" value="<%= article.id %>" /> 
 					<input type="submit" class="btn btn-success" value="Publish"/>
 				</form>
-				<% } else { %>
-				<form action='/api/articles/hide' method="post">
+				<form class="hide-form hidePublish"  <% if(!article.isPublished){ %>
+					style="display:none"
+				<% } %>
+				> 
 					<input type="hidden" name="id" value="<%= article.id %>" />
 					<input type="submit" class="btn btn-danger" value="Hide"/>
 				</form>
-				<% } %>
+				
 			</td>		
 		</tr>
 		<%}%>
 	</tbody>
+
 </table>
+
+<script src="/scripts/admin/AdminArticles.js"></script>
