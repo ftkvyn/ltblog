@@ -1,12 +1,13 @@
 $("body").on("submit",".hidePublish", function() {
 	var thisForm = $(this);
-	var isPublish = ((thisForm).attr('class') == 'publish-form hidePublish');
+	var isPublish = $(this).is('.publish-form');
 	var id = (thisForm).children('[name=id]').val();
 	var formData = {
 		id: id,
 	};
 	if (!id) {
 		alert('code error (can not find article id), send this message to admin');
+		return false;
 	}
 	else{
 		var link = '/api/articles/hide'; 

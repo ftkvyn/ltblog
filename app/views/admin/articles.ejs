@@ -45,4 +45,67 @@
 
 </table>
 
+<% if (totalPages > 1) { %> 
+	<div class="pagination-container">
+		<ul class="pagination">
+			<% 
+			function getPageLink(page, isActive, linkClass){
+				var link = '/admin/articles';
+
+				link += '?page=' + page;
+				var activeClass = '';
+				if(isActive){
+					activeClass = 'active';
+				}
+
+				linkClass = linkClass || '';
+
+				var aTag = '<a href="' + link + '">' + page + '</a>';
+				var liTag = '<li class="' + activeClass + ' ' + linkClass + '">' + aTag + '</li>';
+
+				return liTag;
+			}
+
+			var showPages = 3;
+			var downLimit;
+			var topLimit;
+			if (page<=3) {
+				downLimit = 1;
+			};
+			if (totalPages-page<=showPages) {
+				topLimit = totalPages+1;
+			}
+			%>
+			<% if (page>showPages) { %>
+				<%- getPageLink(1, false, 'first-page') %>
+			<% } %>
+			
+			<% if (page != 1) { %>
+				<%- getPageLink(page-1, false, 'prev-page') %>		
+			<% } %>
+
+			<% if (page>showPages) { %>
+			<li><span>...</span></li>
+			<% } %>
+
+			<% for(var k = (downLimit || page - showPages) ; k < (topLimit || page + showPages + 1); k++){ %>
+				<%- getPageLink(k, k == page) %>		
+			<% } %>
+
+			<% if (totalPages-page>showPages) { %>
+			<li><span>...</span></li>
+			<% } %>
+
+			<% if (page != totalPages) { %>
+				<%- getPageLink(page+1, false, 'next-page') %>		
+			<% } %>
+
+			<% if (totalPages-page>showPages) { %>
+				<%- getPageLink(totalPages, false, 'last-page') %>		
+			<% } %>
+
+		</ul>
+	</div>
+<% } %>
+
 <script src="/scripts/admin/AdminArticles.js"></script>

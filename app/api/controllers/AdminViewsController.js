@@ -38,7 +38,9 @@ module.exports = {
 	},
 
 	articles: function(req,res){
-		// var page = +req.query.page || 1;
+		 var page = +req.query.page || 1;
+		 var PAGE_SIZE = 10;
+
 		var query = Article.find({author: req.session.user.id});
 		if(req.session.user && req.session.user.isAdmin){
 			query = Article.find();
@@ -57,17 +59,17 @@ module.exports = {
 				delete data[i].body;
 			}
 			Theme.find().exec(function(err, themes){
-				return res.view('admin/articles', {articles: data, themes:themes});
+				/*return res.view('admin/articles', {articles: data, themes:themes});*/
 
-				/*articlesLoader.loadArticlesPage({}, {page : page, pageSize: PAGE_SIZE})
-				.then(function(data){
-					return res.view('admin/articles', {articles: data, meta: null, page: page, totalPages: data.totalPages, themes: themes, author: null, theme: null,});
+				articlesLoader.loadArticlesPage({isPublished: true}, {page : page, pageSize: PAGE_SIZE})
+				.then(function(datadata){
+					return res.view('admin/articles', {articles: data, meta: null, page: page, totalPages: datadata.totalPages, themes: themes, author: null, theme: null,});
 				})
 				.catch(function (err) {
 			        console.error(err);
 			        return res.serverError();
 			    })
-			    .done();*/
+			    .done();
 			});
 		});	
 	},
