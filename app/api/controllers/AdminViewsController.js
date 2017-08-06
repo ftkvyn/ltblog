@@ -61,7 +61,7 @@ module.exports = {
 			Theme.find().exec(function(err, themes){
 				/*return res.view('admin/articles', {articles: data, themes:themes});*/
 
-				articlesLoader.loadArticlesPage({isPublished: true}, {page : page, pageSize: PAGE_SIZE})
+				articlesLoader.loadArticlesPage({}, {page : page, pageSize: PAGE_SIZE})
 				.then(function(datadata){
 					return res.view('admin/articles', {articles: data, meta: null, page: page, totalPages: datadata.totalPages, themes: themes, author: null, theme: null,});
 				})
