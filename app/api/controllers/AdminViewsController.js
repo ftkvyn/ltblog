@@ -47,8 +47,8 @@ module.exports = {
 		 }
 			Theme.find().exec(function(err, themes){
 				articlesLoader.loadArticlesPage(criteria, {page : page, pageSize: PAGE_SIZE})
-				.then(function(datadata){
-					return res.view('admin/articles', {articles: datadata.articles, themes:themes, meta: null, page: page, totalPages: datadata.totalPages, author: null, theme: null,});
+				.then(function(dataload){
+					return res.view('admin/articles', {articles: dataload.articles, themes:themes, meta: null, page: page, totalPages: dataload.totalPages, author: null, theme: null,});
 				})
 				.catch(function (err) {
 			        console.error(err);
