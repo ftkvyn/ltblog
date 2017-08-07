@@ -45,26 +45,7 @@ module.exports = {
 		 if(req.session.user && req.session.user.isAdmin){
 			criteria = {};
 		 }
-		/*var query = Article.find({author: req.session.user.id});
-		if(req.session.user && req.session.user.isAdmin){
-			query = Article.find();
-		}*/
-		
-		/*query
-		.sort('createdAt DESC')
-		.populate('theme')
-		.populate('author')
-		.exec(function(err, data){
-			if(err){
-				console.log(err);
-				return res.serverError();
-			}
-			for (var i = data.length - 1; i >= 0; i--) {
-				delete data[i].body;
-			}*/
 			Theme.find().exec(function(err, themes){
-				/*return res.view('admin/articles', {articles: data, themes:themes});*/
-
 				articlesLoader.loadArticlesPage(criteria, {page : page, pageSize: PAGE_SIZE})
 				.then(function(datadata){
 					return res.view('admin/articles', {articles: datadata.articles, themes:themes, meta: null, page: page, totalPages: datadata.totalPages, author: null, theme: null,});
@@ -75,7 +56,6 @@ module.exports = {
 			    })
 			    .done();
 			});
-		/*});	*/
 	},
 
 	newArticle: function(req,res){
