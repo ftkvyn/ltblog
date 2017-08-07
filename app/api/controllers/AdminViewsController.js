@@ -41,12 +41,16 @@ module.exports = {
 		 var page = +req.query.page || 1;
 		 var PAGE_SIZE = 10;
 
-		var query = Article.find({author: req.session.user.id});
+		 var criteria = {author: req.session.user.id};
+		 if(req.session.user && req.session.user.isAdmin){
+			criteria = {};
+		 }
+		/*var query = Article.find({author: req.session.user.id});
 		if(req.session.user && req.session.user.isAdmin){
 			query = Article.find();
-		}
-		//ToDo: add pagination
-		query
+		}*/
+		
+		/*query
 		.sort('createdAt DESC')
 		.populate('theme')
 		.populate('author')
@@ -57,13 +61,13 @@ module.exports = {
 			}
 			for (var i = data.length - 1; i >= 0; i--) {
 				delete data[i].body;
-			}
+			}*/
 			Theme.find().exec(function(err, themes){
 				/*return res.view('admin/articles', {articles: data, themes:themes});*/
 
-				articlesLoader.loadArticlesPage({}, {page : page, pageSize: PAGE_SIZE})
+				articlesLoader.loadArticlesPage(criteria, {page : page, pageSize: PAGE_SIZE})
 				.then(function(datadata){
-					return res.view('admin/articles', {articles: data, meta: null, page: page, totalPages: datadata.totalPages, themes: themes, author: null, theme: null,});
+					return res.view('admin/articles', {articles: datadata.articles, themes:themes, meta: null, page: page, totalPages: datadata.totalPages, author: null, theme: null,});
 				})
 				.catch(function (err) {
 			        console.error(err);
@@ -71,7 +75,7 @@ module.exports = {
 			    })
 			    .done();
 			});
-		});	
+		/*});	*/
 	},
 
 	newArticle: function(req,res){
