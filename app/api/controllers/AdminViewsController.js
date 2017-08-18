@@ -33,7 +33,8 @@ module.exports = {
 
 	themes: function(req,res){
 		Theme.find().exec(function(err, themes){
-			return res.view('admin/themes', {themes:themes});
+			console.log(req.session.user);
+			return res.view('admin/themes', {themes:themes, sessionUser: req.session.user});
 		});			
 	},
 
@@ -60,7 +61,14 @@ module.exports = {
 
 	newArticle: function(req,res){
 		Theme.find().exec(function(err, themes){
-			return res.view('admin/editArticle', {article: {}, themes:themes});
+			User.find()
+				.exec(function(err, users){
+				if(err){
+					console.log(err);
+					return res.serverError();
+				}
+			return res.view('admin/editArticle', {article: {}, themes:themes, sessionUser: req.session.user, users: users});
+			});
 		});		
 	},
 
@@ -77,7 +85,14 @@ module.exports = {
       					return res.notFound();
       				}
       			}
-				return res.view('admin/editArticle', {article:data, themes:themes});
+      			User.find()
+				.exec(function(err, users){
+					if(err){
+						console.log(err);
+						return res.serverError();
+					}
+				return res.view('admin/editArticle', {article:data, themes:themes, sessionUser: req.session.user, users: users});
+				});
 			});			
 		});	
 	},

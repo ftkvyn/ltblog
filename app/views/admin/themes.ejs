@@ -24,12 +24,14 @@
 				<p><b><%= theme.title %></b> <span><%= theme.url %></span></p>
 				
 			</td>
+			<% if(sessionUser.isAdmin) { %>
 			<td>
 				<form class="remove-theme">
 					<input type="hidden" name="id" value="<%= theme.id %>" />
 					<input type="submit" class="btn btn-danger" value="Delete"/>
 				</form>
-			</td>		
+			</td>
+			<% } %>
 		</tr>
 		<%}%>
 	</tbody>
@@ -67,4 +69,3 @@
 		});
 	});
 </script>
-s

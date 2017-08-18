@@ -160,22 +160,29 @@ module.exports = {
       	var id = req.body.id;
       	var command = null;
       	var model = req.body;
-      	if(id && +id){
-      		delete model.author;
-      		command = Article.update({id: id}, model);
-      	}else{
+
+        if(id && +id){
+        /*  delete model.author;*/
+
+          if (!req.session.user.isAdmin && req.body.author) { /* req.body.author д.б. undefined в норм состоянии */
+            return res.badRequest('Error.');
+          }
+          command = Article.update({id: id}, model);
+        }else{
+          if(!req.session.user.isAdmin) {
+            model.author = req.session.user.id;
+          };
           delete model.id;
-      		model.author = req.session.user.id;
-      		command = Article.create(model);
-      	}
-      	command.exec(function(err, data){
-      		if(err){
-      			console.error(err);
-      			return res.send({success: false});
-      		}
+          command = Article.create(model);
+        }
+        command.exec(function(err, data){
+          if(err){
+            console.error(err);
+            return res.send({success: false});
+          }
           var id = data.id || data[0].id;
-      		return res.send({success: true, id: id});
-      	});    	
+          return res.send({success: true, id: id});
+        }); 
     },
 
     changePasswords:function(req, res){ 
