@@ -38,5 +38,16 @@
 
 	"__vk_link":"https://vk.com/living_thing_me",
 	"__fb_link":"https://www.facebook.com/The.Living.Thing.net",
-	"__tg_link":"https://t.me/the_living_thing"
+	"__tg_link":"https://t.me/the_living_thing",
+
+	"site_about":"",
+	"andrei_name":"",
+	"andrei_role":"",
+	"andrei_description":"",
+	"kasia_name":"",
+	"kasia_role":"",
+	"kasia_description":"",
+	"yanis_name":"",
+	"yanis_role":"",
+	"yanis_description":""
 }

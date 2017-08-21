@@ -439,6 +439,25 @@ footer .sotial-icons{
 	text-decoration: none;
 	color: #fff; 	
 }
+.main-about{
+	font-family: "Date";
+	font-size: 20px;
+	padding-bottom: 50px;
+}
+.developer-wrapper .rel-pic{
+	width: 200px;
+	height: 200px;
+	border-radius: 200px;
+	float: left;
+	margin-right: 50px;
+}
+.developer-wrapper .rel-pic img{
+	max-height: 200px;
+}
+.developer-wrapper .dev-name{
+	font-family: "Menu2"
+	font-size:25px;
+}
 /* homepage finish*/
 /* article start*/
 .author-info {
@@ -500,19 +519,12 @@ footer .sotial-icons{
 /* article finish*/
 /* about start*/
 .developer-wrapper {
-	margin: 20px 0;
-}
-.developer-wrapper div{
-	padding-left: 250px;
+	margin: 50px 0;
 }
 .developer-wrapper h3{
 	margin-top:-2px;
 	font-size: 28px;
 	margin-bottom: 20px;
-}
-.developer-wrapper img{
-	float: left;
-	max-width: 200px;
 }
 .developer-wrapper p{
 	font-size: 16px;

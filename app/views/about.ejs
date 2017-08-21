@@ -1,15 +1,39 @@
-<div class="clearfix developer-wrapper">
-	<img src="/images/andrei.jpg" alt="developer photo"/> 
-	<div>
-		<h3>Marchenko Andrei</h3> 
-		<p>Senior .NET, javaScript developer</p>
-		<p>I like complicated puzzles at work. I am always trying to learn something new and to do things, that I have never did before.</p>
-	</div>
-</div>
-<div class="clearfix developer-wrapper">
-	<img src="/images/yanis.jpg" alt="developer photo"/>
-	<div>
-		<h3>Machkin Yanis</h3> 
-		<p>html/css/js developer</p>
+<div class="row">
+	<div class="col-lg-12 col-sm-12 article-body">
+		<hr class="separator">
+		<div class='main-about'>
+			<%- __('site_about') %>
+		</div>
+		<hr class="separator">
+		<div class="clearfix developer-wrapper">
+			<div class="rel-pic">
+				<img src="/images/andrei.jpg" alt="developer photo"/> 
+			</div>
+			<div>
+				<h3 class="dev-name"><%- __('andrei_name') %></h3> 
+				<p><%- __('andrei_role') %></p>
+				<p><%- __('andrei_description') %></p>
+			</div>
+		</div>
+		<div class="clearfix developer-wrapper">
+			<div class="rel-pic">
+				<img src="/images/kasia.jpg" alt="developer photo"/> 
+			</div>
+			<div>
+				<h3 class="dev-name"><%- __('kasia_name') %></h3> 
+				<p><%- __('kasia_role') %></p>
+				<p><%- __('kasia_description') %></p>
+			</div>
+		</div>
+		<div class="clearfix developer-wrapper">
+			<div class="rel-pic">
+				<img src="/images/yanis.jpg" alt="developer photo"/>
+			</div>
+			<div>
+				<h3 class="dev-name"><%- __('yanis_name') %></h3> 
+				<p><%- __('yanis_role') %></p>
+				<p><%- __('yanis_description') %></p>
+			</div>	
+		</div>           
 	</div>	
 </div>           
