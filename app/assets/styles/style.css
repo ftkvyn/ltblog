@@ -51,7 +51,7 @@ header .back{
     position: absolute;
     z-index: 10;
     pointer-events: none;
-    height: 61px;
+    height: 30px;
     top: 0;
 }
 header .dropdown{
@@ -79,6 +79,21 @@ header .dropdown li a:hover
 header a:hover{
 	text-decoration: none;
 }
+.header-soc-icons{
+	position: absolute;
+    top: -30px;
+    right: -150px;
+}
+@media(max-width: 1450px){
+	.header-soc-icons{
+		right: 0;
+	}
+}
+@media (max-width: 767px){
+	.header-soc-icons{
+		position: initial;
+	}	
+}
 .min-height{
 	min-height: 20px;
 	display: block;
@@ -90,14 +105,13 @@ header a:hover{
 	margin-bottom: 0;
 	text-transform: uppercase;
 	letter-spacing: 0.15em;
-	font-size: 48px;
-	margin-top: 25px;
+	font-size: 60px;
 	margin-bottom: 5px;
 }
 .logo-subtext, .logo-subtext:hover{
 	text-decoration: none !important;
 	display: inline;
-	color: #73ab6b;
+	color: #296d1f;
 	font-size: 13px;
 	text-transform: uppercase;
 	font-family: "Menu2";
@@ -205,7 +219,25 @@ header a:hover{
 	font-family: "Date";
 	display: inline;
 	float: left;
+	margin-top: 0px;
+}
+.author-details{
+	font-family: "Date";
+	display: inline;
+	float: left;
+	font-size: 15px;
+	color: darkgray;
 	margin-top: 30px;
+	position: absolute;
+    left: 120px;
+    line-height: 1.5;
+}
+.author-info .author-details a,
+.author-info .author-details a:hover,
+.art-theme .author-details a,
+.art-theme .author-details a:hover{
+	text-decoration: underline;
+	color: darkgreen;
 }
 .original-url{
     display: block;
@@ -214,15 +246,13 @@ header a:hover{
 }
 .art-date{
 	font-family: "Date";
-	color:#73ab6b;
+	color:#296d1f;
 	font-weight: bold;
-	margin-top: 30px;
 	display: inline-block;
 }
 .art-description{
 	font-family: "Date";
-    padding-bottom: 25px;
-    border-bottom: 1px solid #e0e0e0;
+	color: #5d5d5d;
     font-size: 16px;
     clear: both;
     padding-top: 20px;
@@ -235,14 +265,15 @@ header a:hover{
 	color: black;
 }
 .author-info{
-	margin-top: 20px;
 	overflow: hidden;
+	position: relative;
 }
 .article-body{
 	padding-right: 30px;
 }
 .article-body .author-info{
 	padding-right: 30px;
+    padding-bottom: 35px;
 }
 .content .author-img{
 	height: 80px;
@@ -274,7 +305,7 @@ header a:hover{
 	margin-top: -22px;
 	margin-bottom: 20px;
 	height: 2px;
-	background: #9ece97;
+	background: #53a747;
     border: none;
 }
 .news-switch {
@@ -299,8 +330,9 @@ header a:hover{
 .side-description{
 	margin-bottom: 5px;
 	font-family: "Date";
-	font-size: 16px;
+	font-size: 14px;
 	line-height: 1.45;
+	color: #5d5d5d;
 }
 
 .rel-pic {
@@ -314,15 +346,15 @@ header a:hover{
 }
 
 .sidenews .rel-pic {
-	float: left;
 	height: 120px;
-    width: 120px;
+    width: 100%;
 	margin-right: 20px;
 	margin-bottom: 10px;
-	border-radius: 60px;
 }
 .sidenews .rel-pic img{
-	max-height: 120px;
+	width: 100%;
+    top: 50%;
+    transform: translate(-50%,-50%);
 }
 .article-author {
 	color: black;
@@ -377,7 +409,7 @@ header a:hover{
 	color: #666666;
 	margin-bottom: 5px;
 	float: right;
-	color:  #73ab6b;
+	color:  #296d1f;
 	font-family: "Date";
 	font-weight: bold;
 }
@@ -388,10 +420,11 @@ header a:hover{
 }
 .side-title {
 	font-weight: bold;
-	font-size: 15px;
-	color:  #73ab6b;
+	font-size: 20px;
+	color:  #296d1f;
 	font-family: "Menu2";
 	text-transform: uppercase;
+	margin-bottom: 0;
 }
 .sidenews p {
 }
@@ -462,16 +495,17 @@ footer .sotial-icons{
 /* homepage finish*/
 /* article start*/
 .author-info {
-	margin: 20px 0;
+	padding: 20px 0;
+	border-bottom: 1px solid #e0e0e0;
 }
 .author-info img {
 	
 }
 .article-author {
 	color: black;
-	padding-top: 10px;
+	padding-bottom : 10px;
     margin-top: 10px;
-	border-top: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
 }
 .article-data {
 	color: #666666;
@@ -566,7 +600,7 @@ footer .sotial-icons{
 .pagination-container .pagination > .active > span:focus{
 	font-weight: bold;
 	background-color: white;
-	color: #73ab6b;
+	color: #296d1f;
     font-size: 24px;
     padding-top: 0px;
 }
@@ -636,6 +670,9 @@ footer .sotial-icons{
 	.content .author-img {
 	    margin-right: 20px;
 	}
+	.author-details{
+		left: 100px;
+	}
 	/* изменение первонач варианта НАЧАЛО */
 	.img-container {
 	    height: auto;
@@ -653,6 +690,7 @@ footer .sotial-icons{
 @media (max-width: 992px) and (min-width: 768px){
 	.author-info { /* */ 
 	    clear: both;
+	    padding-bottom: 60px;
 	}
 	.main-article { 
     	padding-top: 25px;
@@ -663,12 +701,12 @@ footer .sotial-icons{
 	.author-name { 
     	display: block;
 	    margin-top: 5px;
-	    padding-top: 15px;
 	}
 	.author-info .art-date {  /* */
-		float:none !important;
-	    margin-top: 7px; 
-	    display: inline-block;
+		position: absolute;
+	    left: 0;
+	    top: 120px;
+	    margin-top: 0;
 	}
 	#relates {
 		padding-left: 0; 
@@ -698,6 +736,8 @@ footer .sotial-icons{
 	}
 	.sotial-icons{
 		text-align: center;
+		float: left !important;
+    	width: 100%;
 	}
 	.soc-icon {
 	    width: 14%;
@@ -751,7 +791,7 @@ footer .sotial-icons{
 	}
 	.logo-text, .logo-text:hover {
 	    letter-spacing: 0.07em;
-	    font-size: 35px;
+	    font-size: 45px;
 	    margin-top: 16px;
 	   
 	}
@@ -775,9 +815,10 @@ footer .sotial-icons{
 	.menu li a{
 		font-size: 17px;
 	}
-	.author-info { /* */ 
+	.author-info {
 	    clear: both;
-	    margin: 0px 0 60px 0;
+	    margin: 0px 0 0px 0;
+	    padding-bottom: 60px;
 	}
 	.main-article {
     	padding-top: 0px;
@@ -788,12 +829,11 @@ footer .sotial-icons{
 	.author-name { 
     	display: block;
 	    margin-top: 5px;
-	    padding-top: 15px;
 	}
-	.author-info .art-date {  /* */
-		float:none !important;
-	    margin-top: 7px; 
-	    display: inline-block;
+	.author-info .art-date {
+		position: absolute;
+	    left: 0;
+	    top: 120px;
 	}
 	.menu li {
     	margin-right: 30px;

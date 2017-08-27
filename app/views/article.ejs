@@ -13,13 +13,14 @@
 			<hr class="separator" />
 
 			<h4 class="author-info">
-				<% if(!article.isRepost) { %>
+				<% if(!article.originalAuthor) { %>
 				<a href="/<%= article.author.url %>/">
 					<div class="author-img rel-pic">
 						<img src="<%= article.author.profilePicSmall %>" /> 
 					</div>
-					<div class="author-name"><%= article.author.name %></div> 
+					<div class="author-name"><%= article.author.name %></div>
 				</a>
+				<div class="author-details"><%- article.author.about %></div>
 				<% } else { %>
 				<div class="author-img rel-pic">
 					<img src="<%= article.originalAuthorImg %>" /> 
@@ -28,7 +29,7 @@
 				<% }  %>
 				<div class="art-date pull-right"><%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %></div>
 			</h4>	
-			<% if(article.isRepost) { %>	
+			<% if(article.originalUrl) { %>	
 			<div class="original-url">
 				<a href="<%- article.originalUrl %>" target='_blank'> <%- __('Source') %></a>
 			</div>

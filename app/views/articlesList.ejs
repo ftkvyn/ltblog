@@ -24,7 +24,7 @@
 		
 		<h4 class="author-info">
 			<% if(!article.author.hide) { %>
-				<% if(!article.isRepost) { %>
+				<% if(!article.originalAuthor) { %>
 				<a href="/<%= article.author.url %>/">
 					<div class="author-img rel-pic">
 						<img src="<%= article.author.profilePicSmall %>" /> 

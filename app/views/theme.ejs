@@ -3,7 +3,7 @@
 <hr class="theme-separator"/>
 <%} else if(author) {%>
 <h2 class="theme-title author"><div class="author-theme-img"><img  src="<%= author.profilePicLarge %>" /></div> <%= author.name %></h2>
-<p class="theme-description"><%= author.about %></p>
+<p class="theme-description"><%- author.about %></p>
 <%}%>
 <div class="row theme-list">
 	<div class="col-lg-12 col-sm-12">

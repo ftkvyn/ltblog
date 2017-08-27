@@ -6,13 +6,13 @@
         var article = articles[i]; %>
       <div class="sidenews clearfix">
         <a href="/<%= article.theme.url %>/<%= article.id %>">
-          <p class="side-title"><%= article.title %></p>
           <div style="overflow: hidden;">
             <div class="rel-pic">
               <img src="<%= article.image %>" alt="/">
             </div>
+            <p class="side-title"><%= article.title %></p>
             <p class="side-description"><%= article.description %></p>
-          </div>
+          </div>          
           <p class="article-author">
             <% if(!article.isRepost) { %>
               <%= article.author.name %>
