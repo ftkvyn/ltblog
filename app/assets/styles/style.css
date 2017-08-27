@@ -450,12 +450,13 @@ footer .sotial-icons{
 	border-radius: 200px;
 	float: left;
 	margin-right: 50px;
+	margin-bottom: 30px;
 }
 .developer-wrapper .rel-pic img{
 	max-height: 200px;
 }
 .developer-wrapper .dev-name{
-	font-family: "Menu2"
+	font-family: "Menu2";
 	font-size:25px;
 }
 /* homepage finish*/
@@ -528,6 +529,7 @@ footer .sotial-icons{
 }
 .developer-wrapper p{
 	font-size: 16px;
+	font-family: Date;
 }
 .img-container{
 	position: relative;
@@ -612,6 +614,14 @@ footer .sotial-icons{
 @media (max-width: 480px) {
 	.developer-wrapper div{
 		padding-left: 0px;
+		width: 100%;
+		display: block;
+		clear: both;
+		text-align: center;
+	}
+	div.developer-wrapper .rel-pic{
+		margin: auto;
+		float: none;
 	}
 	.developer-wrapper img{
 		float: none;
