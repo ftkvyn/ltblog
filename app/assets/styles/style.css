@@ -248,10 +248,13 @@ header a:hover{
     display: block;
     font-family: Date;
     font-size: 18px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .original-url a{
 	text-decoration: underline;
-	color: color: #296d1f;
+	color: #296d1f;
 }
 .art-date{
 	font-family: "Date";

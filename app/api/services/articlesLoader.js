@@ -79,7 +79,17 @@ exports.getPopular = function(){
 					return;
 				}
 				popularUpdated = new Date();
-				popularArticles = data;
+				popularArticles = [];
+				var count = 0;
+				for(var i = 0; i < resultArr.length; i++){
+					for(var k = 0; k < data.length; k++){
+						if(data[k].id == resultArr[i]){
+							popularArticles[count] = data[k];
+							count++;
+							break;
+						}
+					}
+				}
 				deferred.resolve(popularArticles);
 			});
 
