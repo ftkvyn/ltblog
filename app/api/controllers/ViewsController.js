@@ -171,14 +171,15 @@ module.exports = {
 	},
 
 	relates: function(req, res){
-		//ToDo: implement logic
-		Article.find({limit: 5, where: {isPublished: true}})
-		.sort('createdAt DESC')
-		.populate('theme')
-		.populate('author')
-		.exec(function(err, data){
+		articlesLoader.getPopular()
+		.then(function(data){
 			return res.view('relates', {articles: data, layout: null});
-		});
+		})
+		.catch(function (err) {
+		    console.error(err);
+		    return res.send(' *** ');
+		})
+		.done();
 	},
 
 	about: function(req,res){
