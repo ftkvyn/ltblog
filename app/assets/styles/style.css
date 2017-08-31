@@ -391,9 +391,8 @@ header a:hover{
 .article-author {
 	color: black;
 	margin: 0;
-	font-size: 80%;
-	font-family: "Date";
-	font-size: 17px;
+	font-family: "Menu2";
+	font-size: 18px;
 }
 .author-theme-img{
 	float: left;
@@ -448,6 +447,7 @@ header a:hover{
 	font-weight: bold;
     padding-bottom: 10px;
 	font-style: italic;
+	text-align: right;
 }
 .sidenews a,
 .sidenews a:hover{
@@ -712,12 +712,12 @@ footer .sotial-icons{
 	}
 	/* изменение первонач варианта НАЧАЛО */
 	.img-container {
-	    height: auto;
+	    /*height: auto;*/
 	}
 	.img-container .img {
-	    position: static;
+	    /*position: static;
 	    transform: inherit;
-	    max-height: 330px;
+	    max-height: 330px;*/
 	} /* изменение первонач варианта КОНЕЦ */
 }
 
@@ -737,26 +737,20 @@ footer .sotial-icons{
 	}
 	.author-name { 
     	display: block;
-	    margin-top: 5px;
 	}
 	.author-info .art-date {  /* */
-		position: absolute;
-	    left: 0;
-	    top: 120px;
-	    margin-top: 0;
+		
 	}
 	#relates {
 		padding-left: 0; 
 	}
 	.sidenews .rel-pic {
 	    height: 105px;
-	    width: 105px;
+	    width: 100%;
 	    margin-right: 10px;
 	    margin-bottom: 10px;
-	    border-radius: 53px;
 	}
 	.sidenews .rel-pic img {
-	    max-height: 105px;
 	}
 }
 @media (min-width: 768px){ 
@@ -865,12 +859,11 @@ footer .sotial-icons{
 	}
 	.author-name { 
     	display: block;
-	    margin-top: 5px;
 	}
 	.author-info .art-date {
-		position: absolute;
+		/*position: absolute;
 	    left: 0;
-	    top: 120px;
+	    top: 120px;*/
 	}
 	.menu li {
     	margin-right: 30px;

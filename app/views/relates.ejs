@@ -13,14 +13,18 @@
             <p class="side-title"><%= article.title %></p>
             <p class="side-description"><%= article.description %></p>
           </div>          
-          <p class="article-author">
-            <% if(!article.originalAuthor) { %>
-              <%= article.author.name %>
-            <% } else { %>
-              <%= article.originalAuthor %>
-            <% }  %>
-          </p>
-		  <p class="publish-date"><%= article.createdAtStr(__('locale')) %></p>
+          <div class="row">
+            <div class="article-author col-md-8 col-sm-8 col-xs-8">
+              <% if(!article.originalAuthor) { %>
+                <%= article.author.name %>
+              <% } else { %>
+                <%= article.originalAuthor %>
+              <% }  %>
+            </div>
+  		      <div class="publish-date col-md-4 col-sm-4 col-xs-4">
+              <%= article.createdAtStr(__('locale')) %>
+            </div>
+          </div>
         </a>
       </div>
   <%}%>
