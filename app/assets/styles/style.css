@@ -255,7 +255,6 @@ header a:hover{
 	color: #5d5d5d;
     font-size: 16px;
     clear: both;
-    padding-top: 20px;
 }
 .author-info a,
 .author-info a:hover,
@@ -273,7 +272,13 @@ header a:hover{
 }
 .article-body .author-info{
 	padding-right: 30px;
-    padding-bottom: 35px;
+    padding-bottom: 0;
+	border-bottom: none;
+}
+.article-body .art-description{
+	border-bottom: 1px solid #e0e0e0;
+	padding-bottom: 15px;
+    margin-bottom: 25px;
 }
 .content .author-img{
 	height: 80px;
@@ -361,7 +366,7 @@ header a:hover{
 	margin: 0;
 	font-size: 80%;
 	font-family: "Date";
-	font-size: 14px;
+	font-size: 16px;
 }
 .author-theme-img{
 	float: left;
@@ -408,10 +413,11 @@ header a:hover{
 	font-size: 12px;
 	color: #666666;
 	margin-bottom: 5px;
-	float: right;
 	color:  #296d1f;
 	font-family: "Date";
 	font-weight: bold;
+    padding-bottom: 10px;
+	font-style: italic;
 }
 .sidenews a,
 .sidenews a:hover{
@@ -420,7 +426,7 @@ header a:hover{
 }
 .side-title {
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 22px;
 	color:  #296d1f;
 	font-family: "Menu2";
 	text-transform: uppercase;
@@ -503,9 +509,6 @@ footer .sotial-icons{
 }
 .article-author {
 	color: black;
-	padding-bottom : 10px;
-    margin-top: 10px;
-	border-bottom: 1px solid #e0e0e0;
 }
 .article-data {
 	color: #666666;

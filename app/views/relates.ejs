@@ -14,13 +14,13 @@
             <p class="side-description"><%= article.description %></p>
           </div>          
           <p class="article-author">
-            <% if(!article.isRepost) { %>
+            <% if(!article.originalAuthor) { %>
               <%= article.author.name %>
             <% } else { %>
               <%= article.originalAuthor %>
             <% }  %>
-            <span class="publish-date"><%= article.createdAtStr(__('locale')) %></span>
           </p>
+		  <p class="publish-date"><%= article.createdAtStr(__('locale')) %></p>
         </a>
       </div>
   <%}%>
