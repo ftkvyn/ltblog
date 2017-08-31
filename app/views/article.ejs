@@ -1,15 +1,18 @@
 <div class="row">
 	<div class="col-lg-9 col-sm-8 article-body">
 		<div class="row content">
-			<h1 class="art-title"><%= article.title %></h1>
-
-			<h3 class="art-theme">
+			<h1 class="art-title">
+				<div class="back">
+					<%= article.title %>
+				</div>
+			</h1>
+			<!-- <h3 class="art-theme">
 				<div class="back">
 					<a href="/<%= article.theme.url %>/">		
 						<%= article.theme.title %>
 					</a>				
 				</div>
-			</h3>		
+			</h3>	 -->	
 			<hr class="separator" />
 
 			<h4 class="author-info">
@@ -27,7 +30,16 @@
 				</div>
 				<div class="author-name"><%= article.originalAuthor %></div> 
 				<% }  %>
-				<div class="art-date pull-right"><%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %></div>
+				<div class="row pull-right">
+					<div class="art-date col-md-12">
+						<%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %>
+					</div>
+					<div class="art-theme col-md-12">
+						<a href="/<%= article.theme.url %>/">		
+							<%= article.theme.title %>
+						</a>				
+					</div>	
+				</div>
 			</h4>	
 			<% if(article.originalUrl) { %>	
 			<div class="original-url">

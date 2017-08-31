@@ -24,20 +24,21 @@
 
 @font-face {
     font-family: "Menu2";
-    src: url(/fonts/menu.ttf) format("truetype");
+    src: url(/fonts/10072.ttf) format("truetype");
 }
 
 @font-face {
     font-family: "Date";
-    src: url(/fonts/date.ttf) format("truetype");
+    src: url(/fonts/PT_Serif-Web-Regular.ttf) format("truetype");
 }
+
 
 body {
 	position: relative;
 	background: white;
 }
 header {
-	padding: 50px 0px 0px 0;
+	padding: 30px 0px 0px 0;
     width: 100%;
     background-color: white;
     position: relative;
@@ -66,10 +67,14 @@ header .dropdown li a:hover
 	text-decoration: none !important;
 	font-family: "Menu2";
 	letter-spacing: 0.15em;
+    font-size: 18px;
+}
+html body{
+	font-family: "Date";
 }
 .container {
   max-width: 1200px; 
-  padding-top: 40px;
+  padding-top: 20px;
   position: relative;
   z-index: 11;
 }
@@ -81,7 +86,7 @@ header a:hover{
 }
 .header-soc-icons{
 	position: absolute;
-    top: -30px;
+    top: -10px;
     right: -150px;
 }
 @media(max-width: 1450px){
@@ -106,13 +111,13 @@ header a:hover{
 	text-transform: uppercase;
 	letter-spacing: 0.15em;
 	font-size: 60px;
-	margin-bottom: 5px;
+	margin-bottom: 0px;
 }
 .logo-subtext, .logo-subtext:hover{
 	text-decoration: none !important;
 	display: inline;
 	color: #296d1f;
-	font-size: 13px;
+	font-size: 15px;
 	text-transform: uppercase;
 	font-family: "Menu2";
 	letter-spacing: 0.25em;
@@ -126,7 +131,7 @@ header a:hover{
 }
 .main .container{
 	background: #ffffff;
-    padding-top: 55px;
+    padding-top: 30px;
 }
 .articles-list{
 	padding-right: 30px;
@@ -144,7 +149,7 @@ header a:hover{
 }
 .share-txt{
 	font-family: "Date";
-    font-size: 16px;
+    font-size: 17px;
     font-weight: bold;
     display: inline-block;
     margin-right: 10px;
@@ -178,9 +183,8 @@ header a:hover{
 }
 .menu li {
 	display: inline-block;
-	margin-left: 60px;
-	margin-right: 60px;
-	font-weight: 600;
+	margin-left: 50px;
+	margin-right: 50px;
 }
 .menu li:first-child { 
 	margin-left: 0px;
@@ -206,26 +210,27 @@ header a:hover{
 .art-theme{
 	text-align: center;
 	font-family: "Menu2";
-	text-transform: uppercase;
-	font-size: 20px;
+    font-size: 20px;
+    margin-top: -20px;
 }
-.art-theme .back{
+.art-title .back{
 	background: white;
 	padding-right: 20px;
 	padding-left: 20px;
 	display: inline;
 }
 .author-name{
-	font-family: "Date";
+	font-family: "Menu2";
 	display: inline;
 	float: left;
 	margin-top: 0px;
+	font-size: 20px;
 }
 .author-details{
 	font-family: "Date";
 	display: inline;
 	float: left;
-	font-size: 15px;
+	font-size: 16px;
 	color: darkgray;
 	margin-top: 30px;
 	position: absolute;
@@ -244,17 +249,33 @@ header a:hover{
     font-family: Date;
     font-size: 18px;
 }
+.original-url a{
+	text-decoration: underline;
+	color: color: #296d1f;
+}
 .art-date{
 	font-family: "Date";
-	color:#296d1f;
-	font-weight: bold;
-	display: inline-block;
+    color: #296d1f;
+    display: inline-block;
+    font-size: 16px;
+    padding-top: 15px;
+}
+.article-body .art-date{
+	padding-top: 0px;	
+	text-align: right;
+}
+.article-body .art-theme{
+	margin-top: 28px;
+	text-align: right;
 }
 .art-description{
 	font-family: "Date";
 	color: #5d5d5d;
-    font-size: 16px;
+    font-size: 17px;
     clear: both;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .author-info a,
 .author-info a:hover,
@@ -266,18 +287,21 @@ header a:hover{
 .author-info{
 	overflow: hidden;
 	position: relative;
+	max-width: 700px;
+	margin-left: auto;
+    margin-right: auto;
 }
 .article-body{
 	padding-right: 30px;
 }
 .article-body .author-info{
-	padding-right: 30px;
     padding-bottom: 0;
 	border-bottom: none;
+	margin-bottom: 25px;
 }
 .article-body .art-description{
 	border-bottom: 1px solid #e0e0e0;
-	padding-bottom: 15px;
+	padding-bottom: 25px;
     margin-bottom: 25px;
 }
 .content .author-img{
@@ -293,13 +317,12 @@ header a:hover{
 	width: initial;
 }
 .main-body{
-	font-size: 18px;
+	font-size: 19px;
+	margin: auto;
+	max-width: 700px;
 }
 .main-article{
 	margin-bottom: 30px;
-}
-.main-article:first-child {
-    padding-top: 20px;
 }
 .main-article a{
 	color: black;
@@ -307,17 +330,18 @@ header a:hover{
 }
 .separator{
 	width: 100%;
-	margin-top: -22px;
+	margin-top: -46px;
 	margin-bottom: 20px;
 	height: 2px;
 	background: #53a747;
     border: none;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .news-switch {
-	margin-top: 20px;
 }
 .news-switch .switch{
-	outline: 1px solid #e4e4e4;
 	width: 100%;
 	text-align: center;
 	display: inline-block;
@@ -327,6 +351,9 @@ header a:hover{
 	font-family: "Menu2";
 	font-size:17px;
 	letter-spacing: 0.13em;
+	color: black;
+    border-top: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
 }	
 
 .sidenews {
@@ -335,7 +362,7 @@ header a:hover{
 .side-description{
 	margin-bottom: 5px;
 	font-family: "Date";
-	font-size: 14px;
+	font-size: 15px;
 	line-height: 1.45;
 	color: #5d5d5d;
 }
@@ -366,7 +393,7 @@ header a:hover{
 	margin: 0;
 	font-size: 80%;
 	font-family: "Date";
-	font-size: 16px;
+	font-size: 17px;
 }
 .author-theme-img{
 	float: left;
@@ -380,6 +407,9 @@ header a:hover{
 .theme-title{
 	font-family: "Menu2";
 	margin-bottom: 30px;
+	max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .theme-title.theme{
 	font-size: 37px;
@@ -410,7 +440,7 @@ header a:hover{
 }
 
 .publish-date {
-	font-size: 12px;
+	font-size: 13px;
 	color: #666666;
 	margin-bottom: 5px;
 	color:  #296d1f;
@@ -426,7 +456,7 @@ header a:hover{
 }
 .side-title {
 	font-weight: bold;
-	font-size: 22px;
+	font-size: 20px;
 	color:  #296d1f;
 	font-family: "Menu2";
 	text-transform: uppercase;
@@ -480,7 +510,7 @@ footer .sotial-icons{
 }
 .main-about{
 	font-family: "Date";
-	font-size: 20px;
+	font-size: 21px;
 	padding-bottom: 50px;
 }
 .developer-wrapper .rel-pic{
@@ -503,6 +533,7 @@ footer .sotial-icons{
 .author-info {
 	padding: 20px 0;
 	border-bottom: 1px solid #e0e0e0;
+	line-height: 20px;
 }
 .author-info img {
 	
@@ -529,7 +560,7 @@ footer .sotial-icons{
     padding-left: 40px;
     padding-top: 5px;
     font-family: "Date";
-    font-size: 16px;
+    font-size: 17px;
     font-weight: bold;
     color: black;
     height: 31px;
@@ -574,6 +605,9 @@ footer .sotial-icons{
     overflow: hidden;
     margin-top: 40px;
     margin-bottom: 20px;
+    max-width: 700px;
+	margin-left: auto;
+    margin-right: auto;
 }
 .img-container .img{
 	position: absolute;
@@ -590,7 +624,7 @@ footer .sotial-icons{
 	border:none;
 	color: black;
 	font-family: "Date";
-	font-size: 18px;
+	font-size: 19px;
     margin-left: 7px;
     margin-right: 7px;
 	

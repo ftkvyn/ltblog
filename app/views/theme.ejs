@@ -1,6 +1,5 @@
 <% if(theme){%>
 <h2 class="theme-title theme"><div><%= theme.title %></div></h2>
-<hr class="theme-separator"/>
 <%} else if(author) {%>
 <h2 class="theme-title author"><div class="author-theme-img"><img  src="<%= author.profilePicLarge %>" /></div> <%= author.name %></h2>
 <p class="theme-description"><%- author.about %></p>

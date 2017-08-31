@@ -42,7 +42,7 @@ exports.getPopular = function(){
 		delta = (now - popularUpdated)/(1000*60*60);
 	}
 
-	if( (delta > 6) || !popularUpdated || (popularArticles.length < 1)){
+	if( (delta > 2) || !popularUpdated || (popularArticles.length < 1)){
 		//two month ago
 		var dateAgo = new Date(now.setDate(now.getDate() - 60));
 		ReadedArticle.find({
