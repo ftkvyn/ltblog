@@ -168,41 +168,6 @@ module.exports = {
 				    .done();
 				});
 			});
-
-		/*}*/
-
-		/*var page = +req.query.page || 1;
-		var PAGE_SIZE = 10;
-		var idFindArray = [];
-		for (var q =0; q < FindRes.length; q++) {
-			var a = FindRes[q].id;
-			console.log(a);
-			idFindArray.push(a);
-		}
-		console.log(idFindArray);
-		var criteria = {author: req.session.user.id};
-		if(req.session.user && req.session.user.isAdmin){
-			criteria = {};
-		}
-			Theme.find().exec(function(err, themes){
-				articlesLoader.loadArticlesPage(criteria, {page : page, pageSize: PAGE_SIZE})
-				.then(function(dataload){
-					User.find()
-						.exec(function(err, users){
-						if(err){
-							console.log(err);
-							return res.serverError();
-						}
-					return res.view('admin/articles', {articles: dataload.articles, themes:themes, meta: null, page: page, totalPages: dataload.totalPages, author: null, theme: null, users: users});
-					});
-					
-				})
-				.catch(function (err) {
-			        console.error(err);
-			        return res.serverError();
-			    })
-			    .done();
-			});*/
 	},
 
 	newArticle: function(req,res){
