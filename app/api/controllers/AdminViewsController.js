@@ -39,7 +39,7 @@ module.exports = {
 	},
 
 	articles: function(req,res){
-		/*console.log(req.query);*/
+		console.log(req.query);
 		var reqQueryPage = req.query.page || false;
 		var FindRes = [];
 
@@ -148,6 +148,23 @@ module.exports = {
 						criteria = {id: idFindArray};
 					}
 				}
+				var a = req.query; 
+				if (a.page) {
+					delete a.page;
+				};
+				if (a.length == 0) {
+					PagiTail = false;
+				} else {
+					var PagiTail = ""; /*add to pagination link*/
+					var CountA = 0;
+					for (var b in a) {
+						if(CountA != a.length) {
+				  		PagiTail += "&";
+				  	}
+						PagiTail += b + '=' + a[b];
+				  		CountA++;
+					}
+				};
 				Theme.find().exec(function(err, themes){
 					articlesLoader.loadArticlesPage(criteria, {page : page, pageSize: PAGE_SIZE})
 					.then(function(dataload){
@@ -157,7 +174,7 @@ module.exports = {
 								console.log(err);
 								return res.serverError();
 							}
-						return res.view('admin/articles', {articles: dataload.articles, themes:themes, meta: null, page: page, totalPages: dataload.totalPages, author: null, theme: null, users: users});
+						return res.view('admin/articles', {articles: dataload.articles, themes:themes, meta: null, page: page, totalPages: dataload.totalPages, author: null, theme: null, users: users, PagiTail: PagiTail});
 						});
 						
 					})
