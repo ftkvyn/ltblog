@@ -2,6 +2,30 @@
 <a href="/admin">Back</a>
 
 <h3><a href="/admin/articles/new">New article</a></h3>
+<h3 class="find-title">Find article</h3>
+<form class="find-form">
+	<p>Type phrases or keywords to search</p>
+	<div class="form-group">
+	    <label for="find-title">Title</label>
+	    <input type="text" class="form-control" name="find-title" id="find-title">
+	</div>
+	<div class="form-group">
+	    <label for="find-descr">Description</label>
+	    <input type="text" class="form-control" name="find-descr" id="find-descr">
+	</div>
+	<div class="form-group"> 
+	    <label for="author">Author</label>
+	    <select class="form-control" name="author" id="author">
+	    	<option selected></option>
+	    	<% for(var i = 0; i < users.length; i++){%>
+	    	<option value="<%= users[i].id %>">
+	    		<%= users[i].name %>
+	    	</option>
+	    	<%}%>
+	    </select>
+	</div>
+	<button type="submit" class="btn btn-success">Search</button>
+</form>
 <table class="table table-striped table-bordered table-admin">
 	<thead></thead>
 	<tbody>
@@ -34,7 +58,7 @@
 					style="display:none"
 				<% } %>
 				> 
-					<input type="hidden" name="id" value="<%= article.id %>" />
+					<input type="hidden" name="id" value="<%= article.id %>" /> 
 					<input type="submit" class="btn btn-danger" value="Hide"/>
 				</form>
 				

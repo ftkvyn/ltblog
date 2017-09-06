@@ -26,3 +26,48 @@ $("body").on("submit",".hidePublish", function() {
 	}
 	return false;
 });
+
+
+$("body").on("submit",".find-form", function() {
+	var Findform = $(this);
+
+	var title = (Findform).children().children('[name=find-title]').val();
+	var description = (Findform).children().children('[name=find-descr]').val();
+	var author = $('.find-form select').val();
+	console.log(author);
+
+	var formData = {
+
+	};
+	if (title != "") {
+		formData.title = title;
+	}
+	if (description != "") {
+		formData.description = description;
+	}
+	if (author != "") {
+		formData.author = author;
+	}
+	var count = 0;
+	for (key in formData) {
+		count++;
+	}
+	if (count == 0) {
+		alert("Filled search field/fields");
+	}
+	else {
+		var link = "/admin/articles?"
+		var Count = 0;
+		for (var a in formData) {
+			if (Count != 0) {
+				link = link + '&';
+			}
+			link = link + a +'=' + encodeURIComponent(formData[a]);
+			Count++;
+		}
+		console.log(link);
+		window.location = link;
+	}
+
+	return false;
+});
