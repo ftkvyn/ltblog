@@ -7,6 +7,10 @@
  var moment = require('moment');
 
 function countReader(req, article){
+	if(req.session.user){
+		//Not counting site authors.
+		return;
+	}
 	var checkDate = moment().add(12, 'hours').toDate();
 	ReadedArticle.find({
 		reader: req.session.reader.id,
@@ -82,9 +86,13 @@ module.exports = {
 	},	
 
 	author: function(req, res, next){
-		if (req.path.match(/\..*/g) || req.path.match(/^\/api\/.*$/)) {
-	        return next();
-	    }
+		//Ugly spike, I know. 
+		//ToDo: create normal solution.
+		if(req.params.authorUrl != 'gleb.simonov'){
+			if (req.path.match(/\..*/g) || req.path.match(/^\/api\/.*$/)) {
+		        return next();
+		    }
+		}
 	    var page = +req.query.page || 1;
 
 		User.findOne({url : req.params.authorUrl})
@@ -131,12 +139,17 @@ module.exports = {
       			return next();	
       		}
       		var isAuthor = false;
-      		if(req.session.user && req.session.user.isAdmin){
-  				isAuthor = true;
-  			}
-  			if(req.session.user && (req.session.user.id === data.author.id) ){
-  				isAuthor = true;
-  			}
+      		//Not all authors can see all the drafts.
+      		if(req.session.user){
+      			isAuthor = true;
+      		}
+      		//ToDo: remove in september or later.
+     //  		if(req.session.user && req.session.user.isAdmin){
+  			// 	isAuthor = true;
+  			// }
+  			// if(req.session.user && (req.session.user.id === data.author.id) ){
+  			// 	isAuthor = true;
+  			// }
       		if(!data.isPublished){
       			//admin and author can view it.
       			if(!isAuthor){
@@ -158,14 +171,15 @@ module.exports = {
 	},
 
 	relates: function(req, res){
-		//ToDo: implement logic
-		Article.find({limit: 5, where: {isPublished: true}})
-		.sort('createdAt DESC')
-		.populate('theme')
-		.populate('author')
-		.exec(function(err, data){
+		articlesLoader.getPopular()
+		.then(function(data){
 			return res.view('relates', {articles: data, layout: null});
-		});
+		})
+		.catch(function (err) {
+		    console.error(err);
+		    return res.send(' *** ');
+		})
+		.done();
 	},
 
 	about: function(req,res){

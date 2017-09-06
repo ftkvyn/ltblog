@@ -3,11 +3,11 @@
 <script>
 
 function showRepost(){
-	if($('#isRepostCheck').is(":checked")){
-    	$('.repostData').show();
-    }else{
-    	$('.repostData').hide();
-    }
+	// if($('#isRepostCheck').is(":checked")){
+ //    	$('.repostData').show();
+ //    }else{
+ //    	$('.repostData').hide();
+ //    }
 }
 var isSaving = false;
 $(function() {
@@ -73,8 +73,10 @@ $(function() {
     	return false;
     });
 
-    showRepost();
-    $('#isRepostCheck').change(showRepost);
+    //Now showing repost data always for reasons.
+    //ToDo: remove in september or later.
+    // showRepost();
+    // $('#isRepostCheck').change(showRepost);
 
 
 });

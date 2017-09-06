@@ -3,18 +3,13 @@
 		var article = articles[i]; %>
 	<div class="col-md-12 main-article">
 		<a href="/<%= article.theme.url %>/<%= article.id %>">
-			<h2 class="art-title"><%= article.title %></h2>
+			<h2 class="art-title">
+				<div class="back">
+					<%= article.title %>
+				</div>
+			</h2>
 		</a>
-		<% if(!article.theme.hide) { %>
-		<h3 class="art-theme">
-			<div class="back">
-				<a href="/<%= article.theme.url %>/">		
-					<%= article.theme.title %>
-				</a>				
-			</div>
-		</h3>		
 		<hr class="separator" />
-		<% } %>
 		<a href="/<%= article.theme.url %>/<%= article.id %>">
 			<div class="img-container">
 				<img src="<%= article.image %>" class='img' alt="/" />
@@ -24,21 +19,37 @@
 		
 		<h4 class="author-info">
 			<% if(!article.author.hide) { %>
-				<% if(!article.isRepost) { %>
+				<% if(!article.originalAuthor) { %>
 				<a href="/<%= article.author.url %>/">
 					<div class="author-img rel-pic">
 						<img src="<%= article.author.profilePicSmall %>" /> 
 					</div>
-					<span class="author-name"><%= article.author.name %></span> 
+					<span class="author-name"><%= article.author.name %></span> <br/>
+					<span class="art-date"><%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %></span>
 				</a>
 				<% } else { %>
 				<div class="author-img rel-pic">
 					<img class="author-img" src="<%= article.originalAuthorImg %>" /> 
 				</div>
-				<span class="author-name"><%= article.originalAuthor %></span> 
+				<span class="author-name"><%= article.originalAuthor %></span> <br/>
+				<span class="art-date"><%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %></span>
 				<% }  %>
-			<% } %>
-			<span class="art-date pull-right"><%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %></span>
+				<% if(!article.theme.hide) { %>
+				<div class="art-theme pull-right">
+					<a href="/<%= article.theme.url %>/">		
+						<%= article.theme.title %>
+					</a>				
+				</div>	
+				<% }  %>
+			<% } else {%>	
+				<div class="art-date" style='padding-top: 0;'><%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %></div>
+				<div class="art-theme pull-right" style='margin-top: 0;'>
+				<a href="/<%= article.theme.url %>/">		
+					<%= article.theme.title %>
+				</a>				
+			</div>	
+			<% } %>	
+				
 		</h4>
 	</div>
 	<%}%>	

@@ -1,34 +1,47 @@
 <div class="row">
 	<div class="col-lg-9 col-sm-8 article-body">
 		<div class="row content">
-			<h1 class="art-title"><%= article.title %></h1>
-
-			<h3 class="art-theme">
+			<h1 class="art-title">
+				<div class="back">
+					<%= article.title %>
+				</div>
+			</h1>
+			<!-- <h3 class="art-theme">
 				<div class="back">
 					<a href="/<%= article.theme.url %>/">		
 						<%= article.theme.title %>
 					</a>				
 				</div>
-			</h3>		
+			</h3>	 -->	
 			<hr class="separator" />
 
 			<h4 class="author-info">
-				<% if(!article.isRepost) { %>
+				<% if(!article.originalAuthor) { %>
 				<a href="/<%= article.author.url %>/">
 					<div class="author-img rel-pic">
 						<img src="<%= article.author.profilePicSmall %>" /> 
 					</div>
-					<div class="author-name"><%= article.author.name %></div> 
+					<div class="author-name"><%= article.author.name %></div>
 				</a>
+				<div class="author-details"><%- article.author.about %></div>
 				<% } else { %>
 				<div class="author-img rel-pic">
 					<img src="<%= article.originalAuthorImg %>" /> 
 				</div>
 				<div class="author-name"><%= article.originalAuthor %></div> 
 				<% }  %>
-				<div class="art-date pull-right"><%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %></div>
+				<div class="row pull-right">
+					<div class="art-date col-md-12">
+						<%= __('day_' + article.createdAt.getDay()) %>, <%= article.createdAtStr(__('locale')) %>
+					</div>
+					<div class="art-theme col-md-12">
+						<a href="/<%= article.theme.url %>/">		
+							<%= article.theme.title %>
+						</a>				
+					</div>	
+				</div>
 			</h4>	
-			<% if(article.isRepost) { %>	
+			<% if(article.originalUrl) { %>	
 			<div class="original-url">
 				<a href="<%- article.originalUrl %>" target='_blank'> <%- __('Source') %></a>
 			</div>
