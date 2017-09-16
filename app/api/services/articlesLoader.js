@@ -12,7 +12,7 @@ exports.loadArticlesPage = function(where, options) {
 	options.skip = options.pageSize * (options.page - 1);
 	
 	var qs = [];
-	qs.push(Article.find({limit: options.pageSize, skip: options.skip, where:where})
+	qs.push(Article.find({limit: options.pageSize, skip: options.skip, where:where}) 
 		.sort('createdAt DESC')
 		.populate('theme')
 		.populate('author'));
