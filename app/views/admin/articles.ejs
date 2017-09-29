@@ -1,3 +1,12 @@
+<link href="/styles/datedropper.css" rel="stylesheet" type="text/css" />
+<script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+<script src="/scripts/admin/datedropper.js"></script>
+<script>
+	$(document).ready(function(){
+		$('.date-edit-input').dateDropper();
+	})	
+</script>
+
 <h2>Articles</h2>
 <a href="/admin">Back</a>
 
@@ -31,13 +40,24 @@
 	<tbody>
 		<% for(var i = 0; i < articles.length; i++){
 				var article = articles[i]; %>
+			<%  var str = article.createdAt;
+				var parse = Date.parse(str);
+ 				var date = new Date(parse);
+ 				var month = +date.getMonth()+1;
+ 				var pluginDate = month + '-' + date.getDate() + '-' + date.getFullYear();
+			%>
 		<tr>		
 			<td style="min-width: 300px;">
 				<p><b><%= article.title %></b></p>
 				<p><i><%= article.theme.title %></i></p>
-				<p><span><%= article.createdAtStr(__('locale')) %></span></p>
-				 <p>by <i><%= article.author.name %></i></p>  
+				<div style="display:none" class="to-left"><%= article.createdAtStr(__('locale')) %></div>
+				<form class="data-form">
+					<input class="active date-edit-input" type="text" data-default-date="<%= pluginDate %>" init-set="true" value=""/>
+					<input type="hidden" name="id" id="date-id" value="<%= article.id %>" />
+				</form>
+				<p>by <i><%= article.author.name %></i></p>  
 				<p><a href="/<%= article.theme.url %>/<%= article.id %>">preview</a></p>
+				
 			</td>
 			<td>
 				<p><img src="<%= article.image %>"/></p>
@@ -66,9 +86,7 @@
 		</tr>
 		<%}%>
 	</tbody>
-
 </table>
-
 <% if (totalPages > 1) { %> 
 	<div class="pagination-container">
 		<ul class="pagination">
@@ -77,9 +95,11 @@
 				var link = '/admin/articles';
 
 				link += '?page=' + page;
-				if (paginationParams) {
+
+				if (!paginationParams) {
 					link += paginationParams;
 				}
+
 				var activeClass = '';
 				if(isActive){
 					activeClass = 'active';

@@ -50,6 +50,8 @@ module.exports.routes = {
 
   '/admin/articles': 'AdminViewsController.articles',
 
+  '/admin/articles/changeDate': 'AdminActionsController.changeDate', /**/
+
   '/admin/themes': 'AdminViewsController.themes',
 
   '/admin/articles/new': 'AdminViewsController.newArticle',

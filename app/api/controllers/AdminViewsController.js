@@ -39,28 +39,25 @@ module.exports = {
 	},
 
 	articles: function(req,res){
-		console.log(req.query);
+		/*console.log(req.query);*/
 		var reqQueryPage = req.query.page || false;
 
 		var paginationParams = "";
 		if (req.query.length == 0) {
 			paginationParams = false;
 		} else {
-			var CountQuery = 0;
+			var countQuery = 0;
 			for (var number in req.query) {
-				if(CountQuery != req.query.length) {
+				if(countQuery != req.query.length) {
 		  		paginationParams += "&";
 		  	}
 				paginationParams += number + '=' + req.query[number];
-		  		CountQuery++;
+		  		countQuery++;
 			}
 		};
 		var page = +req.query.page || 1;
 		var PAGE_SIZE = 10;
-		/*var criteria = {author: req.session.user.id};
-		if(req.session.user && req.session.user.isAdmin){
-			criteria = {}; 
-		}*/
+
 		var criteria = {};
 
 		delete req.query.page;
