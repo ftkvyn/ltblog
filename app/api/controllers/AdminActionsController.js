@@ -228,25 +228,25 @@ module.exports = {
             });
         });
     },
-    changeDate:function(req, res){ 
+//    changeDate:function(req, res){ 
+//
+//    var id = req.body.id;
+//
+//      if (!req.session.user.isAdmin) {
+//        return res.badRequest('Error.');
+//      }
+//      Article.update({id: id}, req.body)
+//      .exec(function(err, data){
+//        if(err){
+//          console.error(err);
+//          return res.serverError();
+//       }
+//        console.log('------------');
+//        console.log(data);
+//        return res.redirect('/admin/articles');
+//      });
 
-      var id = req.body.id;
-
-      if (!req.session.user.isAdmin) {
-        return res.badRequest('Error.');
-      }
-      Article.update({id: id}, req.body)
-      .exec(function(err, data){
-        if(err){
-          console.error(err);
-          return res.serverError();
-        }
-        console.log('------------');
-        console.log(data);
-        return res.redirect('/admin/articles');
-      });
-
-    }
+//    }
 
 
 };

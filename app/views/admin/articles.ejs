@@ -1,11 +1,11 @@
-<link href="/styles/datedropper.css" rel="stylesheet" type="text/css" />
-<script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
-<script src="/scripts/admin/datedropper.js"></script>
-<script>
-	$(document).ready(function(){
-		$('.date-edit-input').dateDropper();
-	})	
-</script>
+<!-- <link href="/styles/datedropper.css" rel="stylesheet" type="text/css" /> -->
+<!-- <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>   -->
+<!-- <script src="/js/datedropper.js"></script>  -->
+<!-- <script>  -->
+<!-- 	$(document).ready(function(){ -->
+<!-- 		$('.date-edit-input').dateDropper(); -->
+<!-- 	})	 -->
+<!-- </script> -->
 
 <h2>Articles</h2>
 <a href="/admin">Back</a>
@@ -40,25 +40,25 @@
 	<tbody>
 		<% for(var i = 0; i < articles.length; i++){
 				var article = articles[i]; %>
-			<%  var str = article.createdAt;
-				var parse = Date.parse(str);
- 				var date = new Date(parse);
- 				var month = +date.getMonth()+1;
- 				var pluginDate = month + '-' + date.getDate() + '-' + date.getFullYear();
-			%>
+			<!--<%  var str = article.createdAt; -->
+			<!--	var parse = Date.parse(str); -->
+ 			<!--	var date = new Date(parse); -->
+ 			<!--	var month = +date.getMonth()+1; -->
+ 			<!--	var pluginDate = month + '-' + date.getDate() + '-' + date.getFullYear(); -->
+			<!--%> -->
 		<tr>		
 			<td style="min-width: 300px;">
 				<p><b><%= article.title %></b></p>
 				<p><i><%= article.theme.title %></i></p>
 				
-			<% if(isAdmin) { %>
-				<form class="data-form">
-					<input class="active date-edit-input" type="text" data-default-date="<%= pluginDate %>" init-set="true" value=""/>
-					<input type="hidden" name="id" id="date-id" value="<%= article.id %>" />
-				</form>
-			<% }else{ %>
-				<div class="to-left"><%= article.createdAtStr(__('locale')) %></div>
-			<% } %>
+			<!--<% if(isAdmin) { %> -->
+			<!--	<form class="data-form"> -->
+			<!--		<input class="active date-edit-input" type="text" data-default-date="<%= pluginDate %>" init-set="true" value=""/> -->
+			<!--		<input type="hidden" name="id" id="date-id" value="<%= article.id %>" /> -->
+			<!--	</form> -->
+			<!--<% }else{ %> -->
+			<!--	<div class="to-left"><%= article.createdAtStr(__('locale')) %></div> -->
+			<!--<% } %> -->
 				<p>by <i><%= article.author.name %></i></p>  
 				<p><a href="/<%= article.theme.url %>/<%= article.id %>">preview</a></p>
 			</td>
@@ -99,7 +99,7 @@
 
 				link += '?page=' + page;
 
-				if (!paginationParams) {
+				if (!paginationParams) { 
 					link += paginationParams;
 				}
 
