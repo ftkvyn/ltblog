@@ -40,6 +40,7 @@ module.exports = {
 
 	articles: function(req,res){
 		/*console.log(req.query);*/
+		var isAdmin = req.session.user.isAdmin;
 		var reqQueryPage = req.query.page || false;
 
 		var paginationParams = "";
@@ -91,7 +92,7 @@ module.exports = {
 						console.log(err);
 						return res.serverError();
 					}
-				return res.view('admin/articles', {articles: dataload.articles, themes:themes, meta: null, page: page, totalPages: dataload.totalPages, author: null, theme: null, users: users, paginationParams: paginationParams});
+				return res.view('admin/articles', {articles: dataload.articles, themes:themes, meta: null, page: page, totalPages: dataload.totalPages, author: null, theme: null, users: users, paginationParams: paginationParams, isAdmin: isAdmin});
 				});
 				
 			})

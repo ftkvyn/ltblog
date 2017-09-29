@@ -50,14 +50,17 @@
 			<td style="min-width: 300px;">
 				<p><b><%= article.title %></b></p>
 				<p><i><%= article.theme.title %></i></p>
-				<div style="display:none" class="to-left"><%= article.createdAtStr(__('locale')) %></div>
+				
+			<% if(isAdmin) { %>
 				<form class="data-form">
 					<input class="active date-edit-input" type="text" data-default-date="<%= pluginDate %>" init-set="true" value=""/>
 					<input type="hidden" name="id" id="date-id" value="<%= article.id %>" />
 				</form>
+			<% }else{ %>
+				<div class="to-left"><%= article.createdAtStr(__('locale')) %></div>
+			<% } %>
 				<p>by <i><%= article.author.name %></i></p>  
 				<p><a href="/<%= article.theme.url %>/<%= article.id %>">preview</a></p>
-				
 			</td>
 			<td>
 				<p><img src="<%= article.image %>"/></p>
