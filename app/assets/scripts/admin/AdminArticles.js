@@ -71,36 +71,38 @@ $("body").on("submit",".find-form", function() {
 
 	return false;
 });
-//var dateData;
-//var dateId;
+var dateData;
+var dateId;
 
-//$(document).ready(function(){
-//	$("body").on("click",".date-edit-input", function() {
-//		var input = $(this);
-//		var id = $(this).attr("data-id");
-//		dateId = '[id= ' + id + ']';
-//		dateData = $(this).siblings("#date-id").val();
-//	});
-//})
-//$("body").on("click",".pick-submit", function() {
-//		
-//		var mounth = $(dateId).children().children(".pick-m").children(".pick-sl").val(); 
-//		var year = $(dateId).children().children(".pick-y").children(".pick-sl").val();
-//		var day = $(dateId).children().children(".pick-d").children(".pick-sl").val();
-//		var date = year + '-' + mounth + '-' + day +'T00:00:00.000Z';
-//
-//		var id = +dateData;
-//		var formData = {
-//			id: id,
-//			createdAt: date,
-//			updatedAt: date
-//		}
-//		var posting = $.post('/admin/articles/changeDate', formData)
-//		posting.fail(function (data){
-//			alert(data.message);
-//			alert('fail');
-//		});
-//		posting.done(function(data) {
-//			window.location.reload();
-//		});
-//	});
+$(document).ready(function(){
+	$("body").on("click",".date-edit-input", function() {
+		var input = $(this);
+		var id = $(this).attr("data-id");
+		dateId = '[id= ' + id + ']';
+		dateData = $(this).siblings("#date-id").val();
+	});
+})
+$("body").on("click",".pick-submit", function() {
+		
+	var mounth = $(dateId).children().children(".pick-m").children(".pick-sl").val(); 
+	var year = $(dateId).children().children(".pick-y").children(".pick-sl").val();
+	var day = $(dateId).children().children(".pick-d").children(".pick-sl").val();
+	var date = year + '-' + mounth + '-' + day +'T00:00:00.000Z';
+
+	var id = +dateData;
+	var formData = {
+		id: id,
+		createdAt: date
+	}
+	var posting = $.post('/admin/articles/changeDate', formData)
+	posting.fail(function (data){
+		alert(data.message);
+		alert('fail');
+	});
+	posting.done(function(data) {
+		if (!data.success) {
+			alert("Something going wrong!");
+		}
+		alert("Date successfully changed!");
+	});
+});
