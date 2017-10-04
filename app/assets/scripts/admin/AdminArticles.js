@@ -102,7 +102,8 @@ $("body").on("click",".pick-submit", function() {
 	posting.done(function(data) {
 		if (!data.success) {
 			alert("Something going wrong!");
+		} else {
+			alert("Date successfully changed!");
 		}
-		alert("Date successfully changed!");
 	});
 });
