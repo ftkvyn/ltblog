@@ -185,7 +185,7 @@ module.exports = {
         }); 
     },
 
-    changePasswords:function(req, res){ 
+    changePasswords:function(req, res){  
 
         var FormCurrentPassword = req.body.currentPassword;
         var FormNewPassword = req.body.newPassword;

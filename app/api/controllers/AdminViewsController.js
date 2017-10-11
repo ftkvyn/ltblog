@@ -22,7 +22,7 @@ module.exports = {
 				console.log(err);
 				return res.serverError();
 			}
-
+			console.log(data);
 			return res.view('admin/users', {users: data});
 		});		
 	},

@@ -618,10 +618,6 @@ footer .sotial-icons{
     transform: translateY(-50%);
 }
 /* admin-articles*/
-.clearfix {
-	clear: both;
-	margin-top: -10px;
-}
 .to-left {
 	float: left;
 }
