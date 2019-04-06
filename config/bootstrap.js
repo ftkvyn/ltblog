@@ -28,8 +28,8 @@ module.exports.bootstrap = function(cb) {
 	              password: hash,
 	              isAdmin: true,
 	              name: 'Main admin',
-	              profilePicSmall: 'https://ltblog-dev.herokuapp.com/images/hedg.jpg',
-	              profilePicLarge: 'https://ltblog-dev.herokuapp.com/images/hedg.jpg',	              
+	              profilePicSmall: 'https://oblivion-test.herokuapp.com/images/hedg.jpg',
+	              profilePicLarge: 'https://oblivion-test.herokuapp.com/images/hedg.jpg',	              
 	            };
 	            User.create(userData).exec(function (err, user) {});
         	})
