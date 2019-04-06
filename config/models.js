@@ -13,8 +13,8 @@ module.exports.models = {
 
   connection: 'mysqlServer',
   schema:true,
-  //migrate:'alter',
-  migrate:'safe',
+  migrate:'alter',
+//   migrate:'safe',
   /***************************************************************************
   *                                                                          *
   * Your app's default connection. i.e. the name of one of your app's        *
