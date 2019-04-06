@@ -1,5 +1,5 @@
 {
-	"The Living Thing": "The Living Thing",
+	"Oblivion & Living On": "Oblivion & Living On",
 	"About": "About",
 	"Psychology":"Psychology",
 	"Music":"Music",
@@ -8,20 +8,14 @@
 	"locale":"en",
 	"locale_full":"en_EN",
 
-	"Marchenko Andrei":"Marchenko Andrei",
-	"Marchenko Andrei__role":"Site developer.",
-
-	"Machkin Yanis":"Machkin Yanis",
-	"Machkin Yanis__role":"Front-end development, technical support.",
-
 	"main__meta__title":"Main",
-	"main__meta__description":"Web journal that is living by its own.",
+	"main__meta__description":"",
 
-	"Live long and prosper":"Live long and prosper",
+	"Alienation Of The Nation":"Alienation Of The Nation",
 	"Published":"Published",
 	"Popular":"Popular",
 	"New":"New",
-	"__default__keywords" : "journal, web journal, internet journal, Science, Psychology, Music, art, books, literature",
+	"__default__keywords" : "",
 	"Source":"Source",
 
 	"day_0":"Sunday",
@@ -34,11 +28,11 @@
 
 	"Share":"Share",
 
-	"_site_description":"Your favourite web journal about Psychology, Science, Art and Music.",
+	"_site_description":"",
 
-	"__vk_link":"https://vk.com/living_thing_me",
-	"__fb_link":"https://www.facebook.com/The.Living.Thing.net",
-	"__tg_link":"https://t.me/the_living_thing",
+	"__vk_link":"",
+	"__fb_link":"",
+	"__tg_link":"",
 
 	"site_about":"",
 	"andrei_name":"",

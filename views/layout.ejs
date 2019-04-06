@@ -3,7 +3,7 @@
   <head>
 
     <meta property="og:locale" content="<%= __('locale_full')%>" />
-    <meta property="og:site_name" content='<%= __('The Living Thing') %>' />
+    <meta property="og:site_name" content='<%= __('Oblivion & Living On') %>' />
     
     <meta property="og:url" content='<%- origin + path %>' />
 
@@ -24,18 +24,18 @@
     <meta name="keywords" content="<%= meta.keywords || __('__default__keywords') %>">  
 
     <%}else{%>
-    <title><%= __('The Living Thing') %></title>
-    <meta property="og:title" content='<%= __('The Living Thing') %>' />
+    <title><%= __('Oblivion & Living On') %></title>
+    <meta property="og:title" content='<%= __('Oblivion & Living On') %>' />
     <meta property="og:type" content="website">
     <meta property="og:description" content='<%- __("_site_description") %>' />
     <meta property="og:image" content='<%- origin %><%- "/images/" + __("locale") + ".png" %>' />
-    <meta name="twitter:title" content="<%= __('The Living Thing') %>"> 
+    <meta name="twitter:title" content="<%= __('Oblivion & Living On') %>"> 
     <meta name="twitter:image" content='<%- origin %><%- "/images/" + __("locale") + ".png" %>'>
     <meta name="twitter:description" content='<%- __("_site_description") %>'> 
     <%}%>
 
     <meta name="twitter:card" content="summary_large_image"/> 
-    <meta name="twitter:site" content="@living_thing_me"/> 
+    <!-- <meta name="twitter:site" content="@"/>  -->
     <link rel="canonical" href="<%- origin + path %>" />
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -64,16 +64,10 @@
           style="text-align: center;">
             
               <div class="row">
-                <!-- <div class="col-md-3 col-sm-3 col-xs-3 logo-img-container">
-                  <a href="/">
-                    <img src="/images/hedg.png" alt="logo" class="logo" /> 
-                  </a>
-                </div> -->
-                <!-- <div class="col-md-6 col-sm-6 col-xs-6 logo-txt-container"> -->
                 <div class="col-md-12 col-sm-12 col-xs-12 logo-txt-container">
                   <a href="/">
-                    <h1 class="logo-text"><%= __('The Living Thing') %></h1>
-                    <h2 class="logo-subtext"><%= __('Live long and prosper') %></h2>
+                    <h1 class="logo-text"><%= __('Oblivion & Living On') %></h1>
+                    <h2 class="logo-subtext"><%= __('Alienation Of The Nation') %></h2>
                   </a>
                 </div>
 
@@ -87,18 +81,9 @@
 
               </div>
             </div>
-            <!-- <div class="col-sm-4">
-              <div class="sotial-icons">
-                <a class="vk" href="#"></a>
-                <a class="vk" href="#"></a>
-                <a class="vk" href="#"></a>
-                <a class="vk" href="#"></a>
-              </div>
-            </div> -->
             <div class="col-xs-12 col-lg-12">
               <div class="dropdown">
               <ul class="menu">
-                <li><a href = "/psychology/"><%= __('Psychology') %></a></li>
                 <li><a href = "/music/"><%= __('Music') %></a></li>
                 <li><a href = "/poetry/"><%= __('Poetry') %></a></li>                
                 <li><a href = "/art/"><%= __('Art') %></a></li>
