@@ -28,7 +28,7 @@
     "sails-mysql": "0.12.1",
     "sails-mongo": "0.12.0",
     "connect-mongo": "0.8.2",
-    "bcrypt":"2.0.0",
+    "bcrypt":"0.8.6",
     "moment":"*",
     "q" : "*"
   },
